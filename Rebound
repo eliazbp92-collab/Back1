@@ -133,58 +133,39 @@ local entity = Spawner:Create({
 
 entity:SetCallback("OnSpawned", function()
 	print("Entity has spawned")
-	task.spawn(function()
+
+	light(2, Color3.fromRGB(85, 170, 255), Color3.fromRGB(65, 138, 255))
+
+	-- Tìm Rebound an toàn bằng WaitForChild để tránh lỗi nil
+	local reboundModel = game.Workspace:WaitForChild("Rebound1", 5)
+	local reboundRoot = reboundModel and reboundModel:WaitForChild("Root", 3)
+
 	local function GetGitSound(GithubSnd, SoundName)
-		local url = GithubSnd
-		if not isfile(SoundName .. ".mp3") then
-			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		local filePath = SoundName .. ".mp3"
+		if not isfile(filePath) then
+			writefile(filePath, game:HttpGet(GithubSnd))
 		end
 		local sound = Instance.new("Sound")
-		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		sound.SoundId = (getcustomasset or getsynasset)(filePath)
 		return sound
 	end
 
-	local blueSound = game.Workspace.Rebound.Static_Jumpscare
-
-	local gitSoundTemp = GetGitSound("https://github.com/eoyoustme/Impossible/blob/main/rebound%20jumpscare.mp3?raw=true", "jumpscare")
-
-	blueSound.SoundId = gitSoundTemp.SoundId
-	blueSound.PlaybackSpeed = 1
-	blueSound.Looped = true
-	blueSound.TimePosition = 5.319
-	blueSound.Volume = 3
-	blueSound:Play()
-
-	gitSoundTemp:Destroy()
-
-	local function GetGitSound(GithubSnd, SoundName)
-		local url = GithubSnd
-		if not isfile(SoundName .. ".mp3") then
-			writefile(SoundName .. ".mp3", game:HttpGet(url))
-		end
-		local sound = Instance.new("Sound")
-		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
-		return sound
-	end
-
-	local ReallyNear = game.Workspace.Rebound.Fakeout
-
-	local Github = GetGitSound("https://github.com/eoyoustme/Impossible/blob/main/rebound%20fakeout.mp3?raw=true", "fakeout")
-
-	ReallyNear.SoundId = Github.SoundId
-	ReallyNear.PlaybackSpeed = 1
-	ReallyNear.TimePosition = 0
-	ReallyNear.Volume = 2.5
-	ReallyNear:Play()
-		light(2,Color3.fromRGB(127, 249, 255),Color3.fromRGB(65, 138, 255))
-		end)
+	pcall(function()
+		local Jumpscare = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true", "Riririririiriri")
+		Jumpscare.Parent = reboundRoot or reboundModel or game.Workspace
+		Jumpscare.Volume = 2
+		Jumpscare.RollOffMinDistance = 100
+		Jumpscare.RollOffMaxDistance = 200
+		Jumpscare.Name = "am"
+		Jumpscare.PlaybackSpeed = 1
+		Jumpscare:Play()
+	end)
 end)
 
 entity:SetCallback("OnStartMoving", function()
 	print("Entity has started moving")
-	
 	game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Super-insane-mode/refs/heads/main/Rebound1"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound1"))()
 end)
 
 entity:SetCallback("OnEnterRoom", function(room: Model, firstTime: boolean)
