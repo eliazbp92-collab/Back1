@@ -71,7 +71,7 @@ function GetGitSound(GithubSnd,SoundName)
 	return sound
 end
 
-wait(3)
+wait(2)
 
 ---====== Load spawner ======---
 
