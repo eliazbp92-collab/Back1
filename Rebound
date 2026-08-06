@@ -134,12 +134,8 @@ local entity = Spawner:Create({
 entity:SetCallback("OnSpawned", function()
 	print("Entity has spawned")
 
-    wait(5)
+    wait(3)
 	light(2, Color3.fromRGB(85, 170, 255), Color3.fromRGB(65, 138, 255))
-
-	-- Tìm Rebound an toàn bằng WaitForChild để tránh lỗi nil
-	local reboundModel = game.Workspace:WaitForChild("Rebound1", 5)
-	local reboundRoot = reboundModel and reboundModel:WaitForChild("Root", 3)
 end)
 
 entity:SetCallback("OnStartMoving", function()
