@@ -80,7 +80,7 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = Spawner:Create({
 	Entity = {
 		Name = "Rebound",
-		Asset = "rbxassetid://128215243399530",
+		Asset = "rbxassetid://110660957127652",
 		HeightOffset = 1
 	},
 	Lights = {
@@ -134,6 +134,7 @@ local entity = Spawner:Create({
 entity:SetCallback("OnSpawned", function()
 	print("Entity has spawned")
 
+    wait(6)
 	light(2, Color3.fromRGB(85, 170, 255), Color3.fromRGB(65, 138, 255))
 
 	-- Tìm Rebound an toàn bằng WaitForChild để tránh lỗi nil
