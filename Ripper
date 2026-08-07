@@ -87,7 +87,7 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyou
 local entity = Spawner:Create({
 	Entity = {
 		Name = "RipperNotMoving",
-		Asset = "rbxassetid://71660969514467",
+		Asset = "rbxassetid://112189599779623",
 		HeightOffset = 4
 	},
 	Lights = {
