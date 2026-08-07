@@ -71,8 +71,6 @@ function GetGitSound(GithubSnd,SoundName)
 	return sound
 end
 
-wait(2)
-
 ---====== Load spawner ======---
 
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/DOORS-Entity-Spawner-V2/main/init.luau"))()
@@ -82,8 +80,8 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = Spawner:Create({
 	Entity = {
 		Name = "Rebound",
-		Asset = "rbxassetid://110660957127652",
-		HeightOffset = 1
+		Asset = "rbxassetid://94638439855560",
+		HeightOffset = 3
 	},
 	Lights = {
 		Flicker = {
@@ -102,7 +100,7 @@ local entity = Spawner:Create({
 		Values = {7.5, 15, 0.1, 2} -- Magnitude, Roughness, FadeIn, FadeOut
 	},
 	Movement = {
-		Speed = 50,
+		Speed = 180,
 		Delay = 3,
 		Reversed = true
 	},
@@ -116,7 +114,7 @@ local entity = Spawner:Create({
 	Damage = {
 		Enabled = true,
 		Range = 45,
-		Amount = 100
+		Amount = 55
 	},
 	Crucifixion = {
 		Enabled = true,
@@ -135,15 +133,58 @@ local entity = Spawner:Create({
 
 entity:SetCallback("OnSpawned", function()
 	print("Entity has spawned")
+	task.spawn(function()
+	local function GetGitSound(GithubSnd, SoundName)
+		local url = GithubSnd
+		if not isfile(SoundName .. ".mp3") then
+			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		return sound
+	end
 
-    wait(2)
-	light(2, Color3.fromRGB(85, 170, 255), Color3.fromRGB(65, 138, 255))
+	local blueSound = game.Workspace.Rebound.Static_Jumpscare
+
+	local gitSoundTemp = GetGitSound("https://github.com/eoyoustme/Impossible/blob/main/rebound%20jumpscare.mp3?raw=true", "jumpscare")
+
+	blueSound.SoundId = gitSoundTemp.SoundId
+	blueSound.PlaybackSpeed = 1
+	blueSound.Looped = true
+	blueSound.TimePosition = 5.319
+	blueSound.Volume = 3
+	blueSound:Play()
+
+	gitSoundTemp:Destroy()
+
+	local function GetGitSound(GithubSnd, SoundName)
+		local url = GithubSnd
+		if not isfile(SoundName .. ".mp3") then
+			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		return sound
+	end
+
+	local ReallyNear = game.Workspace.Rebound.Fakeout
+
+	local Github = GetGitSound("https://github.com/eoyoustme/Impossible/blob/main/rebound%20fakeout.mp3?raw=true", "fakeout")
+
+	ReallyNear.SoundId = Github.SoundId
+	ReallyNear.PlaybackSpeed = 1
+	ReallyNear.TimePosition = 0
+	ReallyNear.Volume = 2.5
+	ReallyNear:Play()
+		light(2,Color3.fromRGB(127, 249, 255),Color3.fromRGB(65, 138, 255))
+		end)
 end)
 
 entity:SetCallback("OnStartMoving", function()
 	print("Entity has started moving")
+	
 	game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound1"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Hardcore/refs/heads/main/Rebound1"))()
 end)
 
 entity:SetCallback("OnEnterRoom", function(room: Model, firstTime: boolean)
@@ -183,9 +224,66 @@ end)
 entity:SetCallback("OnDamagePlayer", function(newHealth: number)
 	if newHealth <= 0 then
 		print("Entity has killed the player")
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Rebound%20Jumpscare.lua"))()
+		replicatesignal(game.Players.LocalPlayer.Kill)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Hardcore/refs/heads/main/Rebound%20Jumpscare"))()
 	else
 		print("Entity has damaged the player")
+		local Players = game:GetService("Players")
+		local TweenService = game:GetService("TweenService")
+
+		local player = Players.LocalPlayer
+		local playerGui = player:WaitForChild("PlayerGui")
+
+		task.spawn(function()
+			-- 1. Tạo ScreenGui và ImageLabel
+			local screenGui = Instance.new("ScreenGui")
+			screenGui.Name = "JumpscareOverlay"
+			screenGui.IgnoreGuiInset = true
+			screenGui.DisplayOrder = 999999
+			screenGui.Parent = playerGui
+
+			local imageLabel = Instance.new("ImageLabel")
+			imageLabel.BackgroundTransparency = 1
+			imageLabel.BorderSizePixel = 0
+			imageLabel.Position = UDim2.new(0, 0, 0, 0)
+			imageLabel.Size = UDim2.new(1, 0, 1, 0)
+			imageLabel.ScaleType = Enum.ScaleType.Stretch
+			imageLabel.ImageTransparency = 0.25 -- Bắt đầu từ độ mờ 0.25
+			imageLabel.Visible = true
+			imageLabel.Parent = screenGui
+			imageLabel.ImageColor3 = Color3.fromRGB(85, 170, 255)
+
+			-- Danh sách ảnh jumpscare nhấp nháy
+			local jumpscareImages = {
+				"rbxassetid://134346506410955",
+				"rbxassetid://7578853379",
+				"rbxassetid://103846711769666",
+				"rbxassetid://78199392475572"
+			}
+
+			local duration = 1.5 -- Thời gian diễn ra hiệu ứng (3 giây)
+			local start = os.clock()
+			local imageIndex = 1
+
+			-- 2. Khởi tạo Tween mờ dần (từ 0.25 về 1 trong vòng 3 giây)
+			local info = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+			local tween = TweenService:Create(imageLabel, info, {ImageTransparency = 1})
+
+			-- 3. CHẠY TWEEN NGAY TẠI ĐÂY (Tween sẽ chạy ngầm song song)
+			tween:Play()
+
+			-- 4. Vòng lặp đổi ảnh chạy đồng thời với Tween
+			while os.clock() - start < duration do
+				imageLabel.Image = jumpscareImages[imageIndex]
+				imageIndex = (imageIndex % #jumpscareImages) + 1
+				task.wait(0.03) -- Tốc độ chớp ảnh
+			end
+
+			-- 5. Đợi Tween hoàn thành 100% rồi dọn dẹp GUI
+			tween.Completed:Wait()
+			screenGui:Destroy()
+		end)
+
 	end
 end)
 
