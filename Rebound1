@@ -34,7 +34,7 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = Spawner:Create({
 	Entity = {
 		Name = "Rebound1",
-		Asset = "rbxassetid://110660957127652",
+		Asset = "rbxassetid://",
 		HeightOffset = 1
 	},
 	Lights = {
@@ -54,9 +54,9 @@ local entity = Spawner:Create({
 		Values = {5, 15, 0.1, 1}
 	},
 	Movement = {
-		Speed = 75,
+		Speed = ai,
 		Delay = delayTime, -- Sửa thành số nguyên
-		Reversed = false
+		Reversed = true
 	},
 	Rebounding = {
 		Enabled = false,
@@ -89,12 +89,37 @@ entity:SetCallback("OnSpawned", function()
 	print("Entity has spawned")
 
 	light(2, Color3.fromRGB(85, 170, 255), Color3.fromRGB(65, 138, 255))
+
+	-- Tìm Rebound an toàn bằng WaitForChild để tránh lỗi nil
+	local reboundModel = game.Workspace:WaitForChild("Rebound1", 5)
+	local reboundRoot = reboundModel and reboundModel:WaitForChild("Root", 3)
+
+	local function GetGitSound(GithubSnd, SoundName)
+		local filePath = SoundName .. ".mp3"
+		if not isfile(filePath) then
+			writefile(filePath, game:HttpGet(GithubSnd))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(filePath)
+		return sound
+	end
+
+	pcall(function()
+		local Jumpscare = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true", "Riririririiriri")
+		Jumpscare.Parent = reboundRoot or reboundModel or game.Workspace
+		Jumpscare.Volume = 2
+		Jumpscare.RollOffMinDistance = 100
+		Jumpscare.RollOffMaxDistance = 200
+		Jumpscare.Name = "am"
+		Jumpscare.PlaybackSpeed = 1
+		Jumpscare:Play()
+	end)
 end)
 
 entity:SetCallback("OnStartMoving", function()
 	print("Entity has started moving")
 	game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/back1/refs/heads/main/Rebound2"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound2"))()
 end)
 
 entity:SetCallback("OnEnterRoom", function(room: Model, firstTime: boolean)
