@@ -1,0 +1,32 @@
+local Players = game:GetService("Players")
+local Workspace = game:GetService("Workspace")
+local TweenService = game:GetService("TweenService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local hrp = character:WaitForChild("HumanoidRootPart")
+
+local function spawnShocker()
+	local shockerModel = game:GetObjects("https://github.com/eliazbp92-collab/Back1/raw/main/Shocker.rbxm")[1]
+	local camera = Workspace.CurrentCamera
+
+Shocker.OnClientEvent:Connect(function() --[[ Line: 15 | Upvalues: GameData (copy), v1 (copy), LocalPlayer (copy), Shocker2 (copy) ]]
+    if GameData.LatestRoom.Value <= 1 then
+        return
+    end
+
+    if v1:GetAttribute("Hiding") == true then
+        return
+    end
+
+    if v1:GetAttribute("InCutscene") == true then
+        return
+    end
+
+    if LocalPlayer:GetAttribute("Alive") == true then
+        Shocker2.HookShocker(Shocker2:SpawnShocker(v1), v1)
+    end
+end)
