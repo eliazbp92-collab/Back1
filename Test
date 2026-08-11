@@ -1,20 +1,28 @@
 task.spawn(function()
-        local A2 = workspace["A-100"].HumanoidRootPart.A2.ImageLabel
+        local IMAGEIDS = workspace["A-60"].HumanoidRootPart.IMAGEIDS.ImageLabel
         local random = Random.new(1, 6)
 
         while task.wait(0.3) do
             if random == 1 then
-                A2.Image = "rbxassetid://11131703032"
+                IMAGEIDS.Image = "rbxassetid://7000842409"
             elseif random == 2 then
-                A2.Image = "rbxassetid://1972219024"
+                IMAGEIDS.Image = "rbxassetid://11512601759"
             elseif random == 3 then
-                A2.Image = "rbxassetid://1822114127"
+                IMAGEIDS.Image = "rbxassetid://11378285585"
             elseif random == 4 then
-                A2.Image = "rbxassetid://13445926051"
+                IMAGEIDS.Image = "rbxassetid://192267375"
             elseif random == 5 then
-                A2.Image = "rbxassetid://3413871766"
+                IMAGEIDS.Image = "rbxassetid://3413871766"
             elseif random == 6 then
-                A2.Image = "rbxassetid://11131699495"
+                IMAGEIDS.Image = "rbxassetid://1972219024"
+            elseif random == 7 then
+                IMAGEIDS.Image = "rbxassetid://6309704436"
+            elseif random == 8 then
+                IMAGEIDS.Image = "rbxassetid://1822114127"
+            elseif random == 9 then
+                IMAGEIDS.Image = "rbxassetid://17865063"
+            elseif random == 10 then
+                IMAGEIDS.Image = "rbxassetid://11512601759"
             end
         end
     end)
