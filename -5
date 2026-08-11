@@ -82,8 +82,7 @@ entity:SetCallback("OnSpawned", function()
     wait(0.1)
     script.Parent.Texture = "rbxassetid://10458678325"
     wait(0.1)
-    
-end
+    end
 end)
 
 entity:SetCallback("OnStartMoving", function()
