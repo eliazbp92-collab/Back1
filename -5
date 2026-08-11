@@ -87,6 +87,17 @@ task.spawn(function()
                 IMAGEIDS.Image = "rbxassetid://11512601759"
             end
         end
+	end)
+	task.spawn(function()
+		local IMAGEIDS = workspace["A-60"].HumanoidRootPart.IMAGEIDS
+		local IMAGEIDS = workspace["A-60"].HumanoidRootPart.IMAGEIDS
+
+		while task.wait(0.05) do
+			A1.ExtentsOffsetWorldSpace = Vector3.new(Random.new():NextNumber(-1.5, 1.5), Random.new():NextNumber(-1.5, 1.5), Random.new():NextNumber(-1.5, 1.5))
+			A2.ExtentsOffsetWorldSpace = Vector3.new(Random.new():NextNumber(-1.5, 1.5), Random.new():NextNumber(-1.5, 1.5), Random.new():NextNumber(-1.5, 1.5))
+		end
+
+	end)
 end)
 
 entity:SetCallback("OnStartMoving", function()
