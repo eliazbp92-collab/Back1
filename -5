@@ -60,27 +60,6 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-
--- Âm thanh báo hiệu
-local cue1 = Instance.new("Sound")
-cue1.Parent = game.Workspace
-cue1.Name = "Scream"
-cue1.SoundId = "https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/X-60Spawn.mp3.mpeg"
- 
-local distort = Instance.new("DistortionSoundEffect", cue1)
-distort.Level = 0
-local distort2 = Instance.new("DistortionSoundEffect", cue1)
-distort2.Level = 0
- 
-local pitch = Instance.new("PitchShiftSoundEffect", cue1)
-pitch.Octave = 0.7
-local pitch2 = Instance.new("PitchShiftSoundEffect", cue1)
-pitch2.Octave = 0.7
-local pitch3 = Instance.new("PitchShiftSoundEffect", cue1)
-pitch3.Octave = 0.7
- 
-cue1.Volume = 5
-cue1:Play()
 end)
 
 entity:SetCallback("OnStartMoving", function()
