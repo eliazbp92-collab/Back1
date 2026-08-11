@@ -1,0 +1,32 @@
+-- Script Path: game:GetService("ReplicatedStorage").PlayerRigs.Epicyfaces.Shocker
+-- Took 0.6s to decompile.
+-- Executor: Delta (1.0.733.988)
+
+-- https://lua.expert/
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local GameData = ReplicatedStorage:WaitForChild("GameData")
+local RemotesFolder = ReplicatedStorage:WaitForChild("RemotesFolder")
+local EntityModules = ReplicatedStorage:WaitForChild("ModulesClient"):WaitForChild("EntityModules")
+local Shocker = RemotesFolder:WaitForChild("Shocker")
+local Shocker2 = require(EntityModules:WaitForChild("Shocker"))
+local v1 = script.Parent or Players.LocalPlayer.CharacterAdded:Wait()
+local LocalPlayer = Players.LocalPlayer
+
+Shocker.OnClientEvent:Connect(function() --[[ Line: 15 | Upvalues: GameData (copy), v1 (copy), LocalPlayer (copy), Shocker2 (copy) ]]
+    if GameData.LatestRoom.Value <= 1 then
+        return
+    end
+
+    if v1:GetAttribute("Hiding") == true then
+        return
+    end
+
+    if v1:GetAttribute("InCutscene") == true then
+        return
+    end
+
+    if LocalPlayer:GetAttribute("Alive") == true then
+        Shocker2.HookShocker(Shocker2:SpawnShocker(v1), v1)
+    end
+end)
