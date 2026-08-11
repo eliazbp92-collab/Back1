@@ -1,0 +1,38 @@
+<!-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw --><roblox version="4"><Meta name="ExplicitAutoJoints">true</Meta><Item class="Model" referent="0"><Properties><CoordinateFrame name="ModelMeshCFrame"><X>0</X><Y>0</Y><Z>0</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame><Vector3 name="ModelMeshSize"><X>0</X><Y>0</Y><Z>0</Z></Vector3><bool name="NeedsPivotMigration">false</bool><float name="ScaleFactor">1</float><OptionalCoordinateFrame name="WorldPivotData"><CFrame><X>650.7286987304688</X><Y>-4235.18994140625</Y><Z>-162.9399871826172</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CFrame></OptionalCoordinateFrame><BinaryString name="AttributesSerialize">AgAAAAsAAABEb250U2hhdHRlcgYAAAAAAAAqQAoAAABMb2FkTW9kdWxlAgoAAABSdXNoTW92aW5n</BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[CeaseMoving]]></string><int64 name="SourceAssetId">12262854624</int64><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item><Item class="Script" referent="1"><Properties><string name="Name"><![CDATA[README]]></string><ProtectedString name="Source"><![CDATA[--[[
+		Thank you for using UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw.
+
+		If you didn't save in Binary (rbxl) - it's recommended to save the game right away to take advantage of the binary format & to preserve values of certain properties if you used IgnoreDefaultProperties setting (as they might change in the future).
+		You can do that by going to FILE -> Save to File As -> Make sure File Name ends with .rbxl -> Save
+
+		ServerStorage, ServerScriptService and Server Scripts are IMPOSSIBLE to save because of FilteringEnabled.
+
+		If your player cannot spawn into the game, please move the scripts in StarterPlayer somewhere else or delete them. Then run `game:GetService("Players").CharacterAutoLoads = true`.
+		And use "Play Here" to start game instead of "Play" to spawn your Character where your Camera currently is.
+
+		If the chat system does not work, please use the explorer and delete everything inside the TextChatService/Chat service(s). 
+		Or run `game:GetService("Chat"):ClearAllChildren() game:GetService("TextChatService"):ClearAllChildren()`
+				
+		If Union and MeshPart collisions don't work, run the script below in the Studio Command Bar:
+				
+				
+		local C = game:GetService("CoreGui")
+		local D = Enum.CollisionFidelity.Default
+				
+		for _, v in game:GetDescendants() do
+			if v:IsA("TriangleMeshPart") and not v:IsDescendantOf(C) then
+				v.CollisionFidelity = D
+			end
+		end
+		print("Done")
+				
+		If you can't move the Camera, run this script in the Studio Command Bar:
+			
+		workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed
+		
+		Or Destroy the Camera.
+
+		This file was generated with the following settings:
+		{"SavePlayerCharacters":true,"SaveBytecode":false,"Callback":false,"ShowStatus":true,"IgnoreDefaultPlayerScripts":true,"NilInstancesFixes":{"BaseWrap":null,"Animator":null,"Attachment":null,"PackageLink":null,"AdPortal":null},"IgnoreList":["CoreGui","CorePackages"],"__DEBUG_MODE":false,"KillAllScripts":true,"DecompileJobless":false,"Decompile":true,"IgnoreNotArchivable":true,"Object":null,"DecompileIgnore":["TextChatService",null,null,null,null],"IgnoreSpecialProperties":true,"BoostFPS":true,"IsModel":false,"NilInstances":false,"ExtraInstances":[],"ReadMe":true,"OptionsAliasesInverse":{"noscripts":"Decompile","RemovePlayers":"IsolatePlayers","RemovePlayerCharacters":"SavePlayerCharacters"},"OptionsAliases":{"DecompileScripts":"Decompile","timeout":"DecompileTimeout","StatusText":"ShowStatus","SavePlayers":"IsolatePlayers","FileName":"FilePath","SaveCharacters":"SavePlayerCharacters","SaveNilInstances":"NilInstances","IgnoreArchivable":"IgnoreNotArchivable","SaveNonCreatable":"SaveNotCreatable","SaveLocalPlayer":"IsolateLocalPlayer","InstancesBlacklist":"IgnoreList","IsolatePlayerGui":"IsolateLocalPlayer","SavePlayerGui":"IsolateLocalPlayer","IgnoreDefaultProps":"IgnoreDefaultProperties"},"IgnoreSharedStrings":false,"TreatUnionsAsParts":false,"scriptcache":true,"SharedStringOverwrite":false,"AlternativeWritefile":true,"mode":"optimized","SaveCacheInterval":56320,"NotCreatableFixes":["","AdvancedDragger","AnimationTrack","Dragger","Player","PlayerGui","PlayerMouse","PlayerMouse","PlayerScripts","ScreenshotHud","StudioData","TextChatMessage","TextSource","TouchTransmitter","Translator"],"IsolatePlayers":false,"BytecodeTimeout":3,"FilePath":"CeaseMoving.rbxm","IgnoreDefaultProperties":true,"Anonymous":false,"IsolateStarterPlayer":false,"IsolateLocalPlayerCharacter":false,"IgnorePropertiesOfNotScriptsOnScriptsMode":false,"AvoidFileOverwrite":true,"SaveNotCreatable":false,"IsolateLocalPlayer":false,"ShutdownWhenDone":false,"AntiIdle":true,"SafeMode":true,"IgnoreProperties":[],"DecompileTimeout":10}
+
+		Elapsed time: 0.0015772916667629033 Date (UTC): 11 August 2026 21:43:27 PlaceId: 131351567799504 PlaceVersion: 1945 Client Version: 2.733.988 Platform: IOS Executor: Delta 1.0.733.988 arm64
+]]]]></ProtectedString></Properties></Item><SharedStrings><SharedString md5="MTAwMDAwMDAwMDAwMDAwMA==">RW50aXR5U291bmRSb290</SharedString></SharedStrings></roblox><!-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw -->
