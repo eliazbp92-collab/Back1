@@ -292,8 +292,8 @@ entity.Debug.OnEntityDespawned = function(entity)
 			v.Reason = getgenv().Reason
 			v.BadgeId = getgenv().BadgeId
 			v.Category = getgenv().Category
-		end
 		Unlock(nil,"Join")
+	end
 end)
 
 entity:SetCallback("OnStartMoving", function()
