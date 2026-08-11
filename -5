@@ -59,6 +59,7 @@ local entity = spawner.Create({
 ---====== Debug entity ======---
 
 entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
  	local function GetGitSound(GithubSnd,SoundName)
 		local url=GithubSnd
 		if not isfile(SoundName..".mp3") then
