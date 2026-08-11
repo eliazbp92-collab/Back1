@@ -1,6 +1,6 @@
 task.spawn(function()
         local IMAGEIDS = workspace["A-60"].HumanoidRootPart.IMAGEIDS.ImageLabel
-        local random = Random.new(1, 6)
+        local random = Random.new(1, 10)
 
         while task.wait(0.3) do
             if random == 1 then
