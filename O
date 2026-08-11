@@ -1,7 +1,7 @@
 local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
-	Model = "104913874144013",
+	Model = "14826206904",
 	Speed = 350,
 	DelayTime = 1,
 	HeightOffset = 0.5,
