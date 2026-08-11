@@ -13,20 +13,91 @@ local function spawnShocker()
 	local shockerModel = game:GetObjects("https://github.com/eliazbp92-collab/Back1/raw/main/Shocker.rbxm")[1]
 	local camera = Workspace.CurrentCamera
 
-Shocker.OnClientEvent:Connect(function() --[[ Line: 15 | Upvalues: GameData (copy), v1 (copy), LocalPlayer (copy), Shocker2 (copy) ]]
-    if GameData.LatestRoom.Value <= 1 then
-        return
-    end
+local rootPart = shockerModel:FindFirstChild("HumanoidRootPart") or shockerModel:FindFirstChildWhichIsA("BasePart")
+	shockerModel.PrimaryPart = rootPart
+	shockerModel.Parent = Workspace
 
-    if v1:GetAttribute("Hiding") == true then
-        return
-    end
+	local oogaBoogaaPart = shockerModel:WaitForChild("Base")
+	local horrorScream = oogaBoogaaPart:WaitForChild("HORROR SCREAM 15")
+	local sb = oogaBoogaaPart:WaitForChild("PlaySound")
+	local sb2 = oogaBoogaaPart:WaitForChild("Repent")
 
-    if v1:GetAttribute("InCutscene") == true then
-        return
-    end
+	sb.Volume = 1.5
+	sb:Play()
+	sb2:Play()
 
-    if LocalPlayer:GetAttribute("Alive") == true then
-        Shocker2.HookShocker(Shocker2:SpawnShocker(v1), v1)
-    end
-end)
+	local followConnection
+	local startTime = tick()
+
+	followConnection = RunService.RenderStepped:Connect(function()
+		if tick() - startTime < 2 then
+			local targetCFrame = camera.CFrame * CFrame.new(0, 0, -20)
+			shockerModel:PivotTo(CFrame.lookAt(targetCFrame.Position, camera.CFrame.Position))
+		else
+			if followConnection then
+				followConnection:Disconnect()
+			end
+		end
+	end)
+
+	task.wait(2)
+
+	sb:Stop()
+	sb2:Stop()
+	horrorScream:Play()
+
+	local startPos = rootPart.Position
+	local targetDirection = (hrp.Position - startPos).Unit
+	local endPos = startPos + (targetDirection * 70)
+
+	local dashInfo = TweenInfo.new(1.8, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
+	local dashTween = TweenService:Create(rootPart, dashInfo, {
+		CFrame = CFrame.lookAt(endPos, endPos + targetDirection)
+	})
+
+	local hitConnection
+	local hasHit = false
+
+	hitConnection = RunService.RenderStepped:Connect(function()
+		if hasHit or not hrp then return end
+
+		local distance = (rootPart.Position - hrp.Position).Magnitude
+		if distance <= 4.5 then 
+			hasHit = true
+			humanoid:TakeDamage(30)
+
+			pcall(function()
+				ReplicatedStorage.GameStats["Player_".. player.Name].Total.DeathCause.Value = "Shocker"
+				firesignal(ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {
+					"You encountered Shocker...",
+					"Dodge out of its path when it charges!"
+				}, "Blue")
+			end)
+		end
+	end)
+
+	dashTween:Play()
+
+	dashTween.Completed:Connect(function()
+		if hitConnection then hitConnection:Disconnect() end
+	end)
+
+	task.delay(5, function()
+		if hitConnection then hitConnection:Disconnect() end
+		if shockerModel and shockerModel.Parent then
+			shockerModel:Destroy()
+		end
+	end)
+
+	pcall(function()
+		local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+		achievementGiver({
+			Title = "Shocking Experience",
+			Desc = "Look at me.",
+			Reason = "Encounter Shocker.",
+			Image = "rbxassetid://17857830685"
+		})
+	end)
+end
+
+spawnShocker()
