@@ -2,7 +2,7 @@ task.spawn(function()
         local IMAGEIDS = workspace["A-60"].HumanoidRootPart.IMAGEIDS.ImageLabel
         local random = Random.new(1, 10)
 
-        while task.wait(0.3) do
+        while task.wait(0) do
             if random == 1 then
                 IMAGEIDS.Image = "rbxassetid://7000842409"
             elseif random == 2 then
