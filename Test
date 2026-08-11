@@ -1,0 +1,20 @@
+task.spawn(function()
+        local A2 = workspace["A-100"].HumanoidRootPart.A2.ImageLabel
+        local random = Random.new(1, 6)
+
+        while task.wait(0.3) do
+            if random == 1 then
+                A2.Image = "rbxassetid://11131703032"
+            elseif random == 2 then
+                A2.Image = "rbxassetid://1972219024"
+            elseif random == 3 then
+                A2.Image = "rbxassetid://1822114127"
+            elseif random == 4 then
+                A2.Image = "rbxassetid://13445926051"
+            elseif random == 5 then
+                A2.Image = "rbxassetid://3413871766"
+            elseif random == 6 then
+                A2.Image = "rbxassetid://11131699495"
+            end
+        end
+    end)
