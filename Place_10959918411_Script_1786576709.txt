@@ -1,0 +1,20 @@
+-- Unable to view source.
+-- Script Path: game:GetService("ReplicatedStorage").StudioLiteFolder.Play321.Workspace["A-60"].RushNew.Main.Face.Script
+-- Reason: The script is not running on client. (attempt to decompile ServerScript or 'Script' with RunContext Server)
+-- Executor: Delta (1.0.733.988while true do
+    script.Parent.Texture = "rbxassetid://98435721213720"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://103832273631839"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://99646533819956"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://129660356435191"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://118852784747354"
+    wait(0.1)
+    script.Parent.Texture = "http://www.roblox.com/asset/?id=139608918488889"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://105905374539737"
+    wait(0.1)
+    
+end
