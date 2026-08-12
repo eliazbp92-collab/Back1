@@ -65,21 +65,29 @@ local Main = workspace["A-60"].HumanoidRootPart.Image.ImageLabel
 local a = 0
 
 while true do
-    face.Texture = "rbxassetid://77175963728130"
+    script.Parent.Texture = "rbxassetid://192267375"
     wait(a)
-    face.Texture = "rbxassetid://137190253518065"
+    script.Parent.Texture = "rbxassetid://1972219024"
     wait(a)
-    face.Texture = "rbxassetid://71852344414183"
+    script.Parent.Texture = "rbxassetid://1822114127"
     wait(a)
-    face.Texture = "rbxassetid://99439326316784"
+    script.Parent.Texture = "rbxassetid://3413871766"
     wait(a)
-    face.Texture = "rbxassetid://70803719639194"
+    script.Parent.Texture = "rbxassetid://14067409599"
     wait(a)
-    face.Texture = "rbxassetid://115702603506530"
+    script.Parent.Texture = "http://www.roblox.com/asset/?id=17865063"
     wait(a)
-    face.Texture = "rbxassetid://70998902028853"
+    script.Parent.Texture = "rbxassetid://4749623118"
     wait(a)
-    face.Texture = "rbxassetid://77175963728130"
+    script.Parent.Texture = "rbxassetid://1857893092"
+    wait(a)
+    script.Parent.Texture = "rbxassetid://4508624823"
+    wait(a)
+    script.Parent.Texture = "rbxassetid://6309704436"
+    wait(a)
+    script.Parent.Texture = "rbxassetid://12973859565"
+    wait(a)
+    script.Parent.Texture = "rbxassetid://11765474704"
     wait(a)
 end
 end)
