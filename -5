@@ -60,35 +60,30 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-local face = script.Parent
-local Main = workspace["A-60"].Main.Image.ImageLabel
-local a = 0
-
 while true do
     script.Parent.Texture = "rbxassetid://192267375"
-    wait(a)
+    wait(0.1)
     script.Parent.Texture = "rbxassetid://1972219024"
-    wait(a)
+    wait(0.1)
     script.Parent.Texture = "rbxassetid://1822114127"
-    wait(a)
+    wait(0.1)
     script.Parent.Texture = "rbxassetid://3413871766"
-    wait(a)
-    script.Parent.Texture = "rbxassetid://14067409599"
-    wait(a)
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://3354536350"
+    wait(0.1)
     script.Parent.Texture = "http://www.roblox.com/asset/?id=17865063"
-    wait(a)
+    wait(0.1)
     script.Parent.Texture = "rbxassetid://4749623118"
-    wait(a)
+    wait(0.1)
     script.Parent.Texture = "rbxassetid://1857893092"
-    wait(a)
+    wait(0.1)
     script.Parent.Texture = "rbxassetid://4508624823"
-    wait(a)
+    wait(0.1)
     script.Parent.Texture = "rbxassetid://6309704436"
-    wait(a)
-    script.Parent.Texture = "rbxassetid://12973859565"
-    wait(a)
-    script.Parent.Texture = "rbxassetid://11765474704"
-    wait(a)
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://10458678325"
+    wait(0.1)
+    
 end
 end)
 
