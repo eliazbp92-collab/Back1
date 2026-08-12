@@ -61,7 +61,8 @@ local entity = spawner.Create({
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
 local face = script.Parent
-local a = 0.01
+local Main = workspace["A-60"].HumanoidRootPart.Main.ImageLabel
+local a = 0
 
 while true do
     face.Texture = "rbxassetid://77175963728130"
