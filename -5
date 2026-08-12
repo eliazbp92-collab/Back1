@@ -61,7 +61,7 @@ local entity = spawner.Create({
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
 local face = script.Parent
-local Main = workspace["A-60"].HumanoidRootPart.Main.ImageLabel
+local Main = workspace["A-60"].HumanoidRootPart.Image.ImageLabel
 local a = 0
 
 while true do
