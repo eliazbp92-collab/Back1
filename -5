@@ -84,7 +84,6 @@ while true do
     script.Parent.Texture = "rbxassetid://10458678325"
     wait(0.1)
     
-end
 end)
 
 entity:SetCallback("OnStartMoving", function()
