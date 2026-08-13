@@ -69,6 +69,8 @@ entity:SetCallback("OnSpawned", function()
 			local random = get[math.random(1,#get)]
 			Part.Main.Face.Texture = random.Image
 			wait(Random.new():NextNumber(0,0.07))
+		end
+	end
 end)
 
 entity:SetCallback("OnStartMoving", function()
