@@ -82,6 +82,8 @@ entity:SetCallback("OnSpawned", function()
 	Ambience:Play()
 	
 task.spawn(function()
+		local Script = Workspace["A-60"].RushNew.Main.Face.Script
+
     script.Parent.Texture = "rbxassetid://98435721213720"
     wait(0.1)
     script.Parent.Texture = "rbxassetid://103832273631839"
@@ -97,7 +99,17 @@ task.spawn(function()
     script.Parent.Texture = "rbxassetid://105905374539737"
     wait(0.1)
     
-end
+			end
+		end
+	end)
+	task.spawn(function()
+		local A60 = Workspace["A-60"].RushNew.Main.Face.Script
+
+		while task.wait(0.05) do
+			Scrpit.ExtentsOffsetWorldSpace = Vector3.new(Random.new():NextNumber(-1.5, 1.5), Random.new():NextNumber(-1.5, 1.5), Random.new():NextNumber(-1.5, 1.5))
+		end
+
+	end)
 end)
 
 entity:SetCallback("OnStartMoving", function()
