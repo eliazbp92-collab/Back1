@@ -65,7 +65,7 @@ entity:SetCallback("OnSpawned", function()
 		local Part = Monster:FindFirstChild("RushNew")
 		Part.Static:Play()
 		Part.Static.Pitch = 1.6
-		while game["Run Service"].Heartbeat:Wait() and spawned do
+		while game["Run Service"].Breathing:Wait() and spawned do
 			local get = Part.IMAGEIDS:GetChildren()
 			local random = get[math.random(1,#get)]
 			Part.Main.Face.Texture = random.Image
