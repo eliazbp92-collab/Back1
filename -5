@@ -83,25 +83,26 @@ entity:SetCallback("OnSpawned", function()
 	
 task.spawn(function()
 		local Script = Workspace["A-60"].RushNew.Main.Face.Script
+		local random = Random.new(1, 7)
 
-    script.Parent.Texture = "rbxassetid://98435721213720"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://103832273631839"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://99646533819956"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://129660356435191"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://118852784747354"
-    wait(0.1)
-    script.Parent.Texture = "http://www.roblox.com/asset/?id=139608918488889"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://105905374539737"
-    wait(0.1)
-    
+		while task.wait(0) do
+			if random == 1 then
+				Script.Image = "rbxassetid://103832273631839"
+			elseif random == 2 then
+				Script.Image = "rbxassetid://99646533819956"
+			elseif random == 3 then
+				Script.Image = "rbxassetid://98435721213720"
+			elseif random == 4 then
+				Script.Image = "rbxassetid://129660356435191"
+			elseif random == 5 then
+				Script.Image = "rbxassetid://118852784747354"
+			elseif random == 6 then
+				Script.Image = "http://www.roblox.com/asset/?id=139608918488889"
+		    elseif random == 7 then
+				Script.Image = "rbxassetid://105905374539737"
 			end
 		end
-	end)
+	end)	
 	task.spawn(function()
 		local A60 = Workspace["A-60"].RushNew.Main.Face.Script
 
