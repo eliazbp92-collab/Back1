@@ -60,7 +60,44 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-Workspace["A-60"].RushNew.Main.Face.Script
+	local entity = Workspace["A-60"].RushNew.Main.Face.Script
+	entity.Position = Vector3.new(0, 0, 0)
+	
+	local function GetGitSound(GithubSnd, SoundName)
+		local url = GithubSnd
+		if not isfile(SoundName .. ".mp3") then
+			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		return sound
+	end
+	local Ambience = GetGitSound("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A100Ambience.mp3.mpeg","Toilet.com")
+	Ambience.Parent = workspace["A-60"].RushNew
+	Ambience.Volume = 4
+	Ambience.Looped = true
+	Ambience.PlaybackSpeed = 1
+	Ambience.RollOffMinDistance = 100
+	Ambience.RollOffMaxDistance = 200
+	Ambience:Play()
+	
+task.spawn(function()
+    script.Parent.Texture = "rbxassetid://98435721213720"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://103832273631839"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://99646533819956"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://129660356435191"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://118852784747354"
+    wait(0.1)
+    script.Parent.Texture = "http://www.roblox.com/asset/?id=139608918488889"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://105905374539737"
+    wait(0.1)
+    
+end
 end)
 
 entity:SetCallback("OnStartMoving", function()
