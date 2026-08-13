@@ -60,16 +60,31 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-	spawn(function()
-		local A-60 = Workspace["A-60"].RushNew
-		local Script = Workspace["A-60"].RushNew.Main.Face.Script
-		while game["Run Service"].Face:Wait() and spawned do
-			local get = Part.Face:GetChildren()
-			local random = get[math.random(1,#get)]
-			Part.Main.Face.Script = random.Image
-			wait(Random.new():NextNumber(0,0.07))
-		end
-	end)
+while true do
+    script.Parent.Texture = "rbxassetid://192267375"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://1972219024"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://1822114127"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://3413871766"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://3354536350"
+    wait(0.1)
+    script.Parent.Texture = "http://www.roblox.com/asset/?id=17865063"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://4749623118"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://1857893092"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://4508624823"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://6309704436"
+    wait(0.1)
+    script.Parent.Texture = "rbxassetid://10458678325"
+    wait(0.1)
+    
+end
 end)
 
 entity:SetCallback("OnStartMoving", function()
