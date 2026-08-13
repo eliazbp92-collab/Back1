@@ -61,12 +61,12 @@ local entity = spawner.Create({
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
 	spawn(function()
-		local Monster = workspace:FindFirstChild("A-60")
-		local Part = Monster:FindFirstChild("RushNew")
+		local A-60 = Workspace["A-60"].RushNew
+		local Script = Workspace["A-60"].RushNew.Main.Face.Script
 		while game["Run Service"].Face:Wait() and spawned do
-			local get = Part.IMAGEIDS:GetChildren()
+			local get = Part.Face:GetChildren()
 			local random = get[math.random(1,#get)]
-			Part.Main.Face.Texture = random.Image
+			Part.Main.Face.Script = random.Image
 			wait(Random.new():NextNumber(0,0.07))
 		end
 	end)
