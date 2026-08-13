@@ -60,52 +60,6 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-	local A60 =   workspace:FindFirstChild("A-60"):FindFirstChild("RushNew") print(A60.Name)
-	local deb = false
-	local function canSeeTarget(target,size)
-		if deb == true then
-			return
-		end
-		local origin = A60.Position
-		local direction = (target.HumanoidRootPart.Position - A60.Position).unit * size
-		local ray = Ray.new(origin, direction)
- 
-		local hit, pos = workspace:FindPartOnRay(ray, A60)
- 
- 
-		if hit then
-			if hit:IsDescendantOf(target) then print("Player is Died")
-				deb = true
-				if workspace.Ambience_Seek.Playing == true then
-					return
-				end
- 
-				for i,v in pairs(A60:GetDescendants()) do
-					if v:IsA("Sound") then 
-						v:Destroy()
-					end 
-				end
-				spawn(function()
-					Kill()
-				end)
-				return true
-		end
-	else
-		return false
-		end
-	end
-	spawn(function()
-		while entity ~= nil do wait(0.001)
-			local v = game.Players.LocalPlayer
-			if v.Character ~= nil and not v.Character:GetAttribute("Hiding") then
- 
-				local c = canSeeTarget(v.Character,50) 
-				if c == true then 
-					print("CanSee")
-				end
-			end
-		end
-	end)
 	spawn(function()
 		local Monster = workspace:FindFirstChild("A-60")
 		local Part = Monster:FindFirstChild("RushNew")
@@ -118,7 +72,6 @@ entity:SetCallback("OnSpawned", function()
 			wait(Random.new():NextNumber(0,0.07))
 		end
 	end)
-end
 end)
 
 entity:SetCallback("OnStartMoving", function()
