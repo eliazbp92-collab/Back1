@@ -1,6 +1,3 @@
-local rng = Random.new()
-local ai = rng:NextInteger(35, 45)
-
 ---====== Load spawner ======---
  
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/DOORS-Entity-Spawner-V2/main/init.luau"))()
