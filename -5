@@ -1,3 +1,38 @@
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+
+local function FileSound(SoundName, Link)
+    local FileExtension = Link:match("%.(%w+)$") or "mp3"
+    local FilePath = SoundName.."."..FileExtension
+    
+    if not isfile(FilePath) then
+        local Success, Content = pcall(function()
+            return game:HttpGet(Link)
+        end)
+        
+        if not Success then
+            warn("Failed to download sound: "..Content)
+            return nil
+        end
+        
+        writefile(FilePath, Content)
+    end
+
+    local Sound = Instance.new("Sound", workspace)
+    Sound.Name = SoundName or "Sound"
+    Sound.SoundId = getcustomasset(FilePath)
+    Sound:Play()
+    
+    return Sound
+end
+
+local CameraShaker = require(ReplicatedStorage.CameraShaker)
+local camara = workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+    camara.CFrame = camara.CFrame * shakeCf
+end)
+
 ---====== Load spawner ======---
 
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
@@ -7,7 +42,7 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = spawner.Create({
 	Entity = {
 		Name = "A-60",
-		Asset = "rbxassetid://104913874144013",
+		Asset = "rbxassetid://14826206904",
 		HeightOffset = 0
 	},
 	Lights = {
