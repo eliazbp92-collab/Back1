@@ -270,59 +270,66 @@ end)
 
 entity:SetCallback("OnDespawning", function()
     print("Entity is despawning")
-local despawnsnd
-entity.Debug.OnEntityDespawned = function(entity)
-	spawned = false
-	local Snd = Instance.new("Sound")
-	Snd.Volume = 1
-	Snd.Pitch = 0.1
-	Snd.SoundId = "rbxassetid://7757472223"
-	Snd.Parent = workspace
-	Snd.Volume = 10
-	Snd:Play()
-	despawnsnd = Snd
-	game.Debris:AddItem(Snd,25)
-	spawn(function()
-		while Snd.Playing do wait(5)
-			if game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").Health == 0 then
-				Snd:Destroy()
-			end
-		end
-	end)
- 
-	local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24)
-	Reboundcolor.Name = "Despawn"
-	Reboundcolor.TintColor = Color3.fromRGB(255, 0, 4) Reboundcolor.Saturation = -0.7 Reboundcolor.Contrast = 0.2
-	game.TweenService:Create(Reboundcolor,TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
-	game.Debris:AddItem(Reboundcolor,40)
-	game.TweenService:Create(Snd,TweenInfo.new(23),{Volume = 0}):Play()
-	local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
-	local camera = workspace.CurrentCamera
- 
-	local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
-		camera.CFrame = camera.CFrame * cf
-	end)
-	camShake:Start()
-	camShake:ShakeOnce(7,5,0.1,15)
-	if getgenv().death == true then
-		getgenv().Title = "A nostalgic fright..." --Title Here
-		getgenv().Description = "So many familiar faces..." --Description Here
-		getgenv().Reason = "Sucessfully survive MultiMonster." --Reason Here
-		getgenv().BadgeId = 2129311962  --Replace Number with Your Badge ID
-		getgenv().Category = 10 --You can replace the Category or dont
- 
-		local Unlock = require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Lobby.RemoteListener.Modules.AchievementUnlock)
-		local Achievements = debug.getupvalue(Unlock, 1)
-		for i,v in pairs(require(game:GetService("ReplicatedStorage").Achievements)) do
-			v.Title = getgenv().Title
-			v.Desc = getgenv().Description
-			v.Reason = getgenv().Reason
-			v.BadgeId = getgenv().BadgeId
-			v.Category = getgenv().Category
-		end
-		Unlock(nil,"Join")
-	end
-end
+    local EntityInstance = workspace:FindFirstChild("A-60")
+    if EntityInstance then
+        EntityInstance:Destroy()
+    end
+    
+    local Snd = Instance.new("Sound")
+    Snd.Volume = 1
+    Snd.Pitch = 0.1
+    Snd.SoundId = "rbxassetid://7757472223"
+    Snd.Parent = workspace
+    Snd.Volume = 10
+    Snd:Play()
+    
+    spawn(function()
+        while Snd.Playing do 
+            wait(0.5)
+            if Players.LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid").Health == 0 then
+                Snd:Destroy()
+            end
+        end
+    end)
+
+    local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting)
+    Reboundcolor.Name = "Despawn"
+    Reboundcolor.TintColor = Color3.fromRGB(255, 0, 4)
+    Reboundcolor.Saturation = -0.7
+    Reboundcolor.Contrast = 0.2
+    game:GetService("TweenService"):Create(Reboundcolor,TweenInfo.new(15),{
+        TintColor = Color3.fromRGB(255, 255, 255),
+        Saturation = 0, 
+        Contrast = 0
+    }):Play()
+
+    local volumeTween = game:GetService("TweenService"):Create(Snd, TweenInfo.new(23), {Volume = 0})
+    volumeTween:Play()
+    volumeTween.Completed:Connect(function()
+        if Snd.Volume == 0 then
+            Snd:Destroy()
+        end
+    end)
+    local cameraShaker = require(ReplicatedStorage.CameraShaker)
+    local camera = workspace.CurrentCamera
+
+    local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
+        camera.CFrame = camera.CFrame * cf
+    end)
+    camShake:Start()
+    camShake:ShakeOnce(5,45,0.1,20,2,20)
+
+    local humanoid = Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+    if humanoid and humanoid.Health > 0 and not isfile("A60.txt") then
+        local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
+        achievementGiver({
+            Title = "A nostalgic fright...",
+            Desc = "Might Come back...",
+            Reason = "Encounter and survive the rare Entity called The Multi Monster",
+            Image = "rbxassetid://102084309341302"
+        })
+        writefile("A60.txt", "Might Come back...")
+    end
 end)
 
 entity:SetCallback("OnDespawned", function()
