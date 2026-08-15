@@ -25,7 +25,7 @@ local entity = Spawner:Create({
 	Entity = {
 		Name = "RipperNotMoving",
 		Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Ripper%20retake.rbxm",
-		HeightOffset = 0
+		HeightOffset = 2
 	},
 	Lights = {
 		Flicker = {
