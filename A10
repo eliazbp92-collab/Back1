@@ -1,0 +1,238 @@
+---====== Load spawner ======---
+
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/DOORS-Entity-Spawner-V2/main/init.luau"))()
+
+---====== Create entity ======---
+
+local entity = Spawner:Create({
+	Entity = {
+		Name = "A10",
+		Asset = "https://github.com/eliazbp92-collab/Back1/blob/main/Place_11847131112_Model_A10_1786767176.rbxm?raw=true",
+		HeightOffset = 0
+	},
+	Lights = {
+		Flicker = {
+			Enabled = false,
+			Duration = 1
+		},
+		Shatter = false,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 100,
+		Delay = 1.441,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = false,
+		Type = "Ambush", -- "Blitz"
+		Min = 1,
+		Max = 1,
+		Delay = 2
+	},
+	Damage = {
+		Enabled = true,
+		Range = 40,
+		Amount = 125
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+	print("Entity has spawned")
+	local root = game.Workspace.A10.A10New
+	local face = root.FACE
+	local image = face.ImageLabel
+	local pos_x = 0.1
+	local pos_y = 0.1
+	local pos_z = 0.1
+	local rot = 10
+
+
+	while true do
+		wait()
+		face.ExtentsOffsetWorldSpace = Vector3.new(Random.new():NextNumber(-pos_x,pos_x),Random.new():NextNumber(-pos_y,pos_y),Random.new():NextNumber(-pos_z,pos_z))
+		image.Rotation = math.random(-rot,rot)
+	end
+end)
+
+entity:SetCallback("OnStartMoving", function()
+	print("Entity has started moving")
+end)
+
+entity:SetCallback("OnEnterRoom", function(room: Model, firstTime: boolean)
+	if firstTime == true then
+		print("Entity has entered room: ".. room.Name.. " for the first time")
+	else
+		print("Entity has entered room: ".. room.Name.. " again")
+	end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight: boolean)
+	if lineOfSight == true then
+		print("Player is looking at entity")
+	else
+		print("Player view is obstructed by something")
+	end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound: boolean)
+	if startOfRebound == true then
+		print("Entity has started rebounding")
+	else
+		print("Entity has finished rebounding")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+	print("Entity is despawning")
+end)
+
+entity:SetCallback("OnDespawned", function()
+	print("Entity has despawned")
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth: number)
+	if newHealth <= 0 then
+		print("Entity has killed the player")
+		local Players = game:GetService("Players")
+		local TweenService = game:GetService("TweenService")
+
+		local player = Players.LocalPlayer
+		local playerGui = player:WaitForChild("PlayerGui")
+		local rng = Random.new()
+
+		local screenGui = Instance.new("ScreenGui")
+		screenGui.Name = "JumpscareGui"
+		screenGui.ResetOnSpawn = false
+		screenGui.IgnoreGuiInset = true
+		screenGui.DisplayOrder = 999999
+		screenGui.Parent = playerGui
+
+		-- Tạo background
+		local background = Instance.new("Frame")
+		background.Name = "Background"
+		background.Size = UDim2.fromScale(1, 1)
+		background.Position = UDim2.fromScale(0, 0)
+		background.BackgroundColor3 = Color3.new(0, 0, 0)
+		background.BorderSizePixel = 0
+		background.Parent = screenGui
+
+		-- Tạo ImageLabel
+		local imageLabel = Instance.new("ImageLabel")
+		imageLabel.Name = "ImageLabel"
+		imageLabel.BackgroundTransparency = 1
+		imageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+		imageLabel.Position = UDim2.fromScale(0.5, 0.5)
+		imageLabel.Size = UDim2.new(0, 0.001, 0, 0.001)
+		imageLabel.Image = "rbxassetid://11218136094"
+		imageLabel.Parent = background
+
+		-- Tạo Sound
+		local jumpscareSound = Instance.new("Sound")
+		jumpscareSound.Name = "Jumpscare"
+		jumpscareSound.SoundId = "rbxassetid://28105371"
+		jumpscareSound.Volume = 10
+		jumpscareSound.PlaybackSpeed = 2.5
+		jumpscareSound.Parent = workspace
+		jumpscareSound:Play()
+
+		local dis = Instance.new("DistortionSoundEffect")
+		dis.Level = 1
+		dis.Enabled = true
+		dis.Parent = jumpscareSound
+
+		local eq = Instance.new("EqualizerSoundEffect")
+		eq.HighGain = 1.9
+		eq.LowGain = 10
+		eq.MidGain = -24.2
+		eq.Parent = jumpscareSound
+
+		local fla = Instance.new("FlangeSoundEffect")
+		fla.Depth = 1
+		fla.Rate = 3
+		fla.Mix = 0.49
+		fla.Parent = jumpscareSound
+
+		local fla2 = Instance.new("FlangeSoundEffect")
+		fla2.Depth = 0.663
+		fla2.Rate = 2
+		fla2.Mix = 0.49
+		fla2.Parent = jumpscareSound
+
+		wait(0.1)
+
+		local fullTween = TweenService:Create(
+			imageLabel,
+			TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),
+			{
+				Size = UDim2.new(0, 1250, 0, 1250)
+			}
+		)
+
+		fullTween:Play()
+
+		for i = 1, 50 do
+			local mode = rng:NextInteger(1, 3)
+
+			if mode == 1 then
+				background.BackgroundColor3 = Color3.new(0, 0, 1)
+				imageLabel.ImageColor3 = Color3.new(1, 1, 1)
+				imageLabel.Position = UDim2.new(rng:NextNumber(0.2, 0.8), 0, rng:NextNumber(0.2, 0.8), 0)
+			elseif mode == 2 then
+				background.BackgroundColor3 = Color3.new(0, 0, 0)
+				imageLabel.ImageColor3 = Color3.new(0, 0, 0)
+				imageLabel.Position = UDim2.new(rng:NextNumber(0.2, 0.8), 0, rng:NextNumber(0.2, 0.8), 0)
+			else
+				background.BackgroundColor3 = Color3.new(0, 0.45098, 1)
+				imageLabel.ImageColor3 = Color3.new(0, 1, 0.498039)
+				imageLabel.Position = UDim2.new(rng:NextNumber(0.2, 0.8), 0, rng:NextNumber(0.2, 0.8), 0)
+			end
+
+			imageLabel.Rotation = rng:NextInteger(-10, 10)
+			task.wait(0.001)
+		end
+
+
+		screenGui:Destroy()
+		imageLabel:Destroy()
+		background:Destroy()
+	else
+		print("Entity has damaged the player")
+	end
+end)
+
+--[[
+
+DEVELOPER NOTE:
+By overwriting 'CrucifixionOverwrite' the default crucifixion callback will be replaced with your custom callback.
+
+entity:SetCallback("CrucifixionOverwrite", function()
+    print("Custom crucifixion callback")
+end)
+
+]]--
+
+---====== Run entity ======---
+
+entity:Run(true)
