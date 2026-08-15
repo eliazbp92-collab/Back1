@@ -101,7 +101,7 @@ if caption then
 end
 
 -- Tải Model Deer Lord
-local Deerlord = "https://github.com/eliazbp92-collab/Back1/raw/main/Deer%20God.rbxm"
+local Deerlord = "https://github.com/eliazbp92-collab/Back1/raw/main/Deer%20god.rbxl"
 local s = getgithubmodeL(Deerlord)
 
 if not s then
