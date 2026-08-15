@@ -162,8 +162,6 @@ entity:SetCallback("OnSpawned", function()
 end)
 
 entity:SetCallback("OnStartMoving", function()
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound5"))()
 	print("Entity has started moving")
 end)
 
