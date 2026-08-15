@@ -60,31 +60,85 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-while true do
-    script.Parent.Texture = "rbxassetid://192267375"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://1972219024"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://1822114127"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://3413871766"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://3354536350"
-    wait(0.1)
-    script.Parent.Texture = "http://www.roblox.com/asset/?id=17865063"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://4749623118"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://1857893092"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://4508624823"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://6309704436"
-    wait(0.1)
-    script.Parent.Texture = "rbxassetid://10458678325"
-    wait(0.1)
-    
-end
+		-- Scripts:
+
+
+		local function DKITLS_fake_script() -- ScreenGui.Jumpscare 
+			local script = Instance.new('LocalScript', ScreenGui)
+
+			--if not workspace:FindFirstChild("A-60") then return end
+			local Gui = script.Parent
+			local Plr = game.Players.LocalPlayer
+			local Char = Plr.Character
+			local Hum = Char:FindFirstChildOfClass("Humanoid")
+			local Root = Char:FindFirstChild("HumanoidRootPart")
+			local A60 = workspace:FindFirstChild("A-60")
+			local Camera = workspace.CurrentCamera
+			local cameraShaker = require(game.ReplicatedStorage.CameraShaker)
+			local ReSt = game:GetService("ReplicatedStorage")
+			local camShake = cameraShaker.new(Enum.RenderPriority.Camera.Value, function(cf)
+				Camera.CFrame = Camera.CFrame * cf
+			end)
+
+			camShake:Start()
+			local Jumpscaring = true
+			local monster1 = A60:FindFirstChild("RushNew"):Clone()
+			local function ImageChange(Part)
+				spawn(function()
+					while game["Run Service"].Heartbeat:Wait() do
+						local get = Part.IMAGEIDS:GetChildren()
+						local randome = get[math.random(1,#get)]
+						Part.Main.Face.Texture = randome.Image
+
+						wait(Random.new():NextNumber(0,0.02))
+
+					end
+				end)
+			end
+
+			monster1.Parent = Camera ImageChange(monster1) monster1.Name = "A-60_SCARE"
+			for i,v in pairs(monster1:GetDescendants()) do
+				if v:IsA("Sound") then 
+					v:Destroy()
+				end 
+			end
+			local EntityOffset = Vector3.new(0,-1.2,-5)
+			local LerpAlpha = 0.8
+			local JumpscareSound = GetGitSound("https://github.com/fernandesdasilvamariainez-coder/Repository/blob/d50362b9d1666a77d84115f15441b83698d10df5/A-60%20Jumpscare.mp3?raw=true","asixtyScareOmg") JumpscareSound.Parent = workspace
+			JumpscareSound.Volume = 6
+			JumpscareSound:Play()
+			camShake:ShakeOnce(10,15,0.1,4)
+			local JumpscareContrast = Instance.new("ColorCorrectionEffect",game.Lighting)
+			game.TweenService:Create(JumpscareContrast,TweenInfo.new(0.5),{Brightness = 0.2,Contrast = 0.2,Saturation = -0.2,TintColor = Color3.fromRGB(255, 0, 4)}):Play()
+			spawn(function()
+				while Jumpscaring do game["Run Service"].RenderStepped:Wait()
+					monster1.CFrame = monster1.CFrame:Lerp(Camera.CFrame*CFrame.new(EntityOffset),LerpAlpha)
+				end
+				game.TweenService:Create(monster1,TweenInfo.new(1),{CFrame = Camera.CFrame*CFrame.new(Vector3.new(0,-1.2,450))}):Play()
+			end)
+			wait(0.7) Jumpscaring = false
+			Gui.JumpscareEnd.Image = monster1:FindFirstChild("Main"):FindFirstChild("Face").Texture
+			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{Size = Gui.Full.Size,Position = Gui.Full.Position,Rotation = math.random(-20,20)}):Play()
+			game.TweenService:Create(JumpscareContrast,TweenInfo.new(10),{Brightness = 0,Contrast = 0,Saturation = 0,TintColor = Color3.fromRGB(255, 255, 255)}):Play()
+			Char:FindFirstChildWhichIsA("Humanoid"):TakeDamage(999)
+			wait(0.5)
+			game.TweenService:Create(Gui.JumpscareEnd,TweenInfo.new(0.5),{ImageTransparency = 1}):Play()
+			game.Debris:AddItem(monster1,1)
+
+		end
+		coroutine.wrap(DKITLS_fake_script)()
+		local function OUNG_fake_script() -- JumpscareEnd.Script 
+			local script = Instance.new('Script', JumpscareEnd)
+
+			while true do
+				wait()
+				--	script.Parent.Rotation = script.Parent.Rotation + math.random(-6,6)
+				--script.Parent.Position = script.Parent.Position + UDim2.new(0,math.random(0,100),0,math.random(-150,150))
+			end
+		end
+		coroutine.wrap(OUNG_fake_script)()
+
+	end
 end)
 
 entity:SetCallback("OnStartMoving", function()
