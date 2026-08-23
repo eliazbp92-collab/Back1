@@ -94,9 +94,9 @@ local function spawnShocker()
 	local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
 	achievementGiver({
 		Title = "Shocking Experience",
-		Desc = "Look at me.",
-		Reason = "Encounter Shocker.",
-		Image = "rbxassetid://17857830685"
+		Desc = "JUST LOOK AT ME.",
+		Reason = "Encounter Daze.",
+		Image = "rbxassetid://85064669521759"
 	})
 end
 
