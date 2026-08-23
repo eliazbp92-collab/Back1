@@ -10,7 +10,18 @@ local humanoid = character:WaitForChild("Humanoid")
 local function spawnShocker()
 	local shockerModel = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_10959918411_Model_Daze_1787525617.rbxm"
 	local camera = Workspace.CurrentCamera
-
+	
+local function getgithubmodeL(url)
+	if not (writefile and getcustomasset and request) then return nil end
+	local fileName = string.match(url, "([^/]+)$") or "temp_model.rbxm"
+	local response = request({Url = url, Method = "GET"})
+	if response.StatusCode ~= 200 then return nil end
+	writefile(fileName, response.Body)
+	local assetId = getcustomasset(fileName)
+	local success, result = pcall(function() return game:GetObjects(assetId)[1] end)
+	return success and result or nil
+end
+	
 	local rootPart = shockerModel:FindFirstChild("HumanoidRootPart") or shockerModel:FindFirstChildWhichIsA("Part")
 	shockerModel.PrimaryPart = rootPart
 	shockerModel:SetPrimaryPartCFrame(camera.CFrame * CFrame.new(0, 0, -7))
