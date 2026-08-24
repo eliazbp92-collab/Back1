@@ -36,7 +36,7 @@ cue2:Play()
 
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Fragment mode v5 has actives", true)
 wait(2)
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credits flashlight toThe_LOSTW3R,and nhankg & remake image entity GuestlyTheLastGuest & OG Hunger(new) ", true)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credits flashlight toThe_LOSTW3R,and nhankg & thanks OG Hunger(new) for a script", true)
 wait(2)
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("nhankg: have fun!", true)
 
