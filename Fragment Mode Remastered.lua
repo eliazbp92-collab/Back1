@@ -1,0 +1,130 @@
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("nhankg: oh hi, welcomed to my fragements mod!", true)
+wait(3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("og hunger: open doors to loae script", true)
+-- Door Changer Floor 2 And Sound
+coroutine.wrap(function()
+while true do
+wait(0.0005)
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Door.Door.Open.SoundId = "rbxassetid://833871080"
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Rock"
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
+end
+end)()
+
+
+-- goofy screech
+game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 255, 0)
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.SoundId = "rbxassetid://6600188325"
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.PlaybackSpeed = 1.6
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.SoundId = "rbxassetid://7236490488"
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/thelostw3r/Scripts/refs/heads/main/PurpleFlashlight.lua"))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Info"))()
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+local cue2 = Instance.new("Sound")
+cue2.Parent = game.Workspace
+cue2.Name = "Spawn"
+cue2.SoundId = "rbxassetid://6420027936"
+cue2.Volume = 5
+cue2.PlaybackSpeed = 0.25
+cue2:Play()
+
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Fragment mode v5 has actives", true)
+wait(2)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credits flashlight toThe_LOSTW3R,and nhankg & remake image entity GuestlyTheLastGuest & OG Hunger(new) ", true)
+wait(2)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("nhankg: have fun!", true)
+
+local cue2 = Instance.new("Sound")
+cue2.Parent = game.Workspace
+cue2.Name = "Spawn"
+cue2.SoundId = "rbxassetid://9113731836"
+cue2.Volume = 3
+cue2.PlaybackSpeed = 1
+cue2.Looped = true
+cue2:Play()
+
+pcall(function()
+local allowedUsers = {
+    ["Nguyenkhai7ABpB"] = true,
+    ["JakubieNR4771"] = true
+}
+
+if not allowedUsers[game.Players.LocalPlayer.Name] then
+    return
+end
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local Commands = {
+    revoker = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/revoker",
+    disturbance = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Disturbance1",
+    dreed = "https://raw.githubusercontent.com/talales/Nhankg_/refs/heads/main/intro%20fragmented",
+    hunger = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Hunger.lua",
+    rebound = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Frag.lua",
+    torment = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Torment12",
+    daze = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Daze1.lua",
+    struggle = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Struggle",
+    perator = "https://raw.githubusercontent.com/talales/Ngakh/refs/heads/main/perator",
+    fluster = "https://raw.githubusercontent.com/talales/Nhankg./refs/heads/main/Fluster",
+    detph = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Depth1.lua",
+    draft = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Draft1"
+}
+
+local function spawnEntity(cmd)
+    cmd = string.lower(cmd)
+
+    if Commands[cmd] then
+        pcall(function()
+            loadstring(game:HttpGet(Commands[cmd]))()
+        end)
+
+        require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Spawned: "..cmd, true)
+    else
+        require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Unknown command: "..cmd, true)
+    end
+end
+
+LocalPlayer.Chatted:Connect(function(msg)
+    if string.sub(msg,1,1) == "/" then
+        local cmd = string.sub(msg,2)
+        spawnEntity(cmd)
+    end
+end)
+
+require(LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Admin Commands Loaded", true)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/stamina"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Intro"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/talales/Nhankg8262/refs/heads/main/test.pcm"))()
+
+end)
+
+local entityList = {
+{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/revoker", delay = 280},
+{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Disturbance1", delay = 190},
+{url = "https://raw.githubusercontent.com/talales/Nhankg_/refs/heads/main/intro%20fragmented", delay = 30},
+{url = "https://raw.githubusercontent.com/eoyoustme/back/refs/heads/main/Hunger1", delay = 420},
+{url = "https://raw.githubusercontent.com/talales/Nhankg/refs/heads/main/rebound", delay = 350},
+{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Torment12", delay = 380},
+{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Daze11", delay = 35},
+{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Struggle", delay = 420},
+{url = "https://raw.githubusercontent.com/talales/Ngakh/refs/heads/main/perator", delay = 400},
+{url = "https://raw.githubusercontent.com/talales/Nhankg./refs/heads/main/Fluster",delay = 230},
+{url = "https://raw.githubusercontent.com/eoyoustme/Script/refs/heads/main/Detph1",delay = 500},
+{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Draft1",delay = 330},
+}
+
+for _, entity in ipairs(entityList) do
+coroutine.wrap(function()
+while true do
+wait(entity.delay)
+pcall(function()
+loadstring(game:HttpGet(entity.url))()
+end)
+end
+end)()
+end
