@@ -56,7 +56,7 @@ task.wait(11)
 local entity = spawner.Create({
 	Entity = {
 		Name = "Hungered",
-		Asset = "rbxassetid://96360347693213",
+		Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_10959918411_Model_Hunger_1787524485.rbxm",
 		HeightOffset = 0
 	},
 
