@@ -115,9 +115,9 @@ local entityList = {
 {url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Daze1.lua"", delay = 35},
 {url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Struggle", delay = 420},
 {url = "https://raw.githubusercontent.com/talales/Ngakh/refs/heads/main/perator", delay = 400},
-{url = "https://raw.githubusercontent.com/talales/Nhankg./refs/heads/main/Fluster",delay = 230},
-{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Depth1.lua",delay = 500},
-{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Draft1",delay = 330},
+{url = "https://raw.githubusercontent.com/talales/Nhankg./refs/heads/main/Fluster", delay = 230},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Depth1.lua", delay = 500},
+{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Draft1", delay = 330},
 }
 
 for _, entity in ipairs(entityList) do
