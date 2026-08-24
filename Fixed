@@ -1,6 +1,6 @@
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("nhankg: oh hi, welcomed to my fragements mod!", true)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("muiltmonster: oh hi, welcomed to my fragements mod!", true)
 wait(3)
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("og hunger: open doors to loae script", true)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Credit to Nkhang and (OG) Hunger", true)
 -- Door Changer Floor 2 And Sound
 coroutine.wrap(function()
 while true do
@@ -104,18 +104,19 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/talales/Nhankg8262/re
 end)
 
 local entityList = {
-{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/revoker", delay = 280},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Revoker.lua", delay = 280},
 {url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Disturbance1", delay = 190},
 {url = "https://raw.githubusercontent.com/talales/Nhankg_/refs/heads/main/intro%20fragmented", delay = 30},
-{url = "https://raw.githubusercontent.com/eoyoustme/back/refs/heads/main/Hunger1", delay = 420},
-{url = "https://raw.githubusercontent.com/talales/Nhankg/refs/heads/main/rebound", delay = 350},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Hunger.lua", delay = 420},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Frag.lua", delay = 350},
 {url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Torment12", delay = 380},
-{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Daze11", delay = 35},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Daze1.lua"", delay = 35},
 {url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Struggle", delay = 420},
 {url = "https://raw.githubusercontent.com/talales/Ngakh/refs/heads/main/perator", delay = 400},
-{url = "https://raw.githubusercontent.com/talales/Nhankg./refs/heads/main/Fluster",delay = 230},
-{url = "https://raw.githubusercontent.com/eoyoustme/Script/refs/heads/main/Detph1",delay = 500},
-{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Draft1",delay = 330},
+{url = "https://raw.githubusercontent.com/talales/Nhankg./refs/heads/main/Fluster", delay = 230},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Depth1.lua", delay = 500},
+{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Draft1", delay = 330},
+}
 }
 
 for _, entity in ipairs(entityList) do
