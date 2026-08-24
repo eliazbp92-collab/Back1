@@ -61,7 +61,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
 local Commands = {
-    revoker = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/revoker",
+    revoker = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Revoker.lua",
     disturbance = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Disturbance1",
     dreed = "https://raw.githubusercontent.com/talales/Nhankg_/refs/heads/main/intro%20fragmented",
     hunger = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Hunger.lua",
@@ -104,17 +104,17 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/talales/Nhankg8262/re
 end)
 
 local entityList = {
-{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/revoker", delay = 280},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Revoker.lua", delay = 280},
 {url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Disturbance1", delay = 190},
 {url = "https://raw.githubusercontent.com/talales/Nhankg_/refs/heads/main/intro%20fragmented", delay = 30},
-{url = "https://raw.githubusercontent.com/eoyoustme/back/refs/heads/main/Hunger1", delay = 420},
-{url = "https://raw.githubusercontent.com/talales/Nhankg/refs/heads/main/rebound", delay = 350},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Hunger.lua", delay = 420},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Frag.lua", delay = 350},
 {url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Torment12", delay = 380},
-{url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Daze11", delay = 35},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Daze1.lua"", delay = 35},
 {url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Struggle", delay = 420},
 {url = "https://raw.githubusercontent.com/talales/Ngakh/refs/heads/main/perator", delay = 400},
 {url = "https://raw.githubusercontent.com/talales/Nhankg./refs/heads/main/Fluster",delay = 230},
-{url = "https://raw.githubusercontent.com/eoyoustme/Script/refs/heads/main/Detph1",delay = 500},
+{url = "https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Depth1.lua",delay = 500},
 {url = "https://raw.githubusercontent.com/eoyoustme/ohh/refs/heads/main/Draft1",delay = 330},
 }
 
