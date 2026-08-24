@@ -1,0 +1,234 @@
+<!-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw --><roblox version="4"><Meta name="ExplicitAutoJoints">true</Meta><Item class="Model" referent="0"><Properties><CoordinateFrame name="ModelMeshCFrame"><X>-136.47500610351562</X><Y>-7.165375709533691</Y><Z>-77.4749984741211</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame><Vector3 name="ModelMeshSize"><X>0</X><Y>0</Y><Z>0</Z></Vector3><bool name="NeedsPivotMigration">false</bool><float name="ScaleFactor">1</float><OptionalCoordinateFrame name="WorldPivotData"><CFrame><X>-0.5</X><Y>0.02500000037252903</Y><Z>-11</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CFrame></OptionalCoordinateFrame><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAAAA==</BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[Hunger]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="Part" referent="1"><Properties><token name="shape">1</token><token name="formFactorRaw">1</token><bool name="Anchored">true</bool><token name="BottomSurface">0</token><CoordinateFrame name="CFrame"><X>-0.5</X><Y>0.02500000037252903</Y><Z>-11</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame><bool name="CanCollide">false</bool><bool name="CanQuery">false</bool><bool name="CanTouch">false</bool><Color3uint8 name="Color3uint8">4288914085</Color3uint8><PhysicalProperties name="CustomPhysicalProperties"><CustomPhysics>true</CustomPhysics><Density>0</Density><Friction>0</Friction><Elasticity>0</Elasticity><FrictionWeight>0</FrictionWeight><ElasticityWeight>0</ElasticityWeight><AcousticAbsorption>0</AcousticAbsorption></PhysicalProperties><token name="FrontSurface">6</token><string name="MaterialVariantSerialized"></string><token name="TopSurface">0</token><float name="Transparency">1</float><Vector3 name="size"><X>0.05000000074505806</X><Y>0.04999995231628418</Y><Z>0.04999998211860657</Z></Vector3><BinaryString name="AttributesSerialize">AwAAAAsAAABTTF9BbmNob3JlZAMADQAAAFNMX0NhbkNvbGxpZGUDAAsAAABTTF9VbmlxdWVJZAYAAAAAAADwPw==</BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[Hungernew]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="BillboardGui" referent="2"><Properties><bool name="Active">true</bool><Vector3 name="ExtentsOffsetWorldSpace"><X>0</X><Y>30</Y><Z>0</Z></Vector3><UDim2 name="Size"><XS>10</XS><XO>10</XO><YS>10</YS><YO>10</YO></UDim2><Vector3 name="StudsOffsetWorldSpace"><X>0</X><Y>-0.6000000238418579</Y><Z>0</Z></Vector3><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAAQA==</BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[Icon]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="ImageLabel" referent="3"><Properties><Content name="Image"><url><![CDATA[rbxassetid://12018469859]]></url></Content><Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3><float name="BackgroundTransparency">1</float><Color3 name="BorderColor3"><R>0.10588236153125763</R><G>0.16470588743686676</G><B>0.20784315466880798</B></Color3><UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2><int name="ZIndex">5</int><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAIQA==</BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[Image]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="Folder" referent="4"><Properties><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_ImageLabelsFolder]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="ImageLabel" referent="5"><Properties><Content name="Image"><url><![CDATA[rbxassetid://10959947484]]></url></Content><Color3 name="ImageColor3"><R>0</R><G>0</G><B>1</B></Color3><float name="ImageTransparency">0.6000000238418579</float><Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3><float name="BackgroundTransparency">1</float><Color3 name="BorderColor3"><R>0</R><G>0</G><B>0</B></Color3><int name="BorderSizePixel">0</int><UDim2 name="Position"><XS>0</XS><XO>-1</XO><YS>0</YS><YO>-1</YO></UDim2><UDim2 name="Size"><XS>0</XS><XO>26</XO><YS>0</YS><YO>26</YO></UDim2><int name="ZIndex">99</int><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_MoveImageLabel]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="UIDragDetector" referent="6"><Properties><token name="ResponseStyle">3</token><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_MoveUIDragDetector]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="LocalScript" referent="7"><Properties><ProtectedString name="Source"><![CDATA[-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- https://lua.expert/
+local v1 = script:WaitForChild("SL_MoveUIDragObjectValue").Value
+local v2 = v1.Parent.Parent.Parent
+local v3 = v2.Parent
+local SL_SelectedValue = game:GetService("ReplicatedStorage"):WaitForChild("StudioLiteFolder"):WaitForChild("SL_UIDragFolder"):WaitForChild("SL_SelectedValue")
+local PropertiesPanel = game.Players.LocalPlayer.PlayerGui:WaitForChild("StudioGui"):WaitForChild("PropertiesPanel")
+
+wait(0.5)
+
+local v4 = nil
+
+for k, v in pairs(PropertiesPanel:WaitForChild("List", 9):GetChildren()) do
+	if v:WaitForChild("name"):WaitForChild("locked").Text == "Position" then
+		v4 = v:WaitForChild("edit"):WaitForChild("box")
+
+		break
+	end
+end
+
+repeat
+	if v3:IsA("GuiObject") or v3.ClassName == "SurfaceGui" then
+		if v2.ClassName == "ScrollingFrame" then
+			v1.Parent.Position = UDim2.new()
+		end
+
+		local v5 = nil
+
+		local function UpdatePosition(p1) --[[ UpdatePosition | Line: 38 | Upvalues: v3 (ref), v2 (copy), v5 (ref), SL_SelectedValue (copy), v4 (ref) ]]
+			local AbsoluteSize = v3.AbsoluteSize
+
+			if v3.ClassName == "ScrollingFrame" then
+				AbsoluteSize = v3.AbsoluteCanvasSize
+			end
+
+			local v1 = v2.AbsolutePosition + v2.AbsoluteSize * v2.AnchorPoint + p1 - v5 - v3.AbsolutePosition
+
+			v2.Position = UDim2.new(v1.X / AbsoluteSize.X, 0, v1.Y / AbsoluteSize.Y, 0)
+
+			if SL_SelectedValue.Value then
+				SL_SelectedValue.Value.Position = v2.Position
+
+				if v4 then
+					local Position = v2.Position
+					local v42 = math.floor(Position.X.Scale * 1000) / 1000
+					local v6 = math.floor(Position.X.Offset * 1000) / 1000
+					local v8 = math.floor(Position.Y.Scale * 1000) / 1000
+
+					v4.Text = "{" .. v42 .. ", " .. v6 .. "}, {" .. v8 .. ", " .. math.floor(Position.Y.Offset * 1000) / 1000 .. "}"
+				else
+					print("Position property not found.")
+				end
+			end
+
+			v5 = p1
+		end
+
+		v1.DragStart:Connect(function(p1) --[[ Line: 67 | Upvalues: v5 (ref), v2 (copy), v3 (ref) ]]
+			v5 = p1
+			v2.Position = UDim2.new(v2.Position.X.Scale + v2.Position.X.Offset / v3.AbsoluteSize.X, 0, v2.Position.Y.Scale + v2.Position.Y.Offset / v3.AbsoluteSize.Y, 0)
+		end)
+		v1.DragContinue:Connect(UpdatePosition)
+		v1.DragEnd:Connect(UpdatePosition)
+
+		return
+	end
+
+	v3 = v3.Parent
+until v3 == game]]></ProtectedString><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_MoveLocal]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="ObjectValue" referent="8"><Properties><Ref name="Value">6</Ref><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_MoveUIDragObjectValue]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item></Item></Item></Item><Item class="ImageLabel" referent="9"><Properties><Content name="Image"><url><![CDATA[rbxassetid://6549216050]]></url></Content><Color3 name="ImageColor3"><R>0</R><G>0.3333333432674408</G><B>1</B></Color3><float name="ImageTransparency">0.6000000238418579</float><Vector2 name="AnchorPoint"><X>1</X><Y>1</Y></Vector2><Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3><float name="BackgroundTransparency">1</float><Color3 name="BorderColor3"><R>0</R><G>0</G><B>0</B></Color3><int name="BorderSizePixel">0</int><UDim2 name="Position"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2><UDim2 name="Size"><XS>0</XS><XO>29</XO><YS>0</YS><YO>29</YO></UDim2><int name="ZIndex">99</int><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_SizeImageLabel]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="UIDragDetector" referent="10"><Properties><token name="DragSpace">1</token><token name="ResponseStyle">3</token><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_SizeUIDragDetector]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="LocalScript" referent="11"><Properties><ProtectedString name="Source"><![CDATA[-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- https://lua.expert/
+local v1 = script:WaitForChild("SL_SizeUIDragObjectValue").Value
+local v2 = v1.Parent.Parent.Parent
+local v3 = v2.Parent
+local SL_SelectedValue = game:GetService("ReplicatedStorage"):WaitForChild("StudioLiteFolder"):WaitForChild("SL_UIDragFolder"):WaitForChild("SL_SelectedValue")
+local PropertiesPanel = game.Players.LocalPlayer.PlayerGui:WaitForChild("StudioGui"):WaitForChild("PropertiesPanel")
+
+wait(0.5)
+
+local v4 = nil
+
+for k, v in pairs(PropertiesPanel:WaitForChild("List", 9):GetChildren()) do
+	if v:WaitForChild("name"):WaitForChild("locked").Text == "Size" then
+		v4 = v:WaitForChild("edit"):WaitForChild("box")
+
+		break
+	end
+end
+
+repeat
+	if v3:IsA("GuiObject") or v3.ClassName == "SurfaceGui" then
+		if v2.ClassName == "ScrollingFrame" then
+			v1.Parent.Position = UDim2.new(1, -15, 0, v2.AbsoluteSize.Y)
+		end
+
+		local v5 = nil
+
+		local function UpdateSizeOfParent(p1) --[[ UpdateSizeOfParent | Line: 37 | Upvalues: v3 (ref), v2 (copy), v5 (ref), v1 (copy), SL_SelectedValue (copy), v4 (ref) ]]
+			local AbsoluteSize = v3.AbsoluteSize
+
+			if v3.ClassName == "ScrollingFrame" then
+				AbsoluteSize = v3.AbsoluteCanvasSize
+			end
+
+			v2.Size = UDim2.new((v2.AbsoluteSize.X + p1.X - v5.X) / AbsoluteSize.X, 0, (v2.AbsoluteSize.Y + p1.Y - v5.Y) / AbsoluteSize.Y, 0)
+
+			if v2.ClassName == "ScrollingFrame" then
+				v1.Parent.Position = UDim2.new(1, -15, 0, v2.AbsoluteSize.Y)
+			end
+
+			if SL_SelectedValue.Value then
+				SL_SelectedValue.Value.Size = v2.Size
+
+				if v4 then
+					local Size = v2.Size
+					local v32 = math.floor(Size.X.Scale * 1000) / 1000
+					local v52 = math.floor(Size.X.Offset * 1000) / 1000
+					local v7 = math.floor(Size.Y.Scale * 1000) / 1000
+
+					v4.Text = "{" .. v32 .. ", " .. v52 .. "}, {" .. v7 .. ", " .. math.floor(Size.Y.Offset * 1000) / 1000 .. "}"
+				else
+					print("Size property not found.")
+				end
+			end
+
+			v5 = p1
+		end
+
+		v1.DragStart:Connect(function(p1) --[[ Line: 67 | Upvalues: v5 (ref), UpdateSizeOfParent (copy) ]]
+			v5 = p1
+			UpdateSizeOfParent(p1)
+		end)
+		v1.DragContinue:Connect(UpdateSizeOfParent)
+		v1.DragEnd:Connect(UpdateSizeOfParent)
+
+		return
+	end
+
+	v3 = v3.Parent
+until v3 == game
+
+warn("Gui Dragger only works on anscestors of StarterGui and SurfaceGui.")]]></ProtectedString><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_SizeLocal]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="ObjectValue" referent="12"><Properties><Ref name="Value">10</Ref><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_SizeUIDragObjectValue]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item></Item></Item></Item></Item></Item></Item><Item class="Script" referent="13"><Properties><ProtectedString name="Source"><![CDATA[-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- [FilteringEnabled] Server Scripts are IMPOSSIBLE to save]]></ProtectedString><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[unstuck2]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="TextBox" referent="14"><Properties><bool name="ClearTextOnFocus">false</bool><Font name="FontFace"><Family><url><![CDATA[rbxasset://fonts/families/Inconsolata.json]]></url></Family><Weight>400</Weight><Style>Normal</Style></Font><bool name="MultiLine">true</bool><Color3 name="PlaceholderColor3"><R>0.699999988079071</R><G>0.699999988079071</G><B>0.699999988079071</B></Color3><bool name="RichText">true</bool><bool name="ShowNativeInput">false</bool><string name="Text"><![CDATA[local hum = script.Parent.Parent:WaitForChild("bot")
+
+hum:SetStateEnabled(Enum.HumanoidStateType.Ragdoll, false)
+
+wait()
+
+script:Destroy()]]></string><Color3 name="TextColor3"><R>0</R><G>0</G><B>0</B></Color3><float name="TextSize">14</float><token name="TextXAlignment">0</token><token name="TextYAlignment">0</token><token name="AutomaticSize">3</token><Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3><Color3 name="BorderColor3"><R>1</R><G>0.6666666865348816</G><B>0</B></Color3><token name="BorderMode">2</token><int name="BorderSizePixel">0</int><int name="LayoutOrder">2</int><UDim2 name="Position"><XS>0</XS><XO>52</XO><YS>0</YS><YO>0</YO></UDim2><UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2><int name="ZIndex">4</int><bool name="AutoLocalize">false</bool><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_CodeTextBox]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="ObjectValue" referent="15"><Properties><Ref name="Value">14</Ref><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SaveChangesTo]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item><Item class="LocalScript" referent="16"><Properties><ProtectedString name="Source"><![CDATA[-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- https://lua.expert/
+if _G.DynamicThumb then
+	return
+end
+
+local StudioLiteFolder = game:GetService("ReplicatedStorage"):WaitForChild("StudioLiteFolder")
+local ColorizeSourceModule = require(StudioLiteFolder:WaitForChild("ColorizeSourceModule"))
+
+script.Parent.Text = ColorizeSourceModule:ColorizeSource(script.Parent.ContentText, false, true)
+script.Parent.Focused:Connect(function() --[[ Line: 10 ]]
+	script.Parent.Text = script.Parent.ContentText
+	script.Parent.CursorPosition = 0
+end)
+script.Parent.FocusLost:Connect(function() --[[ Line: 16 | Upvalues: ColorizeSourceModule (copy) ]]
+	task.wait()
+	script.Parent:WaitForChild("SaveChangesTo").Value.Text = script.Parent.ContentText
+	script.Parent.Text = ColorizeSourceModule:ColorizeSource(script.Parent.ContentText, false, true)
+end)]]></ProtectedString><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_ColorizeAndEditLocal]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item></Item></Item><Item class="Script" referent="17"><Properties><ProtectedString name="Source"><![CDATA[-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- [FilteringEnabled] Server Scripts are IMPOSSIBLE to save]]></ProtectedString><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[unstuck]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="TextBox" referent="18"><Properties><bool name="ClearTextOnFocus">false</bool><Font name="FontFace"><Family><url><![CDATA[rbxasset://fonts/families/Inconsolata.json]]></url></Family><Weight>400</Weight><Style>Normal</Style></Font><bool name="MultiLine">true</bool><Color3 name="PlaceholderColor3"><R>0.699999988079071</R><G>0.699999988079071</G><B>0.699999988079071</B></Color3><bool name="RichText">true</bool><bool name="ShowNativeInput">false</bool><string name="Text"><![CDATA[local hum = script.Parent.Parent:WaitForChild("HumanoidRootPart")
+
+hum:SetStateEnabled(Enum.HumanoidStateType.Ragdoll, false)
+
+wait()
+
+script:Destroy()]]></string><Color3 name="TextColor3"><R>0</R><G>0</G><B>0</B></Color3><float name="TextSize">14</float><token name="TextXAlignment">0</token><token name="TextYAlignment">0</token><token name="AutomaticSize">3</token><Color3 name="BackgroundColor3"><R>1</R><G>1</G><B>1</B></Color3><Color3 name="BorderColor3"><R>1</R><G>0.6666666865348816</G><B>0</B></Color3><token name="BorderMode">2</token><int name="BorderSizePixel">0</int><int name="LayoutOrder">2</int><UDim2 name="Position"><XS>0</XS><XO>52</XO><YS>0</YS><YO>0</YO></UDim2><UDim2 name="Size"><XS>1</XS><XO>0</XO><YS>1</YS><YO>0</YO></UDim2><int name="ZIndex">4</int><bool name="AutoLocalize">false</bool><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_CodeTextBox]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="ObjectValue" referent="19"><Properties><Ref name="Value">18</Ref><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SaveChangesTo]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item><Item class="LocalScript" referent="20"><Properties><ProtectedString name="Source"><![CDATA[-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- https://lua.expert/
+if _G.DynamicThumb then
+	return
+end
+
+local StudioLiteFolder = game:GetService("ReplicatedStorage"):WaitForChild("StudioLiteFolder")
+local ColorizeSourceModule = require(StudioLiteFolder:WaitForChild("ColorizeSourceModule"))
+
+script.Parent.Text = ColorizeSourceModule:ColorizeSource(script.Parent.ContentText, false, true)
+script.Parent.Focused:Connect(function() --[[ Line: 10 ]]
+	script.Parent.Text = script.Parent.ContentText
+	script.Parent.CursorPosition = 0
+end)
+script.Parent.FocusLost:Connect(function() --[[ Line: 16 | Upvalues: ColorizeSourceModule (copy) ]]
+	task.wait()
+	script.Parent:WaitForChild("SaveChangesTo").Value.Text = script.Parent.ContentText
+	script.Parent.Text = ColorizeSourceModule:ColorizeSource(script.Parent.ContentText, false, true)
+end)]]></ProtectedString><BinaryString name="AttributesSerialize"></BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[SL_ColorizeAndEditLocal]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item></Item></Item><Item class="Attachment" referent="21"><Properties><CoordinateFrame name="CFrame"><X>-0.8389343619346619</X><Y>0.25</Y><Z>0.6000000238418579</Z><R00>0</R00><R01>0</R01><R02>1</R02><R10>-1</R10><R11>0</R11><R12>0</R12><R20>0</R20><R21>-1</R21><R22>0</R22></CoordinateFrame><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAYQA==</BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[Attachment1]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item><Item class="Attachment" referent="22"><Properties><CoordinateFrame name="CFrame"><X>0</X><Y>50.3360595703125</Y><Z>0</Z><R00>1</R00><R01>0</R01><R02>0</R02><R10>0</R10><R11>1</R11><R12>0</R12><R20>0</R20><R21>0</R21><R22>1</R22></CoordinateFrame><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAcQA==</BinaryString><bool name="DefinesCapabilities">false</bool><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item><Item class="Attachment" referent="23"><Properties><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAgQA==</BinaryString><bool name="DefinesCapabilities">false</bool><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item><Item class="Sound" referent="24"><Properties><bool name="Looped">true</bool><bool name="Playing">true</bool><float name="RollOffMaxDistance">75</float><Content name="SoundId"><url><![CDATA[rbxassetid://7298463798]]></url></Content><double name="TimePosition">1.804</double><float name="Volume">0.30000001192092896</float><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAiQA==</BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[theme]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="PitchShiftSoundEffect" referent="25"><Properties><float name="Octave">0.6800000071525574</float><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAkQA==</BinaryString><bool name="DefinesCapabilities">false</bool><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item><Item class="DistortionSoundEffect" referent="26"><Properties><float name="Level">1</float><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAmQA==</BinaryString><bool name="DefinesCapabilities">false</bool><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item></Item></Item><Item class="Sound" referent="27"><Properties><token name="RollOffMode">3</token><Content name="SoundId"><url><![CDATA[rbxassetid://9125712561]]></url></Content><float name="Volume">1</float><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAoQA==</BinaryString><bool name="DefinesCapabilities">false</bool><string name="Name"><![CDATA[appear]]></string><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties><Item class="DistortionSoundEffect" referent="28"><Properties><float name="Level">1</float><BinaryString name="AttributesSerialize">AQAAAAsAAABTTF9VbmlxdWVJZAYAAAAAAAAqQA==</BinaryString><bool name="DefinesCapabilities">false</bool><SharedString name="Tags">MTAwMDAwMDAwMDAwMDAwMA==</SharedString></Properties></Item></Item></Item><Item class="Script" referent="29"><Properties><string name="Name"><![CDATA[README]]></string><ProtectedString name="Source"><![CDATA[--[[
+		Thank you for using UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw.
+
+		If you didn't save in Binary (rbxl) - it's recommended to save the game right away to take advantage of the binary format & to preserve values of certain properties if you used IgnoreDefaultProperties setting (as they might change in the future).
+		You can do that by going to FILE -> Save to File As -> Make sure File Name ends with .rbxl -> Save
+
+		ServerStorage, ServerScriptService and Server Scripts are IMPOSSIBLE to save because of FilteringEnabled.
+
+		If your player cannot spawn into the game, please move the scripts in StarterPlayer somewhere else or delete them. Then run `game:GetService("Players").CharacterAutoLoads = true`.
+		And use "Play Here" to start game instead of "Play" to spawn your Character where your Camera currently is.
+
+		If the chat system does not work, please use the explorer and delete everything inside the TextChatService/Chat service(s). 
+		Or run `game:GetService("Chat"):ClearAllChildren() game:GetService("TextChatService"):ClearAllChildren()`
+				
+		If Union and MeshPart collisions don't work, run the script below in the Studio Command Bar:
+				
+				
+		local C = game:GetService("CoreGui")
+		local D = Enum.CollisionFidelity.Default
+				
+		for _, v in game:GetDescendants() do
+			if v:IsA("TriangleMeshPart") and not v:IsDescendantOf(C) then
+				v.CollisionFidelity = D
+			end
+		end
+		print("Done")
+				
+		If you can't move the Camera, run this script in the Studio Command Bar:
+			
+		workspace.CurrentCamera.CameraType = Enum.CameraType.Fixed
+		
+		Or Destroy the Camera.
+
+		This file was generated with the following settings:
+		{"SavePlayerCharacters":true,"SaveBytecode":false,"Callback":false,"ShowStatus":true,"IgnoreDefaultPlayerScripts":true,"NilInstancesFixes":{"BaseWrap":null,"Animator":null,"Attachment":null,"PackageLink":null,"AdPortal":null},"IgnoreList":["CoreGui","CorePackages"],"__DEBUG_MODE":false,"KillAllScripts":true,"DecompileJobless":false,"Decompile":true,"IgnoreNotArchivable":true,"Object":null,"DecompileIgnore":["TextChatService",null,null,null],"IgnoreSpecialProperties":true,"BoostFPS":true,"IsModel":false,"NilInstances":false,"ExtraInstances":[],"ReadMe":true,"OptionsAliasesInverse":{"noscripts":"Decompile","RemovePlayers":"IsolatePlayers","RemovePlayerCharacters":"SavePlayerCharacters"},"OptionsAliases":{"DecompileScripts":"Decompile","timeout":"DecompileTimeout","StatusText":"ShowStatus","SavePlayers":"IsolatePlayers","FileName":"FilePath","SaveCharacters":"SavePlayerCharacters","SaveNilInstances":"NilInstances","IgnoreArchivable":"IgnoreNotArchivable","SaveNonCreatable":"SaveNotCreatable","SaveLocalPlayer":"IsolateLocalPlayer","InstancesBlacklist":"IgnoreList","IsolatePlayerGui":"IsolateLocalPlayer","SavePlayerGui":"IsolateLocalPlayer","IgnoreDefaultProps":"IgnoreDefaultProperties"},"IgnoreSharedStrings":false,"TreatUnionsAsParts":false,"scriptcache":true,"SharedStringOverwrite":false,"AlternativeWritefile":true,"mode":"optimized","SaveCacheInterval":56320,"NotCreatableFixes":["","AdvancedDragger","AnimationTrack","Dragger","Player","PlayerGui","PlayerMouse","PlayerMouse","PlayerScripts","ScreenshotHud","StudioData","TextChatMessage","TextSource","TouchTransmitter","Translator"],"IsolatePlayers":false,"BytecodeTimeout":3,"FilePath":"Place_10959918411_Model_Hunger_1787524485.rbxm","IgnoreDefaultProperties":true,"Anonymous":false,"IsolateStarterPlayer":false,"IsolateLocalPlayerCharacter":false,"IgnorePropertiesOfNotScriptsOnScriptsMode":false,"AvoidFileOverwrite":true,"SaveNotCreatable":false,"IsolateLocalPlayer":false,"ShutdownWhenDone":false,"AntiIdle":true,"SafeMode":true,"IgnoreProperties":[],"DecompileTimeout":10}
+
+		Elapsed time: 2.163295250000374 Date (UTC): 23 August 2026 22:34:54 PlaceId: 10959918411 PlaceVersion: 910 Client Version: 2.733.988 Platform: IOS Executor: Delta 1.0.733.988 arm64
+]]]]></ProtectedString></Properties></Item><SharedStrings><SharedString md5="MTAwMDAwMDAwMDAwMDAwMA=="></SharedString></SharedStrings></roblox><!-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw -->
