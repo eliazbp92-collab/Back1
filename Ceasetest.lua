@@ -110,7 +110,6 @@ entity:SetCallback("OnSpawned", function()
 			Reason = "Survive Cease",
 			Image = "rbxassetid://104367200417966"
 		})
-	end)
 end)
 
 entity:SetCallback("OnDamagePlayer", function(newHealth)
