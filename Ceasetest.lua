@@ -17,7 +17,7 @@ else
 		Entity = {
 			Name = "CeaseMoving",
 			Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_CeaseMoving_1787957919.rbxm",
-			HeightOffset = -2
+			HeightOffset = 0
 		},
 		Lights = {
 			Flicker = {
