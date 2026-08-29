@@ -894,7 +894,7 @@ else
 						if ripeAttachment then
 							local emitter = ripeAttachment:FindFirstChild("Face1")
 							if emitter then
-								emitter.Texture = "rbxassetid://12737595583"
+								emitter.Texture = "rbxassetid://73673753519364"
 								emitter.Size = NumberSequence.new(10)
 								emitter.Squash = NumberSequence.new(0)
 								emitter.Enabled = true
