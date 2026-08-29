@@ -157,11 +157,4 @@ end)
  
 ---====== Run entity ======---
  
-entity:Run(true)
-
-game.replicatedstorage.gamedata.latestroom.changed:Wait()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Super-medium-mode/refs/heads/main/Rebound1"))()
-
-      end)
-    end
-end)()
+entity:Run()
