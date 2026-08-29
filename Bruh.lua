@@ -10,7 +10,7 @@ local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 local entity = Spawner:Create({
 	Entity = {
 		Name = "Rebound",
-		Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_Rebound_1787965761.rbxm",
+		Asset = "https://github.com/eliazbp92-collab/Back1/blob/main/Place_131351567799504_Model_Rebound_1787965761.rbxm?raw=true",
 		HeightOffset = 0
 	},
 	Lights = {
