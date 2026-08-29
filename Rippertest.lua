@@ -127,7 +127,7 @@ else
 		Damage = {
 			Enabled = true,
 			Range = 0,
-			Amount = 100
+			Amount = 0.01
 		},
 		Crucifixion = {
 			Enabled = true,
