@@ -113,7 +113,7 @@ local function processEntity(child)
 			local playSound = rushNew:WaitForChild("PlaySound", 3)
 					
 			if particle then
-					particle.Texture = "rbxassetid://95186741213094"
+					particle.Texture = "rbxassetid://105218113033261"
 					particle.Rate = 55
 					particle.Brightness = 1
 					particle.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
