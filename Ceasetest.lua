@@ -16,7 +16,7 @@ else
 	local entity = Spawner:Create({
 		Entity = {
 			Name = "CeaseMoving",
-			Asset = "https://github.com/eoyoustme/Pressure-Skid-Gay-/blob/main/Cease.rbxm?raw=true",
+			Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_CeaseMoving_1787957919.rbxm",
 			HeightOffset = -2
 		},
 		Lights = {
