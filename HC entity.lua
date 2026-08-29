@@ -111,9 +111,6 @@ local function processEntity(child)
 			if not rushNew then return end
 			local attachment = rushNew:WaitForChild("Attachment", 3)
 			local playSound = rushNew:WaitForChild("PlaySound", 3)
-
-			if attachment then
-				local particle = attachment:WaitForChild("ParticleEmitter", 3)
 					
 			if particle then
 					particle.Texture = "rbxassetid://95186741213094"
