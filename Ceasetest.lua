@@ -58,24 +58,6 @@ local entity = spawner.Create({
 			Range = 40,
 			Amount = 125,
 			IgnoreHiding = false,
-
-			JumpscareRipper = {
-				Enabled = false,
-				TargetPartName = "Ripe",
-				AttachmentName = "ripe",
-				ParticleName = "ParticleEmitter",
-				ParticleTexture = "rbxassetid://12737595583",
-				SoundUrl = "https://github.com/eoyoustme/back/raw/main/Kill_with_static.mp3",
-				SlamSoundId = "rbxassetid://0",
-				EndSoundId = "rbxassetid://4988621968",
-				Images = {
-					"rbxassetid://8482795900",
-					"rbxassetid://236542974",
-					"rbxassetid://184251462",
-					"rbxassetid://236777652"
-				},
-				FlashDuration = 1.6
-			}
 	},
 	Crucifixion = {
 		Enabled = true,
