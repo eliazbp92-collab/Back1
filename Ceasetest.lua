@@ -79,25 +79,69 @@ entity:SetCallback("OnSpawned", function()
 				end
 			end
 		end
-		light(2, Color3.fromRGB(127, 249, 255), Color3.fromRGB(0, 45, 185))
+	
+	light(2,Color3.fromRGB(127, 249, 255),Color3.fromRGB(0, 45, 185))
 
-		task.spawn(function()
-			while true do
-				task.wait(0.3)
+	-- === BẮT ĐẦU KIỂM TRA DI CHUYỂN CHUẨN XÁC === --
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
 
-				local player = game.Players.LocalPlayer
-				local char = player.Character
-				local hum = char and char:FindFirstChildOfClass("Humanoid")
-				local hrp = char and char:FindFirstChild("HumanoidRootPart")
+	-- đảm bảo Cease chính xác có model
+	repeat task.wait() until entity.Model
+	local ceaseModel = entity.Model
 
-				if hum and hrp and (hrp.Position - entity.Model.HSUR.Position).Magnitude <= 6 then
-					game.Players.LocalPlayer.Character.Humanoid.Health -= 1500
-					entity.Model.HSUR.Kill:Play()
-					game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Cease"
+	local hitboxRange = 120
+
+	local params = RaycastParams.new()
+	params.FilterType = Enum.RaycastFilterType.Blacklist
+	params.FilterDescendantsInstances = {ceaseModel}
+
+	local raycastLoop
+	raycastLoop = RunService.Heartbeat:Connect(function()
+		local origin = ceaseModel:GetPivot().Position
+
+		for _, player in ipairs(Players:GetPlayers()) do
+			local chr = player.Character
+			if chr and chr:FindFirstChild("HumanoidRootPart") and chr:FindFirstChild("Humanoid") then
+
+				local hrp = chr.HumanoidRootPart
+				local humanoid = chr.Humanoid
+
+				-- Raycast
+				local direction = (hrp.Position - origin).Unit
+				local rayResult = workspace:Raycast(origin, direction * hitboxRange, params)
+
+				if rayResult and rayResult.Instance and rayResult.Instance:IsDescendantOf(chr) then
+
+					-- KIỂM TRA DI CHUYỂN CHUẨN
+					local isMovingByInput = humanoid.MoveDirection.Magnitude > 0.1
+					local isMovingByVelocity = hrp.AssemblyLinearVelocity.Magnitude > 2
+
+					-- Chỉ giết khi cả hai đều đúng
+					if isMovingByInput and isMovingByVelocity and humanoid.Health > 0  then
+						humanoid.Health = 0
+						local sound = Instance.new("Sound")
+						sound.SoundId = "rbxassetid://4988621968"
+						sound.Volume = 10
+						sound.PlaybackSpeed = 0.7
+						sound.Parent = workspace
+						sound:Play()
+
+						print(player.Name .. " bị Cease giết vì di chuyển!")
+
+						-- đánh dấu nguyên nhân chết
+						local statsFolder = game.ReplicatedStorage:FindFirstChild("GameStats")
+						if statsFolder then
+							local playerStats = statsFolder:FindFirstChild("Player_" .. player.Name)
+							if playerStats and playerStats:FindFirstChild("Total") and playerStats.Total:FindFirstChild("DeathCause") then
+								playerStats.Total.DeathCause.Value = "Cease"
+							end
+						end
+					end
 				end
 			end
-		end)
-    end)
+		end
+	end)
 
     -- Ngắt vòng lặp khi Cease despawn
     entity:SetCallback("OnDespawned", function()
