@@ -89,7 +89,7 @@ if workspace:FindFirstChild("NightmareRebound") then
 		Entity = {
 			Name = "NightMare Rebound",
 			Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_Rebound_1787970480.rbxm",
-			HeightOffset = -1
+			HeightOffset = 2
 		},
 		Lights = {
 			Flicker = {
@@ -485,7 +485,7 @@ else
 		Entity = {
 			Name = "Rebound",
 			Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_Rebound_1787970480.rbxm",
-			HeightOffset = -1
+			HeightOffset = 2
 		},
 		Lights = {
 			Flicker = {
