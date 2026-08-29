@@ -93,7 +93,7 @@ else
 		local entity = Spawner:Create({
 			Entity = {
 				Name = "RipperNotMoving",
-				Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_RipperMoving_1787960625.rbxm -- Magnitude, Roughness, FadeIn, FadeOut
+				Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_RipperMoving_1787960625.rbxm" -- Magnitude, Roughness, FadeIn, FadeOut
 			},
 			Movement = {
 				Speed = 175,
