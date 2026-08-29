@@ -86,9 +86,10 @@ local entity = spawner.Create({
 	Death = {
 		Type = "Guiding",
 		Hints = {
-			Type = "Guiding",
-			Hints = {"You Die to Cease", "When the light turn to blue and a flicker light sound appear", "is when he spawn", "Don't Move And Don't stand too near him"},
-			Cause = "Cease"
+			"Bạn đã chết bởi Cease.",
+			"Khi Cease xuất hiện, đừng di chuyển nếu không bạn sẽ chết."
+		},
+		Cause = ""
 	}
 })
 
