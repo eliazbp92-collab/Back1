@@ -7,7 +7,7 @@ local player = Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local humanoid = character:WaitForChild("Humanoid")
 
-local Shocker = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_Shocker_1787962485.rbxm"
+local Shocker = "game:GetObjects(rbxassetid://90250291645240)[1]"
 
 function getgithubmodeL(url)
 	if not (writefile and getcustomasset and request) then return nil end
