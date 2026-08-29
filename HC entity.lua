@@ -109,7 +109,20 @@ local function processEntity(child)
 		elseif child.Name == "RushMoving" then
 			local rushNew = child:WaitForChild("RushNew", 10)
 			if not rushNew then return end
+			local attachment = rushNew:WaitForChild("Attachment", 3)
+			local playSound = rushNew:WaitForChild("PlaySound", 3)
 
+			if attachment then
+				local particle = attachment:WaitForChild("ParticleEmitter", 3)
+					
+			if particle then
+					particle.Texture = "rbxassetid://95186741213094"
+					particle.Rate = 55
+					particle.Brightness = 1
+					particle.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
+				end
+			end
+			
 			local playSound = rushNew:WaitForChild("PlaySound", 5)
 			local footsteps = rushNew:WaitForChild("Footsteps", 5)
 
