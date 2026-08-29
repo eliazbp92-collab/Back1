@@ -94,7 +94,7 @@ else
 			Entity = {
 				Name = "RipperNotMoving",
 				Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_RipperMoving_1787960625.rbxm",
-				HeightOffset = 4.7
+				HeightOffset = 4.5
 			},
 			Lights = {
 				Flicker = {
