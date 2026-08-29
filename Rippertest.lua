@@ -93,7 +93,24 @@ else
 		local entity = Spawner:Create({
 			Entity = {
 				Name = "RipperNotMoving",
-				Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_RipperMoving_1787960625.rbxm" -- Magnitude, Roughness, FadeIn, FadeOut
+				Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_RipperMoving_1787960625.rbxm",
+				HeightOffset = 4
+			},
+			Lights = {
+				Flicker = {
+					Enabled = false,
+					Duration = 1
+				},
+				Shatter = true,
+				Repair = false
+			},
+			Earthquake = {
+				Enabled = false
+			},
+			CameraShake = {
+				Enabled = true,
+				Range = 100,
+				Values = {10, 27, 0.1, 0.4} -- Magnitude, Roughness, FadeIn, FadeOut
 			},
 			Movement = {
 				Speed = 175,
@@ -1073,7 +1090,4 @@ end)
 
 		entity:Run(true)
 	end
-end
-	entity:Run(true)
-end
 end
