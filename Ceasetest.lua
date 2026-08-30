@@ -6,7 +6,7 @@ local entity = spawner.Create({
 	Entity = {
 		Name = "Cease",
 		Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_CeaseMoving_1787957919.rbxm",
-		HeightOffset = -1
+		HeightOffset = 0
 	},
 	Lights = {
 		Flicker = {
