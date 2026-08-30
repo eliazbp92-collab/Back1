@@ -106,7 +106,7 @@ entity:SetCallback("OnSpawned", function()
 		local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 
 		tw = TweenService:Create(blueSound, tweenInfo, {
-			PlaybackSpeed = 2
+			PlaybackSpeed = 5
 		})
 		tw:Play()
 		
