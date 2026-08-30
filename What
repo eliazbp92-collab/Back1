@@ -1,0 +1,18 @@
+local A1 = script.Parent.HumanoidRootPart.A1.ImageLabel
+local random = Random.new(1, 6)
+ 
+while task.wait(1) do
+    if random == 1 then
+        A1.Image = "rbxassetid://79572251799052"
+    elseif random == 2 then
+        A1.Image = "rbxassetid://85857857098258"
+    elseif random == 3 then
+        A1.Image = "rbxassetid://105825533761609"
+    elseif random == 4 then
+        A1.Image = "rbxassetid://111025636527266"
+    elseif random == 5 then
+        A1.Image = "rbxassetid://121874848040355"
+    elseif random == 6 then
+        A1.Image = "rbxassetid://93257625641160"
+    end
+end
