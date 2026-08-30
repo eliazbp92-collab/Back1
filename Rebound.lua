@@ -212,7 +212,39 @@ if workspace:FindFirstChild("NightmareRebound") then
 
 	entity:SetCallback("OnSpawned", function()
 		light(2, Color3.fromRGB(85, 0, 0),Color3.fromRGB(255, 0, 0))
+ 
+	-- Tìm Rebound an toàn bằng WaitForChild để tránh lỗi nil
+	local reboundModel = game.Workspace:WaitForChild("Rebound", 5)
+	local reboundRoot = reboundModel and reboundModel:WaitForChild("Root", 3)
+ 
+	local spawnSound = Instance.new("Sound")
+	spawnSound.Parent = game.Workspace
+	spawnSound.Name = "Spawn"
+	spawnSound.SoundId = "rbxassetid://9114221327"
+	spawnSound.Volume = 7
+	spawnSound:Play()
+ 
+	local function GetGitSound(GithubSnd, SoundName)
+		local filePath = SoundName .. ".mp3"
+		if not isfile(filePath) then
+			writefile(filePath, game:HttpGet(GithubSnd))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(filePath)
+		return sound
+	end
+ 
+	pcall(function()
+		local Jumpscare = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true", "Riririririiriri")
+		Jumpscare.Parent = reboundRoot or reboundModel or game.Workspace
+		Jumpscare.Volume = 2
+		Jumpscare.RollOffMinDistance = 100
+		Jumpscare.RollOffMaxDistance = 200
+		Jumpscare.Name = "am"
+		Jumpscare.PlaybackSpeed = 1
+		Jumpscare:Play()
 	end)
+end)
 
 	entity:SetCallback("OnStartMoving", function()
 
