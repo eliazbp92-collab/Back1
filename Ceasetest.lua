@@ -79,6 +79,37 @@ local entity = spawner.Create({
 
 entity:SetCallback("OnSpawned", function()
     print("Cease đã xuất hiện")
+		local function GetGitSound(GithubSnd, SoundName)
+			local url = GithubSnd
+			if not isfile(SoundName .. ".mp3") then
+				writefile(SoundName .. ".mp3", game:HttpGet(url))
+			end
+			local sound = Instance.new("Sound")
+			sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+			return sound
+		end
+
+		local blueSound = entity.Model.HSUR.WindStatic
+
+		local gitSoundTemp = GetGitSound("https://github.com/eliazbp92-collab/Back1/raw/main/Ceasespawn.mp3", "1")
+
+		blueSound.SoundId = gitSoundTemp.SoundId
+
+		blueSound.Volume = 4
+
+		gitSoundTemp:Destroy()
+
+		blueSound:Play()
+
+		local TweenService = game:GetService("TweenService")
+
+		local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+		tw = TweenService:Create(blueSound, tweenInfo, {
+			PlaybackSpeed = 1
+		})
+		tw:Play()
+		
 		local hiding = game.Players.LocalPlayer.Character
 		local ishiding = hiding:GetAttributes("Hiding")
 		local function light(tim, color0, color1)
