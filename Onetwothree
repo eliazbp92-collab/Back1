@@ -1,0 +1,465 @@
+---====== Load spawner ======---
+
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/DOORS-Entity-Spawner-V2/main/init.luau"))()
+
+---====== Create entity ======---
+
+local entity = Spawner:Create({
+	Entity = {
+		Name = "A-100",
+		Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Rah.rbxm",
+		HeightOffset = 0
+	},
+	Lights = {
+		Flicker = {
+			Enabled = false,
+			Duration = 1
+		},
+		Shatter = false,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 750,
+		Delay = 4,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = false,
+		Type = "Ambush", -- "Blitz"
+		Min = 1,
+		Max = 1,
+		Delay = 2
+	},
+	Damage = {
+		Enabled = true,
+		Range = 40,
+		Amount = 125
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"You die to A-100", "He is actually fast when u hear a sound like a train", "Is him don't hide in closet because he can check it", "Go hide in bed"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+	print("Entity has spawned")
+	local entity = workspace["A-100"]:FindFirstChildWhichIsA("BasePart")
+	entity.Position = Vector3.new(0, 0, 5000)
+	
+	local function GetGitSound(GithubSnd, SoundName)
+		local url = GithubSnd
+		if not isfile(SoundName .. ".mp3") then
+			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		return sound
+	end
+	local Ambience = GetGitSound("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A100Ambience.mp3.mpeg","Toilet.com")
+	Ambience.Parent = workspace["A-100"].HumanoidRootPart
+	Ambience.Volume = 4
+	Ambience.Looped = true
+	Ambience.PlaybackSpeed = 1
+	Ambience.RollOffMinDistance = 100
+	Ambience.RollOffMaxDistance = 200
+	Ambience:Play()
+	
+	
+	task.spawn(function()
+		local A1 = workspace["A-100"].HumanoidRootPart.A1.ImageLabel
+local random = Random.new(1, 6)
+ 
+while task.wait(1) do
+    if random == 1 then
+        A1.Image = "rbxassetid://79572251799052"
+    elseif random == 2 then
+        A1.Image = "rbxassetid://85857857098258"
+    elseif random == 3 then
+        A1.Image = "rbxassetid://105825533761609"
+    elseif random == 4 then
+        A1.Image = "rbxassetid://111025636527266"
+    elseif random == 5 then
+        A1.Image = "rbxassetid://121874848040355"
+    elseif random == 6 then
+        A1.Image = "rbxassetid://93257625641160"
+			end
+		end
+	end)
+	task.spawn(function()
+		local A2 = workspace["A-100"].HumanoidRootPart.A2.ImageLabel
+		local random = Random.new(1, 6)
+
+		while task.wait(0.3) do
+			if random == 1 then
+				A2.Image = "rbxassetid://79572251799052"
+			elseif random == 2 then
+				A2.Image = "rbxassetid://85857857098258"
+			elseif random == 3 then
+				A2.Image = "rbxassetid://105825533761609"
+			elseif random == 4 then
+				A2.Image = "rbxassetid://111025636527266"
+			elseif random == 5 then
+				A2.Image = "rbxassetid://121874848040355"
+			elseif random == 6 then
+				A2.Image = "rbxassetid://93257625641160"
+			end
+		end
+	end)
+	task.spawn(function()
+		local A1 = workspace["A-100"].HumanoidRootPart.A1
+		local A2 = workspace["A-100"].HumanoidRootPart.A2
+
+		while task.wait(0.05) do
+			A1.ExtentsOffsetWorldSpace = Vector3.new(Random.new():NextNumber(-0, 0), Random.new():NextNumber(-0, 0), Random.new():NextNumber(0, 1.5))
+			A2.ExtentsOffsetWorldSpace = Vector3.new(Random.new():NextNumber(-0, 0), Random.new():NextNumber(-0, 0), Random.new():NextNumber(0, 0))
+		end
+
+	end)
+end)
+
+entity:SetCallback("OnStartMoving", function()
+	print("Entity has started moving")
+end)
+
+local function Jumpscare()
+	local Players = game:GetService("Players")
+	local TweenService = game:GetService("TweenService")
+
+	local player = Players.LocalPlayer
+	local playerGui = player:WaitForChild("PlayerGui")
+	local rng = Random.new()
+
+	local screenGui = Instance.new("ScreenGui")
+	screenGui.Name = "JumpscareGui"
+	screenGui.ResetOnSpawn = false
+	screenGui.IgnoreGuiInset = true
+	screenGui.DisplayOrder = 999999
+	screenGui.Parent = playerGui
+
+	-- Tạo background
+	local background = Instance.new("Frame")
+	background.Name = "Background"
+	background.Size = UDim2.fromScale(1, 1)
+	background.Position = UDim2.fromScale(0, 0)
+	background.BackgroundColor3 = Color3.new(0, 0, 0)
+	background.BorderSizePixel = 0
+	background.Parent = screenGui
+
+	-- Tạo ImageLabel
+	local imageLabel = Instance.new("ImageLabel")
+	imageLabel.Name = "ImageLabel"
+	imageLabel.BackgroundTransparency = 1
+	imageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	imageLabel.Position = UDim2.fromScale(0.5, 0.5)
+	imageLabel.Size = UDim2.new(0, 0.001, 0, 0.001)
+	imageLabel.Image = "rbxassetid://4817426006"
+	imageLabel.Parent = background
+
+	-- Tạo Sound
+	local jumpscareSound = Instance.new("Sound")
+	jumpscareSound.Name = "Jumpscare"
+	jumpscareSound.SoundId = "rbxassetid://25954372"
+	jumpscareSound.Volume = 5
+	jumpscareSound.PlaybackSpeed = 1.95
+	jumpscareSound.Parent = workspace
+
+
+	jumpscareSound:Play()
+
+	local dis = Instance.new("DistortionSoundEffect")
+	dis.Level = 1
+	dis.Enabled = true
+	dis.Parent = jumpscareSound
+	
+	local eq = Instance.new("EqualizerSoundEffect")
+	eq.HighGain = 1.9
+	eq.MidGain = -24.2
+	eq.LowGain = 10
+	eq.Enabled = true
+	eq.Parent = jumpscareSound
+
+	local fullTween = TweenService:Create(
+		imageLabel,
+		TweenInfo.new(0.8, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),
+		{
+			Size = UDim2.new(0, 1550, 0, 1550)
+		}
+	)
+	
+	local chanceid = {
+		"8960526619",
+		"6196108971",
+		"6734172334",
+		"7057923071",
+		"4817426006"
+	}
+
+	task.spawn(function()
+		while true do
+			local randomId = chanceid[math.random(1, #chanceid)]
+			imageLabel.Image = "rbxassetid://" .. randomId
+			task.wait(0.03)
+		end
+	end)
+
+	fullTween:Play()
+
+	for i = 1, 80 do
+		local mode = rng:NextInteger(1, 3)
+
+		if mode == 1 then
+			background.BackgroundColor3 = Color3.new(0, 0, 0)
+			imageLabel.ImageColor3 = Color3.new(1, 0, 1)
+		elseif mode == 2 then
+			background.BackgroundColor3 = Color3.new(1, 0, 1)
+			imageLabel.ImageColor3 = Color3.new(0, 0, 0)
+		else
+			background.BackgroundColor3 = Color3.new(0.666667, 0, 1)
+			imageLabel.ImageColor3 = Color3.new(1, 0, 1)
+		end
+		
+		imageLabel.Position = UDim2.new(rng:NextNumber(0.4, 0.6), 0, rng:NextNumber(0.4, 0.6), 0)
+		imageLabel.Rotation = rng:NextInteger(-10, 10)
+		task.wait(0.00001)
+	end
+
+
+	screenGui:Destroy()
+	imageLabel:Destroy()
+	background:Destroy()
+end
+
+entity:SetCallback("OnEnterRoom", function(room: Model, firstTime: boolean)
+	if firstTime == true then
+		print("Entity has entered room: ".. room.Name.. " for the first time")
+		local entity5 = entity.Model
+		if not entity5 or not firstTime then return end
+
+		task.spawn(function()
+			task.wait(0.1)
+			local wardrobes = {}
+
+			for _, v in ipairs(room:GetDescendants()) do
+				if v:IsA("Model") then
+					local n = string.lower(v.Name)
+					if n:find("wardrobe") or n:find("closet") then
+						table.insert(wardrobes, v)
+					end
+				end
+			end
+
+			table.sort(wardrobes, function(a, b)
+				return a:GetPivot().Position.X < b:GetPivot().Position.X
+			end)
+
+			local player = game.Players.LocalPlayer
+			local char = player.Character
+
+			for _, wardrobe in ipairs(wardrobes) do
+				entity:Pause()
+				entity5:PivotTo(wardrobe:GetPivot() * CFrame.new(0, 0, -7))
+				task.wait(0.35)
+
+				local function isPlayerInsideWardrobe()
+					if not char or not char:FindFirstChild("HumanoidRootPart") then return false end
+					local boxPos = wardrobe:GetPivot().Position
+					return (char.HumanoidRootPart.Position - boxPos).Magnitude < 6
+				end
+
+				local wasHiding = isPlayerInsideWardrobe()
+				task.wait(1.5)
+
+				-- Destroy Doors + Prompts
+				for _, v in ipairs(wardrobe:GetDescendants()) do
+					if v:IsA("ProximityPrompt") or v.Name == "HidePrompt" then v:Destroy()
+					end
+				end
+
+				-- KILL + JUMPSCARE
+				if isPlayerInsideWardrobe() or wasHiding then
+					if char then
+						task.spawn(Jumpscare) 
+						task.wait(0.1)
+						local hum = char:FindFirstChildOfClass("Humanoid")
+						if hum then hum.Health = 0 end
+					end
+				end
+
+				entity:Resume()
+				task.wait(0.2)
+			end
+		end)
+	else
+		print("Entity has entered room: ".. room.Name.. " again")
+	end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight: boolean)
+	if lineOfSight == true then
+		print("Player is looking at entity")
+	else
+		print("Player view is obstructed by something")
+	end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound: boolean)
+	if startOfRebound == true then
+		print("Entity has started rebounding")
+	else
+		print("Entity has finished rebounding")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+	print("Entity is despawning")
+end)
+
+entity:SetCallback("OnDespawned", function()
+	print("Entity has despawned")
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth: number)
+	if newHealth <= 0 then
+		print("Entity has killed the player")
+		local Players = game:GetService("Players")
+		local TweenService = game:GetService("TweenService")
+
+		local player = Players.LocalPlayer
+		local playerGui = player:WaitForChild("PlayerGui")
+		local rng = Random.new()
+
+		local screenGui = Instance.new("ScreenGui")
+		screenGui.Name = "JumpscareGui"
+		screenGui.ResetOnSpawn = false
+		screenGui.IgnoreGuiInset = true
+		screenGui.DisplayOrder = 999999
+		screenGui.Parent = playerGui
+
+		-- Tạo background
+		local background = Instance.new("Frame")
+		background.Name = "Background"
+		background.Size = UDim2.fromScale(1, 1)
+		background.Position = UDim2.fromScale(0, 0)
+		background.BackgroundColor3 = Color3.new(0, 0, 0)
+		background.BorderSizePixel = 0
+		background.Parent = screenGui
+
+		-- Tạo ImageLabel
+		local imageLabel = Instance.new("ImageLabel")
+		imageLabel.Name = "ImageLabel"
+		imageLabel.BackgroundTransparency = 1
+		imageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+		imageLabel.Position = UDim2.fromScale(0.5, 0.5)
+		imageLabel.Size = UDim2.new(0, 0.001, 0, 0.001)
+		imageLabel.Image = "rbxassetid://4817426006"
+		imageLabel.Parent = background
+
+		-- Tạo Sound
+		local jumpscareSound = Instance.new("Sound")
+		jumpscareSound.Name = "Jumpscare"
+		jumpscareSound.SoundId = "rbxassetid://25954372"
+		jumpscareSound.Volume = 10
+		jumpscareSound.PlaybackSpeed = 1.95
+		jumpscareSound.Parent = workspace
+
+		local dis = Instance.new("DistortionSoundEffect")
+		dis.Level = 1
+		dis.Enabled = true
+		dis.Parent = jumpscareSound
+
+		local eq = Instance.new("EqualizerSoundEffect")
+		eq.HighGain = 1.9
+		eq.MidGain = -24.2
+		eq.LowGain = 10
+		eq.Enabled = true
+		eq.Parent = jumpscareSound
+
+
+		jumpscareSound:Play()
+		
+		local chanceid = {
+			"8960526619",
+			"6196108971",
+			"6734172334",
+			"7057923071",
+			"4817426006"
+		}
+
+		task.spawn(function()
+			while true do
+				local randomId = chanceid[math.random(1, #chanceid)]
+				imageLabel.Image = "rbxassetid://" .. randomId
+
+				task.wait(0.03)
+			end
+		end)
+
+		local fullTween = TweenService:Create(
+			imageLabel,
+			TweenInfo.new(0.8, Enum.EasingStyle.Linear, Enum.EasingDirection.Out),
+			{
+				Size = UDim2.new(0, 1250, 0, 1250)
+			}
+		)
+
+		fullTween:Play()
+
+		for i = 1, 80 do
+			local mode = rng:NextInteger(1, 3)
+
+			if mode == 1 then
+				background.BackgroundColor3 = Color3.new(0, 0, 0)
+				imageLabel.ImageColor3 = Color3.new(1, 0, 1)
+			elseif mode == 2 then
+				background.BackgroundColor3 = Color3.new(1, 0, 1)
+				imageLabel.ImageColor3 = Color3.new(0, 0, 0)
+			else
+				background.BackgroundColor3 = Color3.new(0.666667, 0, 1)
+				imageLabel.ImageColor3 = Color3.new(1, 0, 1)
+			end
+
+			imageLabel.Position = UDim2.new(rng:NextNumber(0.4, 0.6), 0, rng:NextNumber(0.4, 0.6), 0)
+			imageLabel.Rotation = rng:NextInteger(-10, 10)
+			task.wait(0.00001)
+		end
+
+
+		screenGui:Destroy()
+		imageLabel:Destroy()
+		background:Destroy()
+	else
+		print("Entity has damaged the player")
+	end
+end)
+
+--[[
+
+DEVELOPER NOTE:
+By overwriting 'CrucifixionOverwrite' the default crucifixion callback will be replaced with your custom callback.
+
+entity:SetCallback("CrucifixionOverwrite", function()
+    print("Custom crucifixion callback")
+end)
+
+]]--
+
+---====== Run entity ======---
+
+entity:Run(true)
