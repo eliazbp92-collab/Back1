@@ -13,7 +13,7 @@ end
 local entity = Spawner:Create({
 	Entity = {
 		Name = "Multimoving",
-		Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_6839171747_Model_Multimoving_1788216412.rbxm",
+		Asset = "https://github.com/eliazbp92-collab/Back1/blob/main/Place_6839171747_Model_Multimoving_1788216757.rbxm",
 		HeightOffset = -2
 	},
 	Lights = {
