@@ -60,7 +60,7 @@ local entity = spawner.Create({
  
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
-	local entity = workspace["A-100"]:FindFirstChildWhichIsA("BasePart")
+	local entity = workspace["A60"]:FindFirstChildWhichIsA("BasePart")
 	entity.Position = Vector3.new(0, 0, 5000)
 	
 	local function GetGitSound(GithubSnd, SoundName)
@@ -72,9 +72,9 @@ entity:SetCallback("OnSpawned", function()
 		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
 		return sound
 	end
-	local Ambience = GetGitSound("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A100Ambience.mp3.mpeg","Toilet.com")
+	local Ambience = GetGitSound("https://github.com/eliazbp92-collab/Back1/raw/main/65F10783-A0D6-418A-B79F-D37C9DEC91EC.mp3","A60hackey")
 	Ambience.Parent = workspace["A60"].Rushnew
-	Ambience.Volume = 4
+	Ambience.Volume = 2.5
 	Ambience.Looped = true
 	Ambience.PlaybackSpeed = 1
 	Ambience.RollOffMinDistance = 100
@@ -84,6 +84,26 @@ end)
  
 entity:SetCallback("OnStartMoving", function()
     print("Entity has started moving")
+	local entity = workspace["A60"]:FindFirstChildWhichIsA("BasePart")
+	entity.Position = Vector3.new(0, 0, 5000)
+	
+	local function GetGitSound(GithubSnd, SoundName)
+		local url = GithubSnd
+		if not isfile(SoundName .. ".mp3") then
+			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		return sound
+	end
+	local Ambience = GetGitSound("https://github.com/eliazbp92-collab/Back1/raw/main/doors-rooms-a-60-distant-sound-effect-made-with-Voicemod.mp3","A60hackey2")
+	Ambience.Parent = workspace["A60"].Rushnew
+	Ambience.Volume = 1
+	Ambience.Looped = true
+	Ambience.PlaybackSpeed = 0.1
+	Ambience.RollOffMinDistance = 100
+	Ambience.RollOffMaxDistance = 200
+	Ambience:Play()
 end)
  
 entity:SetCallback("OnEnterRoom", function(room, firstTime)
