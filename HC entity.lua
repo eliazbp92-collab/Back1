@@ -2,7 +2,7 @@ local workspace = game:GetService("Workspace")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
-local Paritvle = "https://github.com/eliazbp92-collab/Back1/blob/main/Place_131351567799504_Model_RushMoving_1788142788.rbxm"
+local Paritvle = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_RushMoving_1788142788.rbxm"
 local cachedAttachmentTemplate = nil -- Lưu trữ model tạm thời vào bộ nhớ
 
 -- Hàm tải model từ GitHub và cache lại
