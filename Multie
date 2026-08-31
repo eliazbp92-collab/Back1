@@ -318,3 +318,86 @@ entity:SetCallback("OnSpawned", function()
 			end)
 	end)
 end)
+
+entity:SetCallback("OnStartMoving", function()
+
+end)
+
+entity:SetCallback("OnEnterRoom", function(room: Model, firstTime: boolean)
+
+end)
+
+entity:SetCallback("OnNotReachedLatestRoom", function(room: Model, latestRoom: Model)
+end)
+
+entity:SetCallback("OnReachedLatestRoom", function(room: Model)
+end)
+
+entity:SetCallback("OnLeftLatestRoom", function(room: Model)
+
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight: boolean)
+
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound: boolean)
+
+end)
+
+entity:SetCallback("PlayerGetSee", function()
+
+end)
+
+entity:SetCallback("EndWhenGO", function()
+
+end)
+
+entity:SetCallback("OnDespawning", function()
+end)
+
+entity:SetCallback("OnDespawned", function()
+
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth: number)
+	local Players = game:GetService("Players")
+	local player = Players.LocalPlayer
+	local playergui = player:WaitForChild("PlayerGui")
+
+	local screenGui = Instance.new("ScreenGui")
+	screenGui.Name = "FlashOverlay"
+	screenGui.IgnoreGuiInset = true
+	screenGui.Parent = playergui
+
+	local frame = Instance.new("Frame")
+	frame.Size = UDim2.new(1, 0, 1, 0)
+	frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+	frame.BackgroundTransparency = 0
+	frame.BorderSizePixel = 0
+	frame.Parent = screenGui
+
+	local originalVolumes = {}
+
+	for _, descendant in ipairs(game:GetDescendants()) do
+		if descendant:IsA("Sound") then
+			originalVolumes[descendant] = descendant.Volume
+			descendant.Volume = 0
+		end
+	end
+
+	task.wait(3)
+
+
+	for sound, oldVolume in pairs(originalVolumes) do
+		if sound and sound.Parent then
+			sound.Volume = oldVolume
+		end
+	end
+
+	screenGui:Destroy()
+end)
+
+---====== Run Entity ======---
+
+entity:Run(true)
