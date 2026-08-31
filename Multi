@@ -1,0 +1,819 @@
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+local IsM = Instance.new("BoolValue")
+IsM.Name = "IsM"
+IsM.Parent = workspace
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local Lighting = game:GetService("Lighting")
+local Debris = game:GetService("Debris")
+local UserInputService = game:GetService("UserInputService")
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+local mainUI = playerGui:WaitForChild("MainUI")
+local caption = mainUI:FindFirstChild("MainFrame") and mainUI.MainFrame:FindFirstChild("Caption")
+caption.TextColor3 = Color3.fromRGB(255, 0, 0)
+
+task.spawn(function()
+	local glitchGui = Instance.new("ScreenGui")
+	glitchGui.Name = "ScreenGlitchEffect"
+	glitchGui.ResetOnSpawn = false
+	glitchGui.Parent = playerGui
+
+	for i = 1, Random.new():NextInteger(5,10) do
+		local line = Instance.new("Frame")
+		line.Size = UDim2.new(1, 0, 0, math.random(2, 8))
+		line.Position = UDim2.new(0, 0, math.random(5, 95) / 100, 0)
+		line.BackgroundColor3 = (i % 2 == 0) and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
+		line.BackgroundTransparency = 0.2
+		line.BorderSizePixel = 0
+		line.Parent = glitchGui
+
+		local glitchTweenInfo = TweenInfo.new(8, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+		TweenService:Create(line, glitchTweenInfo, {BackgroundTransparency = 1}):Play()
+	end
+
+	task.delay(8, function()
+		glitchGui:Destroy()
+	end)
+
+	getgenv().OgHungerNewSpawner = nil 
+
+	local success, Spawner = pcall(function()
+		return loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Mayhem-Remake/refs/heads/main/OgHungerNewSpawner"))()
+	end)
+
+	if not success or not Spawner then
+		return
+	end
+
+	local entity = Spawner:Create({
+		Entity = {
+			Name = "Multimoving55",
+			Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_A60_1788073048.rbxm",
+			HeightOffset = -2
+		},
+		Lights = {
+			Flicker = { Enabled = false, Duration = 1 },
+			Shatter = true,
+			Repair = false
+		},
+		Earthquake = { Enabled = false },
+		Spawned = {
+			ChangeColorWhenSpawn = false, 
+			Rainbow = false,              
+			Color = Color3.fromRGB(0, 85, 255)
+		},
+		CameraShake = {
+			Enabled = true,
+			Range = 100,
+			Values = {1.5, 20, 0.1, 1}
+		},
+		Movement = {
+			Speed = 300,
+			SpeedFast = 0,                  
+			MoveFastNotEnter = false,            
+			Delay = 5,
+			Reversed = false,                  
+			EndWhenEnterLatestRoom = true,   
+			EndDelay = 2,
+			ReboundMoving = false,          
+			TweenSecond = 1.5,            
+			ReboundMoveStyle = false,      
+			ReboundStyleTimes = 5,        
+			ReboundStyleSound = "rbxassetid://9114221327", 
+			ReboundStyleVolume = 5,
+			ReboundStyleDelay = 2, 
+			ChasePlayerWhenSee = false,
+			SpeedWhenChase = 35
+		},
+		Jumpscare = { Enabled = false },
+		Rebounding = { Enabled = false },
+		Damage = { Enabled = true },
+		Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
+		Death = { Type = "Guiding", Hints = {""}, Cause = "[]}0()[]][][]]1[]][" }
+	})
+
+	entity:SetCallback("EndWhenGO", function()
+		local sound = Instance.new("Sound")
+		sound.SoundId = "rbxassetid://1837829565"
+		sound.Parent = workspace
+		sound.Volume = 10
+		sound:Play()
+
+		if game.ReplicatedStorage:FindFirstChild("CameraShaker") then
+			local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+			local camara = game.Workspace.CurrentCamera
+			local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+				camara.CFrame = camara.CFrame * shakeCf
+			end)
+			camShake:Start()
+			camShake:ShakeOnce(10,3,0.1,6,2,0.5)
+		end
+	end)
+
+	entity:SetCallback("OnDespawning", function()
+		local vaule = Instance.new("BoolValue", workspace)
+		vaule.Name = "cacacac"
+		vaule.Value = true
+	end)
+
+	entity:Run(true)
+end)
+
+local function A60Change()
+	task.spawn(function()
+		local glitchGui = Instance.new("ScreenGui")
+		glitchGui.Name = "ScreenGlitchEffect"
+		glitchGui.ResetOnSpawn = false
+		glitchGui.Parent = playerGui
+
+		for i = 1, Random.new():NextInteger(5,10) do
+			local line = Instance.new("Frame")
+			line.Size = UDim2.new(1, 0, 0, math.random(2, 8))
+			line.Position = UDim2.new(0, 0, math.random(5, 95) / 100, 0)
+			line.BackgroundColor3 = (i % 2 == 0) and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
+			line.BackgroundTransparency = 0.2
+			line.BorderSizePixel = 0
+			line.Parent = glitchGui
+
+			local glitchTweenInfo = TweenInfo.new(8, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+			TweenService:Create(line, glitchTweenInfo, {BackgroundTransparency = 1}):Play()
+		end
+
+		task.delay(8, function()
+			glitchGui:Destroy()
+		end)
+
+		local candidateParts = {}
+		for _, desc in ipairs(workspace:GetDescendants()) do
+			if desc:IsA("BasePart") then
+				local name = desc.Name
+				if name == "Door" or name == "mrbro" or name == "Main" or string.find(name, "Wall") or name == "Ceiling" or name == "Wood" or string.find(name, "WallAlt") then
+					table.insert(candidateParts, desc)
+				end
+			end
+		end
+
+		for i = #candidateParts, 2, -1 do
+			local j = math.random(i)
+			candidateParts[i], candidateParts[j] = candidateParts[j], candidateParts[i]
+		end
+
+		local count = math.min(50, #candidateParts)
+		for i = 1, count do
+			local part = candidateParts[i]
+			if part then
+				local randomRotation = CFrame.Angles(
+					math.rad(math.random(-15, 15)),
+					math.rad(math.random(-25, 25)),
+					math.rad(math.random(-15, 15))
+				)
+				part.CFrame = part.CFrame * randomRotation
+
+				local bbGui = Instance.new("BillboardGui")
+				bbGui.Name = "BlackGlitchBillboard"
+				bbGui.Size = UDim2.new(Random.new():NextNumber(7, 14), 0, Random.new():NextNumber(7, 14), 0)
+				bbGui.AlwaysOnTop = false
+				bbGui.Adornee = part
+				bbGui.Parent = part
+
+				local blackFrame = Instance.new("Frame")
+				blackFrame.Size = UDim2.new(1, 0, 1, 0)
+				blackFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+				blackFrame.BackgroundTransparency = 0
+				blackFrame.BorderSizePixel = 0
+				blackFrame.Parent = bbGui
+			end
+		end
+
+		getgenv().OgHungerNewSpawner = nil 
+
+		local success, Spawner = pcall(function()
+			return loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Mayhem-Remake/refs/heads/main/OgHungerNewSpawner"))()
+		end)
+
+		if not success or not Spawner then
+			return
+		end
+
+		local entity = Spawner:Create({
+			Entity = {
+				Name = "Multimoving5555",
+				Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_A60_1788073048.rbxm",
+				HeightOffset = -2
+			},
+			Lights = { Flicker = { Enabled = false, Duration = 1 }, Shatter = true, Repair = false },
+			Earthquake = { Enabled = false },
+			Spawned = { ChangeColorWhenSpawn = false, Rainbow = false, Color = Color3.fromRGB(0, 85, 255) },
+			CameraShake = { Enabled = true, Range = 100, Values = {1.5, 20, 0.1, 1} },
+			Movement = { Speed = 300, SpeedFast = 1300, MoveFastNotEnter = true, Delay = 0, Reversed = true, IsMoveWhenWHere = true, EndWhenEnterLatestRoom = false, EndDelay = 0 },
+			Jumpscare = { Enabled = false },
+			Rebounding = { Enabled = false },
+			Damage = { Enabled = false },
+			Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
+			Death = { Type = "Guiding", Hints = {""}, Cause = "[]}0()[]][][]]1[]][" }
+		})
+
+		entity:SetCallback("OnDespawning", function()
+			local vaule = Instance.new("BoolValue", workspace)
+			vaule.Name = "vauke"
+			vaule.Value = true
+		end)
+
+		entity:Run(true)
+	end)
+end
+
+local target = workspace:WaitForChild("cacacac")
+workspace.cacacac:Destroy() 
+
+local candidateParts = {}
+for _, desc in ipairs(workspace:GetDescendants()) do
+	if desc:IsA("BasePart") then
+		local name = desc.Name
+		if name == "Door" or name == "mrbro" or name == "Main" or string.find(name, "Wall") or name == "Ceiling" or name == "Wood" or string.find(name, "WallAlt") then
+			table.insert(candidateParts, desc)
+		end
+	end
+end
+
+for i = #candidateParts, 2, -1 do
+	local j = math.random(i)
+	candidateParts[i], candidateParts[j] = candidateParts[j], candidateParts[i]
+end
+
+local count = math.min(50, #candidateParts)
+for i = 1, count do
+	local part = candidateParts[i]
+	if part then
+		local randomRotation = CFrame.Angles(
+			math.rad(math.random(-15, 15)),
+			math.rad(math.random(-25, 25)),
+			math.rad(math.random(-15, 15))
+		)
+		part.CFrame = part.CFrame * randomRotation
+
+		local bbGui = Instance.new("BillboardGui")
+		bbGui.Name = "BlackGlitchBillboard"
+		bbGui.Size = UDim2.new(Random.new():NextNumber(7, 14), 0, Random.new():NextNumber(7, 14), 0)
+		bbGui.AlwaysOnTop = false
+		bbGui.Adornee = part
+		bbGui.Parent = part
+
+		local blackFrame = Instance.new("Frame")
+		blackFrame.Size = UDim2.new(1, 0, 1, 0)
+		blackFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		blackFrame.BackgroundTransparency = 0
+		blackFrame.BorderSizePixel = 0
+		blackFrame.Parent = bbGui
+	end
+end
+
+local ENTITY_URLS = {
+	Rebound = "https://raw.githubusercontent.com/eoyoustme/Impossible/refs/heads/main/MultiBound",
+	Silence = "https://raw.githubusercontent.com/eoyoustme/Impossible/refs/heads/main/Multilience",
+	Ripper  = "https://raw.githubusercontent.com/eoyoustme/Impossible/refs/heads/main/Multiper",
+	Deer    = "https://raw.githubusercontent.com/eoyoustme/Impossible/refs/heads/main/MultiGod",
+	Cease   = "https://raw.githubusercontent.com/eoyoustme/Impossible/refs/heads/main/Multie"
+}
+
+local textspawn = {
+	co = "again? good",
+	lo = "Meet again? fun",
+	bip = "Wow this will be fun"
+}
+
+local TextPhase2 = {
+	cachua = "This was fun.",
+	cac = "just kidding. Pay attention",
+}
+
+
+local text = {
+	co4 = "I'm not done",
+	lo32 = "SO FUN",
+	bip2 = "Wow this will be fun",
+	huh = "hehe- ok you win",
+	Fi = "I'll see all , You see nothing",
+	ote = "I see u"
+}
+
+local function ShowCaption(str)
+	if not caption then return end
+	task.spawn(function()
+		caption.TextTransparency = 0
+		caption.Visible = true
+		caption.Text = str
+		TweenService:Create(caption, TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {TextTransparency = 1}):Play()
+	end)
+end
+
+local function Textspawn()
+	local choices = {"co", "bip", "lo"}
+	local picked = choices[math.random(#choices)]
+	if textspawn[picked] then
+		ShowCaption(textspawn[picked])
+	end
+end
+
+local function TextPhase2lol()
+	local choices = {"cachua", "cac"}
+	local picked = choices[math.random(#choices)]
+	if TextPhase2[picked] then
+		ShowCaption(TextPhase2[picked])
+	end
+end
+
+local function Text()
+	local choices = {"co4", "bip2", "lo32","huh","Fi","ote"}
+	local picked = choices[math.random(#choices)]
+	if text[picked] then
+		ShowCaption(text[picked])
+	end
+end
+
+local supera = 20
+local a = nil
+
+local function GetGitSound(GithubSnd, SoundName)
+	local url = GithubSnd
+	if not isfile(SoundName .. ".mp3") then
+		writefile(SoundName .. ".mp3", game:HttpGet(url))
+	end
+	local sound = Instance.new("Sound")
+	sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+	return sound
+end
+
+task.spawn(function()
+	local function GetGitSound(GithubSnd, SoundName)
+		local url = GithubSnd
+		if not isfile(SoundName .. ".mp3") then
+			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		return sound
+	end
+
+	local Lord = GetGitSound("https://github.com/eoyoustme/Hardcore/blob/main/multimonster.mp3?raw=true", "mult11111111111111imonster")
+	Lord.Parent = workspace
+	Lord.Volume = 3
+	Lord.PlaybackSpeed = 1
+	Lord:Play()
+	task.wait(22)
+	Lord:Destroy()
+
+	local Jumpscare = GetGitSound("https://github.com/eoyoustme/Pressure-Skid-Gay-/blob/main/multi%20semi-intense%20variant.mp3?raw=true", "Darkdepthoftheking")
+	Jumpscare.Parent = workspace
+	Jumpscare.Volume = 3
+	Jumpscare.PlaybackSpeed = 1
+	Jumpscare.Looped = true
+	Jumpscare.Name = "aiHoi"
+	Jumpscare:Play()
+end)
+
+local function SafePlayJumpscare()
+	task.spawn(function()
+		pcall(function()
+			local Jumpscare = GetGitSound("https://raw.githubusercontent.com/eoyoustme/Pressure-Skid-Gay-/main/bandicam%202026-08-24%2020-36-50-742.mp3", "flashback")
+			Jumpscare.Parent = workspace
+			Jumpscare.Volume = 6
+			Jumpscare.PlaybackSpeed = 1
+			Jumpscare.Name = "ai55Hoi"
+			Jumpscare:Play()
+			Jumpscare.Ended:Connect(function() 
+				Jumpscare:Destroy() 
+			end)
+		end)
+	end)
+end
+
+local entityChances = {
+	{Name = "Cease", Chance = 7.5},
+	{Name = "Ripper", Chance = 7.5},
+	{Name = "Bounder", Chance = 6},
+	{Name = "Deer God", Chance = 0.75},
+	{Name = "Silence", Chance = 4.25},
+}
+
+local function SelectRandomEntity(rng)
+	local totalWeight = 0
+	for _, entity in ipairs(entityChances) do
+		totalWeight = totalWeight + entity.Chance
+	end
+
+	local roll = (rng and rng:NextNumber() or math.random()) * totalWeight
+	local counter = 0
+
+	for _, entity in ipairs(entityChances) do
+		counter = counter + entity.Chance
+		if roll <= counter then
+			return entity.Name
+		end
+	end
+	return entityChances[1].Name
+end
+
+a = task.spawn(function()
+	local spawnStepA = 0
+	while true do
+		task.wait(supera)
+
+		pcall(function()
+			spawnStepA = spawnStepA + 1
+			local gameData = game:GetService("ReplicatedStorage"):FindFirstChild("GameData")
+			local seed = 12345
+			if gameData then
+				local seedVal = gameData:FindFirstChild("GameSeed")
+				if seedVal and seedVal:IsA("ValueBase") then
+					seed = seedVal.Value
+				elseif gameData:GetAttribute("GameSeed") then
+					seed = gameData:GetAttribute("GameSeed")
+				end
+			end
+			local rng = Random.new(seed + (spawnStepA * 100))
+			local selectedEntity = SelectRandomEntity(rng)
+
+			local ENTITY_URLS_MAP = {
+				["Deer God"] = ENTITY_URLS.Deer,
+				["Ripper"]   = ENTITY_URLS.Ripper,
+				["Cease"]    = ENTITY_URLS.Cease,
+				["Bounder"]  = ENTITY_URLS.Rebound,
+				["Silence"]  = ENTITY_URLS.Silence
+			}
+
+			local url = ENTITY_URLS_MAP[selectedEntity]
+
+			if url then
+				local targets = {"MultiMoving", "Multiilence", "Multiper", "MultiBound", "MultiGod"}
+				local hasAny = false
+
+				for _, name in ipairs(targets) do
+					if workspace:FindFirstChild(name) then
+						hasAny = true
+						break
+					end
+				end
+
+				if hasAny then
+					for _, name in ipairs(targets) do
+						task.spawn(function()
+							local child = workspace:FindFirstChild(name)
+							if child then
+								wait(4)
+								child:Destroy()
+								if name == "MultiGod" then
+									local your = workspace:FindFirstChild("Your")
+									if your then
+										your:Destroy()
+									else
+										warn("NOMUCISCDEERGODINTOHEAVENM")
+									end
+								end
+							else
+								warn("noone")
+							end
+						end)
+					end
+					A60Change()
+				else
+					local vaule = Instance.new("BoolValue")
+					vaule.Name = "vauke"
+					vaule.Value = true
+					vaule.Parent = workspace
+				end
+
+				loadstring(game:HttpGet(url))()
+			end
+		end)
+	end
+end)
+
+local isphase2 = true
+
+local function Phase2()
+	task.spawn(function()
+		local spawnStepP2 = 0
+		while isphase2 do
+			task.wait(supera)
+
+			pcall(function()
+				spawnStepP2 = spawnStepP2 + 1
+				local gameData = game:GetService("ReplicatedStorage"):FindFirstChild("GameData")
+				local seed = 12345
+				if gameData then
+					local seedVal = gameData:FindFirstChild("GameSeed")
+					if seedVal and seedVal:IsA("ValueBase") then
+						seed = seedVal.Value
+					elseif gameData:GetAttribute("GameSeed") then
+						seed = gameData:GetAttribute("GameSeed")
+					end
+				end
+				local rng = Random.new(seed + (spawnStepP2 * 1000))
+				local selectedEntity = SelectRandomEntity(rng)
+
+				local ENTITY_URLS_MAP = {
+					["Deer God"] = ENTITY_URLS.Deer,
+					["Ripper"]   = ENTITY_URLS.Ripper,
+					["Cease"]    = ENTITY_URLS.Cease,
+					["Bounder"]  = ENTITY_URLS.Rebound,
+					["Silence"]  = ENTITY_URLS.Silence
+				}
+
+				local url = ENTITY_URLS_MAP[selectedEntity]
+
+				if url then
+					local targets = {"Multimoving", "Multiilence", "Multiper", "MultiBound", "MultiGod"}
+					local hasAny = false
+
+					for _, name in ipairs(targets) do
+						if workspace:FindFirstChild(name) then
+							hasAny = true
+							break
+						end
+					end
+
+					if hasAny then
+						for _, name in ipairs(targets) do
+							task.spawn(function()
+								local child = workspace:FindFirstChild(name)
+								if child then
+									wait(4)
+									child:Destroy()
+									if name == "MultiGod" then
+										local your = workspace:FindFirstChild("Your")
+										if your then
+											your:Destroy()
+										else
+											warn("NOMUCISCDEERGODINTOHEAVENM")
+										end
+									end
+								else
+									warn("noone")
+								end
+							end)
+						end
+						wait(3.8)
+						A60Change()
+						SafePlayJumpscare()
+					else
+
+						local vaule = Instance.new("BoolValue")
+						vaule.Name = "vauke"
+						vaule.Value = true
+						vaule.Parent = workspace
+					end
+
+					loadstring(game:HttpGet(url))()
+				end
+			end)
+		end
+	end)
+end
+
+
+task.spawn(function()
+	pcall(function()
+		local target = workspace:WaitForChild("Multiper")
+		if workspace:FindFirstChild("aiHoi") then
+			workspace.aiHoi:Destroy() 
+			local Jumpscare = GetGitSound("https://raw.githubusercontent.com/eoyoustme/Pressure-Skid-Gay-/main/Pursue.mp3", "ocaiconcascasdf")
+			Jumpscare.Parent = workspace
+			Jumpscare.Volume = 3
+			Jumpscare.PlaybackSpeed = 1
+			Jumpscare.Looped = true
+			Jumpscare.Name = "aiHoi55"
+			Jumpscare:Play()
+		elseif workspace:FindFirstChild("LaPeace")then
+			workspace.aiHoi55:Destroy()
+		end
+
+	end)
+end)
+
+local roomCount = 0 
+local tv = nil 
+local sg = nil
+local sueo = nil
+local is = true
+
+task.spawn(function()
+	for i = 1, 25 do
+		if game.ReplicatedStorage:FindFirstChild("GameData") and game.ReplicatedStorage.GameData:FindFirstChild("LatestRoom") then
+			game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+			roomCount = roomCount + 1
+
+			task.spawn(function()
+				local successRate = math.random(50, 100) 
+				if math.random(1, 100) <= successRate then
+					Text()
+				end
+			end)
+
+			if roomCount == 10 then
+				for _, entity in ipairs(entityChances) do
+					entity.Chance = entity.Chance + math.random(70, 90)
+				end
+				supera = math.max(1, supera - 10)
+				TextPhase2lol()
+				if a then
+					task.cancel(a)
+					a = nil
+				end
+
+				local sueo = task.spawn(Phase2)
+				if workspace:FindFirstChild("aiHoi") then workspace.aiHoi:Destroy() end
+				if workspace:FindFirstChild("aiHoi55") then workspace.aiHoi55:Destroy() end
+
+				local Jumpscare = GetGitSound("https://github.com/eoyoustme/Impossible/blob/main/final%20fakeout.mp3?raw=true", "kingofkingofbroest")
+				Jumpscare.Parent = workspace
+				Jumpscare.Volume = 3
+				Jumpscare.PlaybackSpeed = 1
+				Jumpscare.Looped = true
+				Jumpscare.Name = "LaPeace"
+				Jumpscare:Play()
+
+				sg = Instance.new("ScreenGui")
+				sg.Name = "SingularityTextEffect"
+				sg.ResetOnSpawn = false
+				sg.Parent = playerGui
+
+				tv = Instance.new("TextLabel")
+				tv.Size = UDim2.new(1, 0, 0.25, 0)
+				tv.Position = UDim2.new(0, 0, 0.08, 0)
+				tv.BackgroundTransparency = 1
+				tv.TextColor3 = Color3.fromRGB(165, 165, 165)
+				tv.TextStrokeColor3 = Color3.fromRGB(202, 202, 202)
+				tv.TextStrokeTransparency = 0.4
+				tv.TextScaled = true
+				tv.Font = Enum.Font.SourceSansBold
+				tv.Parent = sg
+			end
+
+			if roomCount >= 10 then
+				local remainingCount = math.max(0, 25 - roomCount)
+
+				if tv and tv.Parent then
+					tv.Text = string.format("A-%02d", remainingCount)
+				end
+			end
+
+			supera = math.max(1, supera - 0.5)
+
+			if roomCount >= 25 then
+				local aiHoi = workspace:FindFirstChild("aiHoi")
+				if aiHoi then aiHoi:Destroy() end
+
+				local laPeace = workspace:FindFirstChild("LaPeace")
+				if laPeace then laPeace:Destroy() end
+
+				if tv then
+					tv:Destroy()
+					tv = nil
+				end
+				if sg then
+					sg:Destroy()
+					sg = nil
+				end
+				if caption and caption.Parent then
+					caption.Parent:Destroy() 
+				end
+
+				local bunbo = true
+
+				if sueo then
+					task.cancel(sueo)
+					sueo = nil
+				end
+
+				isphase2 = false
+
+				task.spawn(function()
+					local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+					local Time = 1
+
+					while bunbo do
+						task.wait(0.1)
+						Time = Time + 1
+
+						local glitchGui = Instance.new("ScreenGui")
+						glitchGui.Name = "ScreenGlitchEffect"
+						glitchGui.ResetOnSpawn = false
+						glitchGui.Parent = playerGui
+
+						for i = 1, 5 do
+							local line = Instance.new("Frame")
+							line.Size = UDim2.new(1, 0, 0, math.random(2, 8))
+							line.Position = UDim2.new(0, 0, math.random(5, 95) / 100, 0)
+							line.BackgroundColor3 = (i % 2 == 0) and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
+							line.BackgroundTransparency = 0.2
+							line.BorderSizePixel = 0
+							line.Parent = glitchGui
+
+							local glitchTweenInfo = TweenInfo.new(8, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+							game:GetService("TweenService"):Create(line, glitchTweenInfo, {BackgroundTransparency = 1}):Play()
+						end
+
+						task.delay(8, function()
+							glitchGui:Destroy()
+						end)
+
+						if Time >= 10 then
+							bunbo = false
+							break
+						end
+					end
+
+					getgenv().OgHungerNewSpawner = nil 
+
+					local success, Spawner = pcall(function()
+						return loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Mayhem-Remake/refs/heads/main/OgHungerNewSpawner"))()
+					end)
+
+					if not success or not Spawner then
+						return
+					end
+
+					local entity = Spawner:Create({
+						Entity = {
+							Name = "Multimoving55",
+							Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_A60_1788073048.rbxm",
+							HeightOffset = -2
+						},
+						Lights = {
+							Flicker = { Enabled = false, Duration = 1 },
+							Shatter = false,
+							Repair = false
+						},
+						Earthquake = { Enabled = false },
+						Spawned = {
+							ChangeColorWhenSpawn = false, 
+							Rainbow = false,               
+							Color = Color3.fromRGB(0, 85, 255)
+						},
+						CameraShake = {
+							Enabled = true,
+							Range = 100,
+							Values = {1.5, 20, 0.1, 1}
+						},
+						Movement = {
+							Speed = 300,
+							SpeedFast = 0,                  
+							MoveFastNotEnter = false,            
+							Delay = 2,
+							Reversed = false,                  
+							EndWhenEnterLatestRoom = true,   
+							EndDelay = 2,
+							ReboundMoving = false,          
+							TweenSecond = 1.5,            
+							ReboundMoveStyle = false,      
+							ReboundStyleTimes = 5,        
+							ReboundStyleSound = "rbxassetid://9114221327", 
+							ReboundStyleVolume = 5,
+							ReboundStyleDelay = 2, 
+							ChasePlayerWhenSee = false,
+							SpeedWhenChase = 35
+						},
+						Jumpscare = { Enabled = false },
+						Rebounding = { Enabled = false },
+						Damage = { Enabled = false },
+						Crucifixion = { Enabled = true, Range = 40, Resist = false, Break = true },
+						Death = { Type = "Guiding", Hints = {""}, Cause = "[]}0()[]][][]]1[]][" }
+					})
+
+					entity:SetCallback("EndWhenGO", function()
+						IsM:Destroy()
+						local sound = Instance.new("Sound")
+						sound.SoundId = "rbxassetid://1837829565"
+						sound.Parent = workspace
+						sound.Volume = 10
+						sound:Play()
+
+						---====== Load achievement giver ======---
+						local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Impossible/refs/heads/main/Get"))()
+
+						---====== Display achievement ======---
+						achievementGiver({
+							Title = "Someone Else Turn",
+							Desc = "i Tired so many face u fear",
+							Reason = "",
+							Image = "rbxassetid://0"
+						})
+					end)
+
+					entity:SetCallback("OnDespawning", function()
+					end)
+
+					entity:Run(true)
+				end)
+
+				break
+			end
+		end
+	end
+end)
