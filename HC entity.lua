@@ -2,7 +2,7 @@ local workspace = game:GetService("Workspace")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
-local Paritvle = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_Model_1788016110.rbxm"
+local Paritvle = "https://github.com/eliazbp92-collab/Back1/blob/main/Place_131351567799504_Model_RushMoving_1788142788.rbxm"
 local cachedAttachmentTemplate = nil -- Lưu trữ model tạm thời vào bộ nhớ
 
 -- Hàm tải model từ GitHub và cache lại
@@ -111,14 +111,6 @@ local function processEntity(child)
 			if not rushNew then return end
 			local attachment = rushNew:WaitForChild("Attachment", 3)
 			local playSound = rushNew:WaitForChild("PlaySound", 3)
-					
-			if particle then
-					particle.Texture = "rbxassetid://105218113033261"
-					particle.Rate = 55
-					particle.Brightness = 1
-					particle.Color = ColorSequence.new(Color3.fromRGB(255, 255, 255))
-				end
-			end
 			
 			local playSound = rushNew:WaitForChild("PlaySound", 5)
 			local footsteps = rushNew:WaitForChild("Footsteps", 5)
