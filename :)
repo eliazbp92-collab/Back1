@@ -136,16 +136,7 @@ end)
  
 entity:SetCallback("OnDespawned", function()
     print("Entity has despawned")
-    ---====== Load achievement giver ======---
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/vct0721/Doors-Stuff/refs/heads/main/Other/Modifiyed%20Achivements%20Source"))()
- 
----====== Display achievement ======---
-achievementGiver({
-    Title = "I Cant Hear You",
-    Desc = "Soundproof!",
-    Reason = "Survive Silence",
-    Image = "rbxassetid://12309073114"
-})
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Multi"))()
 end)
  
 entity:SetCallback("OnDamagePlayer", function(newHealth)
