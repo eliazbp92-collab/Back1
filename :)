@@ -60,6 +60,26 @@ local entity = spawner.Create({
  
 entity:SetCallback("OnSpawned", function()
     print("Entity has spawned")
+	local entity = workspace["A-100"]:FindFirstChildWhichIsA("BasePart")
+	entity.Position = Vector3.new(0, 0, 5000)
+	
+	local function GetGitSound(GithubSnd, SoundName)
+		local url = GithubSnd
+		if not isfile(SoundName .. ".mp3") then
+			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		return sound
+	end
+	local Ambience = GetGitSound("https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A100Ambience.mp3.mpeg","Toilet.com")
+	Ambience.Parent = workspace["A60"].Rushnew
+	Ambience.Volume = 4
+	Ambience.Looped = true
+	Ambience.PlaybackSpeed = 1
+	Ambience.RollOffMinDistance = 100
+	Ambience.RollOffMaxDistance = 200
+	Ambience:Play()
 end)
  
 entity:SetCallback("OnStartMoving", function()
