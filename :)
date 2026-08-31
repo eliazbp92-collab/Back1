@@ -73,7 +73,7 @@ entity:SetCallback("OnSpawned", function()
 		return sound
 	end
 	local Ambience = GetGitSound("https://github.com/eliazbp92-collab/Back1/raw/main/65F10783-A0D6-418A-B79F-D37C9DEC91EC.mp3","A60hackey")
-	Ambience.Parent = workspace["A60"].Rushnew
+	Ambience.Parent = workspace["A60"].RushNew
 	Ambience.Volume = 2.5
 	Ambience.Looped = true
 	Ambience.PlaybackSpeed = 1
@@ -97,7 +97,7 @@ entity:SetCallback("OnStartMoving", function()
 		return sound
 	end
 	local Ambience = GetGitSound("https://github.com/eliazbp92-collab/Back1/raw/main/doors-rooms-a-60-distant-sound-effect-made-with-Voicemod.mp3","A60hackey2")
-	Ambience.Parent = workspace["A60"].Rushnew
+	Ambience.Parent = workspace["A60"].RushNew
 	Ambience.Volume = 1
 	Ambience.Looped = true
 	Ambience.PlaybackSpeed = 0.1
