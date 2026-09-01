@@ -114,7 +114,7 @@ if workspace:FindFirstChild("NightmareRebound") then
 		},
 
 		Movement = {
-			Speed = 90,
+			Speed = 250,
 			SpeedFast = 270,                  
 			MoveFastNotEnter = false,            
 			Delay = 3,
@@ -542,7 +542,7 @@ else
 		},
 
 		Movement = {
-			Speed = 35,
+			Speed = 50,
 			SpeedFast = 270,                  
 			MoveFastNotEnter = false,            
 			Delay = 3,
