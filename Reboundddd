@@ -1,0 +1,667 @@
+getgenv().OgHungerNewSpawner = nil 
+
+	function light(tim,color0,color1)
+		local tweenservice = game:GetService("TweenService")
+		local info = TweenInfo.new(tim,Enum.EasingStyle.Linear)
+		for _ , light in pairs(game.Workspace.CurrentRooms:GetDescendants()) do
+			if light:IsA("Light") or light:IsA("SurfaceLight") or light:IsA("SpotLight") then
+				local target = {Color = color1}
+				local anim = tweenservice:Create(light,info,target)
+				anim:Play()
+			end
+			if light:IsA("MeshPart") and light.Material == Enum.Material.Neon and light.Name ~= "Skybox" then
+				local target1 = {Color = color0}
+				local anim2 = tweenservice:Create(light,info,target1)
+				anim2:Play()
+			end
+		end
+	end
+
+	local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) 
+	game.Debris:AddItem(Reboundcolor,24)
+	Reboundcolor.Name = "Warn"
+	Reboundcolor.TintColor = Color3.fromRGB(65, 138, 255) 
+	Reboundcolor.Saturation = -0.7 
+	Reboundcolor.Contrast = 0.2
+
+	game.TweenService:Create(Reboundcolor,TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
+
+	local TweenService = game:GetService("TweenService")
+	local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+	TW:Play()
+
+	local cue1 = Instance.new("Sound")
+	cue1.Parent = game.Workspace
+	cue1.Name = "Scream"
+	cue1.SoundId = "rbxassetid://9114397505"
+
+	local distort = Instance.new("DistortionSoundEffect")
+	distort.Parent = cue1
+	distort.Level = 1
+	local distort2 = Instance.new("DistortionSoundEffect")
+	distort2.Parent = cue1
+	distort2.Level = 1
+	local pitch = Instance.new("PitchShiftSoundEffect")
+	pitch.Parent = cue1
+	pitch.Octave = 0.5
+	local pitch2 = Instance.new("PitchShiftSoundEffect")
+	pitch2.Parent = cue1
+	pitch2.Octave = 0.5
+	local pitch3 = Instance.new("PitchShiftSoundEffect")
+	pitch3.Parent = cue1
+	pitch3.Octave = 0.5
+	cue1.Volume = 1
+	cue1:Play()
+
+	local cue2 = Instance.new("Sound")
+	cue2.Parent = game.Workspace
+	cue2.Name = "Spawn"
+	cue2.SoundId = "rbxassetid://9114221327"
+	cue2.Volume = 6
+	cue2.TimePosition = 0
+	cue2.PlaybackSpeed = 1
+	cue2:Play()
+
+	local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+	local camara = game.Workspace.CurrentCamera
+	local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+		camara.CFrame = camara.CFrame * shakeCf
+	end)
+	camShake:Start()
+	camShake:ShakeOnce(10,3,0.1,6,2,0.5)
+	task.wait(2.8)
+
+	local success, Spawner = pcall(function()
+		return loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Mayhem-Remake/refs/heads/main/OgHungerNewSpawner"))()
+	end)
+
+	if not success or not Spawner then
+		return
+	end
+
+	local entity = Spawner:Create({
+		Entity = {
+			Name = "Rebound",
+			Asset = "https://github.com/eliazbp92-collab/Back1/raw/main/Place_131351567799504_Model_Rebound_1788025646.rbxm",
+			HeightOffset = -1
+		},
+		Lights = {
+			Flicker = {
+				Enabled = false,
+				Duration = 1
+			},
+			Shatter = true,
+			Repair = false
+		},
+		Earthquake = {
+			Enabled = false
+		},
+		Spawned = {
+			ChangeColorWhenSpawn = false, 
+			Rainbow = false,             
+			Color = Color3.fromRGB(0, 85, 255)
+		},
+		CameraShake = {
+			Enabled = true,
+			Range = 100,
+			Values = {3, 30, 0.1, 1}
+		},
+
+		Movement = {
+			Speed = 50,
+			SpeedFast = 270,                  
+			MoveFastNotEnter = false,            
+			Delay = 3,
+			Reversed = true,                  
+			EndWhenEnterLatestRoom = false,   
+			EndDelay = 0,
+
+			ReboundMoving = false,          
+			TweenSecond = 1.5,   
+
+			ReboundMoveStyle = true,      
+			ReboundStyleTimes = 5,        
+			ReboundStyleSound = "rbxassetid://123981238948", 
+			ReboundStyleVolume = 5,
+			ReboundStyleDelay = 2, 
+
+			FasterAndFaster = 1.2,
+
+			Fakeout = {
+				Enabled = false,
+				RandomFakeout = true,
+				EndSound = "rbxassetid://130994177179386",
+				EndDelay = 1,
+				SpeedMultiplier = 1 
+			},
+
+			ChasePlayerWhenSee = false,
+			SpeedWhenChase = 35
+		},
+
+		Jumpscare = {
+			Enabled = false,
+			Image1 = "rbxassetid://11253398403", 
+			Image2 = "rbxassetid://12293509957",
+			Sound1 = "rbxassetid://0", 
+			Sound2 = "rbxassetid://109582246349306", 
+			Tease = {
+				[1] = true,
+				Min = 1,
+				Max = 1
+			},
+			Flashing = {
+				[1] = true,
+				[2] = Color3.fromRGB(255, 255, 255)
+			},
+			Shake = true
+		},
+		Rebounding = {
+			Enabled = false,
+			Type = "Ambush",
+			Min = 1,
+			Max = 1,
+			Delay = 2
+		},
+		Damage = {
+			Enabled = true,
+			KillOnMove = false,            
+			Range = 40,
+			Cooldown = 0.2,
+			Amount = 10,
+			IgnoreHiding = false,
+
+			JumpscareRipper = {
+				Enabled = false,
+				TargetPartName = "Ripe",
+				AttachmentName = "ripe",
+				ParticleName = "ParticleEmitter",
+				ParticleTexture = "rbxassetid://12737595583",
+				SoundUrl = "https://github.com/eoyoustme/back/raw/main/Kill_with_static.mp3",
+				SlamSoundId = "rbxassetid://0",
+				EndSoundId = "rbxassetid://4988621968",
+				Images = {
+					"rbxassetid://8482795900",
+					"rbxassetid://236542974",
+					"rbxassetid://184251462",
+					"rbxassetid://236777652"
+				},
+				FlashDuration = 1.6
+			}
+		},
+		Crucifixion = {
+			Enabled = true,
+			Range = 40,
+			Resist = false,
+			Break = true
+		},
+		Death = {
+			Type = "Guiding",
+			Hints = {"You Die to Rebound", "When the light turn to blue and A Scream", "is when he spawn", "he Is Very Dangerous because he can appear again."},
+			Cause = "Rebound"
+		}
+	})
+
+	-- \\ Callbacks // --
+	
+	task.spawn(function()
+		local originalSoundSpeeds = {}
+		local originalParticleScales = {}
+
+		local ceasePauseThread = nil
+		local ceaseResumeThread = nil
+		local isCeased = false
+
+		local function cacheEntityProperties()
+			if not entity or not entity.Model then return end
+
+			local targets = entity.Model:GetDescendants()
+			if entity.Model:IsA("Sound") or entity.Model:IsA("ParticleEmitter") then
+				table.insert(targets, entity.Model)
+			end
+
+			for _, obj in ipairs(targets) do
+				if obj:IsA("Sound") and originalSoundSpeeds[obj] == nil then
+					originalSoundSpeeds[obj] = obj.PlaybackSpeed
+				elseif obj:IsA("ParticleEmitter") and originalParticleScales[obj] == nil then
+					originalParticleScales[obj] = obj.TimeScale
+				end
+			end
+		end
+
+		local function setCeaseState(newState)
+			if newState == isCeased then return end
+			isCeased = newState
+			cacheEntityProperties()
+
+			if ceasePauseThread then task.cancel(ceasePauseThread); ceasePauseThread = nil end
+			if ceaseResumeThread then task.cancel(ceaseResumeThread); ceaseResumeThread = nil end
+
+			if isCeased then
+
+				if entity and typeof(entity.Pause) == "function" then
+					entity:Pause()
+				end
+
+	
+				local ceaseTweenInfo = TweenInfo.new(0.65, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+				for sound in pairs(originalSoundSpeeds) do
+					if sound and sound.Parent then
+						TweenService:Create(sound, ceaseTweenInfo, {PlaybackSpeed = 0}):Play()
+					end
+				end
+
+				for particle in pairs(originalParticleScales) do
+					if particle and particle.Parent then
+						TweenService:Create(particle, ceaseTweenInfo, {TimeScale = 0}):Play()
+					end
+				end
+			else
+		
+				local unceaseTweenInfo = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+				for sound, origSpeed in pairs(originalSoundSpeeds) do
+					if sound and sound.Parent then
+						TweenService:Create(sound, unceaseTweenInfo, {PlaybackSpeed = origSpeed}):Play()
+					end
+				end
+
+				for particle, origScale in pairs(originalParticleScales) do
+					if particle and particle.Parent then
+						TweenService:Create(particle, unceaseTweenInfo, {TimeScale = origScale}):Play()
+					end
+				end
+
+		
+				ceaseResumeThread = task.delay(2, function()
+					if not isCeased and entity and typeof(entity.Resume) == "function" then
+						entity:Resume()
+					end
+				end)
+			end
+		end
+
+		workspace.ChildAdded:Connect(function(child)
+			if child.Name == "CeaseMoving" then
+				setCeaseState(true)
+			else
+				local nameConn
+				nameConn = child:GetPropertyChangedSignal("Name"):Connect(function()
+					if child.Name == "CeaseMoving" then
+						setCeaseState(true)
+						nameConn:Disconnect()
+					end
+				end)
+			end
+		end)
+
+		workspace.ChildRemoved:Connect(function(child)
+			if child.Name == "CeaseMoving" then
+				task.defer(function()
+					if not workspace:FindFirstChild("CeaseMoving") then
+						setCeaseState(false)
+					end
+				end)
+			end
+		end)
+
+		if workspace:FindFirstChild("CeaseMoving") then
+			setCeaseState(true)
+		end
+	end)
+
+	entity:SetCallback("OnSpawned", function()
+		light(2, Color3.fromRGB(127, 249, 255),Color3.fromRGB(65, 138, 255))
+	end)
+
+	entity:SetCallback("OnStartMoving", function()
+
+	end)
+
+	entity:SetCallback("OnReachNode", function(node: BasePart)
+
+	end)
+
+	entity:SetCallback("OnEnterRoom", function(room: Model, firstTime: boolean)
+
+	end)
+
+	entity:SetCallback("OnNotReachedLatestRoom", function(room: Model, latestRoom: Model)
+
+	end)
+
+	entity:SetCallback("OnReachedLatestRoom", function(room: Model)
+
+	end)
+
+	entity:SetCallback("OnLeftLatestRoom", function(room: Model)
+
+	end)
+
+	entity:SetCallback("OnLookAt", function(lineOfSight: boolean)
+
+	end)
+
+	entity:SetCallback("OnRebounding", function(startOfRebound: boolean)
+
+	end)
+
+	entity:SetCallback("OnReboundStyle", function(newCloneEntity: any)
+		task.spawn(function()
+			local originalSoundSpeeds = {}
+			local originalParticleScales = {}
+
+			local ceasePauseThread = nil
+			local ceaseResumeThread = nil
+			local isCeased = false
+
+			local function cacheEntityProperties()
+				if not entity or not entity.Model then return end
+
+				local targets = entity.Model:GetDescendants()
+				if entity.Model:IsA("Sound") or entity.Model:IsA("ParticleEmitter") then
+					table.insert(targets, entity.Model)
+				end
+
+				for _, obj in ipairs(targets) do
+					if obj:IsA("Sound") and originalSoundSpeeds[obj] == nil then
+						originalSoundSpeeds[obj] = obj.PlaybackSpeed
+					elseif obj:IsA("ParticleEmitter") and originalParticleScales[obj] == nil then
+						originalParticleScales[obj] = obj.TimeScale
+					end
+				end
+			end
+
+			local function setCeaseState(newState)
+				if newState == isCeased then return end
+				isCeased = newState
+				cacheEntityProperties()
+
+				if ceasePauseThread then task.cancel(ceasePauseThread); ceasePauseThread = nil end
+				if ceaseResumeThread then task.cancel(ceaseResumeThread); ceaseResumeThread = nil end
+
+				if isCeased then
+
+					if entity and typeof(entity.Pause) == "function" then
+						entity:Pause()
+					end
+
+
+					local ceaseTweenInfo = TweenInfo.new(0.65, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+					for sound in pairs(originalSoundSpeeds) do
+						if sound and sound.Parent then
+							TweenService:Create(sound, ceaseTweenInfo, {PlaybackSpeed = 0}):Play()
+						end
+					end
+
+					for particle in pairs(originalParticleScales) do
+						if particle and particle.Parent then
+							TweenService:Create(particle, ceaseTweenInfo, {TimeScale = 0}):Play()
+						end
+					end
+				else
+
+					local unceaseTweenInfo = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
+
+					for sound, origSpeed in pairs(originalSoundSpeeds) do
+						if sound and sound.Parent then
+							TweenService:Create(sound, unceaseTweenInfo, {PlaybackSpeed = origSpeed}):Play()
+						end
+					end
+
+					for particle, origScale in pairs(originalParticleScales) do
+						if particle and particle.Parent then
+							TweenService:Create(particle, unceaseTweenInfo, {TimeScale = origScale}):Play()
+						end
+					end
+
+
+					ceaseResumeThread = task.delay(2, function()
+						if not isCeased and entity and typeof(entity.Resume) == "function" then
+							entity:Resume()
+						end
+					end)
+				end
+			end
+
+			workspace.ChildAdded:Connect(function(child)
+				if child.Name == "CeaseMoving" then
+					setCeaseState(true)
+				else
+					local nameConn
+					nameConn = child:GetPropertyChangedSignal("Name"):Connect(function()
+						if child.Name == "CeaseMoving" then
+							setCeaseState(true)
+							nameConn:Disconnect()
+						end
+					end)
+				end
+			end)
+
+			workspace.ChildRemoved:Connect(function(child)
+				if child.Name == "CeaseMoving" then
+					task.defer(function()
+						if not workspace:FindFirstChild("CeaseMoving") then
+							setCeaseState(false)
+						end
+					end)
+				end
+			end)
+
+			if workspace:FindFirstChild("CeaseMoving") then
+				setCeaseState(true)
+			end
+		end)
+
+		task.spawn(function()
+			local player = game.Players.LocalPlayer
+			if player and player:FindFirstChild("PlayerGui") then
+				wait(0.25)
+				local flashGui = Instance.new("ScreenGui")
+				flashGui.Name = "ReboundDoorFlash"
+				flashGui.IgnoreGuiInset = true
+				flashGui.DisplayOrder = 999998
+				flashGui.Parent = player.PlayerGui
+
+				local flashFrame = Instance.new("Frame")
+				flashFrame.Size = UDim2.new(1, 0, 1, 0)
+				flashFrame.BackgroundColor3 = Color3.fromRGB(0, 102, 255) 
+				flashFrame.BackgroundTransparency = 0 
+				flashFrame.BorderSizePixel = 0
+				flashFrame.Parent = flashGui
+
+				local tweenInfo = TweenInfo.new(0.6, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+				local fadeTween = game:GetService("TweenService"):Create(flashFrame, tweenInfo, {BackgroundTransparency = 1})
+				fadeTween:Play()
+
+				fadeTween.Completed:Wait()
+				flashGui:Destroy()
+			end
+		end)
+		local sound = Instance.new("Sound")
+		sound.SoundId = "rbxassetid://6734393210"
+		sound.Volume = 3
+		sound.Parent = workspace
+		sound:Play()
+
+		local ids = Instance.new("DistortionSoundEffect")
+		ids.Level = 0.65
+		ids.Parent = sound
+
+		local revers = Instance.new("ReverbSoundEffect")
+		revers.DecayTime = 1.5
+		revers.Density = 1
+		revers.Diffusion = 1
+		revers.DryLevel = -6
+		revers.Parent = sound
+
+		local sound1 = Instance.new("Sound")
+		sound1.SoundId = "rbxassetid://5246103002"
+		sound1.Volume = 3
+		sound1.Parent = workspace
+		sound1:Play()
+
+		local ids1 = Instance.new("DistortionSoundEffect")
+		ids1.Level = 0.65
+		ids1.Parent = sound1
+
+		local revers1 = Instance.new("ReverbSoundEffect")
+		revers1.DecayTime = 1.5
+		revers1.Density = 1
+		revers1.Diffusion = 1
+		revers1.DryLevel = -6
+		revers1.Parent = sound1
+
+		local pitch = Instance.new("PitchShiftSoundEffect")
+		pitch.Octave = 0.5
+		pitch.Parent = sound1
+
+	end)
+
+	entity:SetCallback("OnFakeoutStart", function()
+
+	end)
+
+	entity:SetCallback("OnFakeoutEnd", function()
+
+	end)
+
+	entity:SetCallback("PlayerGetSee", function()
+
+	end)
+
+	entity:SetCallback("EndWhenGO", function()
+
+	end)
+
+	entity:SetCallback("OnDespawning", function()
+		entity.Movement.Speed = 35
+
+	end)
+
+	entity:SetCallback("OnDespawned", function()
+
+	end)
+
+	entity:SetCallback("OnDamagePlayer", function(newHealth: number)
+local v1 = script:FindFirstAncestor("MainUI")
+local _ = game.Players.LocalPlayer
+local v_u_2 = game:GetService("TweenService")
+game:GetService("RunService")
+game:GetService("Debris")
+game:GetService("ReplicatedStorage")
+local v_u_3 = v1:FindFirstChild("Jumpscare_Rebound", true)
+local v_u_4 = {
+    Color3.fromRGB(146, 255, 237),
+    Color3.fromRGB(0, 251, 255),
+    Color3.fromRGB(0, 123, 255),
+    Color3.fromRGB(197, 222, 255),
+    Color3.fromRGB(20, 144, 182),
+    Color3.fromRGB(255, 255, 255),
+    Color3.fromRGB(146, 255, 237)
+}
+function lerp(p5, p6, p7) -- name: lerp
+    return p5 + (p6 - p5) * p7
+end
+return function(p_u_8)
+    -- upvalues: (copy) v_u_3, (copy) v_u_2, (copy) v_u_4
+    game.SoundService.Main.Volume = 0
+    p_u_8.deathtick = tick() + 3
+    v_u_3.Visible = true
+    v_u_3.Static.BackgroundTransparency = 0
+    v_u_3.Static.ImageTransparency = 1
+    v_u_3.reb.Visible = true
+    v_u_3.reb.Js:Play()
+    v_u_3.reb.Js.Pitch = math.random(75, 125) / 100
+    v_u_3.reb.AnchorPoint = Vector2.new(0.5, 0.5)
+    v_u_2:Create(v_u_3.Static, TweenInfo.new(0.5), {
+        ["ImageTransparency"] = 0.8
+    }):Play()
+    task.wait()
+    v_u_3.reb.Shake.Enabled = true
+    local v_u_9 = 0
+    local v_u_10 = { 0, -180, 180 }
+    local v_u_11 = { "rbxassetid://236777652", "rbxassetid://236543215" }
+    local function v_u_15(p12, p13) -- name: getRandomInTableThatIsntThePreviouslyChosenThingOfTheTable
+        -- upvalues: (copy) v_u_15
+        local v14 = p12[math.random(1, #p12)]
+        if v14 ~= p13 then
+            return v14
+        end
+        task.wait()
+        return v_u_15(p12, p13)
+    end
+    local v_u_16 = true
+    task.spawn(function()
+        -- upvalues: (ref) v_u_16, (ref) v_u_3, (ref) v_u_4, (ref) v_u_9, (copy) v_u_10, (copy) v_u_15, (copy) v_u_11
+        while v_u_16 do
+            task.wait()
+            v_u_3.Static.BackgroundColor3 = v_u_4[math.random(1, #v_u_4)]
+            v_u_3.Static.ImageTransparency = lerp(v_u_3.Static.ImageTransparency, v_u_9, 0.1)
+            local v17 = v_u_3.Static
+            local v18 = v_u_10
+            local v19 = v_u_3.Static.Rotation
+            local v20 = v18[math.random(1, #v18)]
+            if v20 == v19 then
+                task.wait()
+                v20 = v_u_15(v18, v19)
+            end
+            v17.Rotation = v20
+            local v21 = v_u_3.Static
+            local v22 = v_u_11
+            local v23 = v_u_3.Static.Image
+            local v24 = v22[math.random(1, #v22)]
+            if v24 == v23 then
+                task.wait()
+                v24 = v_u_15(v22, v23)
+            end
+            v21.Image = v24
+            if math.random(1, 5) == 1 then
+                v_u_9 = math.random(0, 50) / 100
+            end
+        end
+    end)
+    task.wait(2)
+    p_u_8.deathtick = tick() + 1.5
+    v_u_3.reb.Shake.Enabled = false
+    v_u_3.reb.Js.TimePosition = 0
+    v_u_3.reb.Js:Play()
+    v_u_2:Create(v_u_3.reb, TweenInfo.new(1), {
+        ["Size"] = UDim2.fromScale(1.25, 1.25),
+        ["Position"] = UDim2.fromScale(0.5, 0.5),
+        ["Rotation"] = math.random(-25, 25),
+        ["AnchorPoint"] = Vector2.new(0.5, 0.5),
+        ["ImageColor3"] = Color3.fromRGB(255, 0, 0)
+    }):Play()
+    task.wait(1)
+    v_u_2:Create(v_u_3.reb, TweenInfo.new(3), {
+        ["ImageTransparency"] = 1
+    }):Play()
+    v_u_2:Create(v_u_3, TweenInfo.new(1), {
+        ["BackgroundTransparency"] = 1
+    }):Play()
+    v_u_2:Create(v_u_3.Static, TweenInfo.new(1), {
+        ["BackgroundTransparency"] = 1,
+        ["ImageTransparency"] = 1
+    }):Play()
+    v_u_16 = false
+    task.delay(3, function()
+        -- upvalues: (ref) v_u_3, (copy) p_u_8
+        v_u_3.Visible = false
+        if not p_u_8.dead then
+            game.SoundService.Main.Volume = 0.5
+        end
+    end
+ end
+end)
+
+	entity:SetCallback("OnKillPlayer", function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Hardcore/refs/heads/main/Rebound%20Jumpscare"))()
+
+	end)
+
+	---====== Run Entity ======---
+
+	entity:Run(true)
