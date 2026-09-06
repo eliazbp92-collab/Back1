@@ -74,7 +74,7 @@ local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "Rebound", -- Custom name of your entity
-    Model = "rbxassetid://87802222611160", -- Can be GitHub file or rbxassetid
+    Model = "rbxassetid://13197078319", -- Can be GitHub file or rbxassetid
     Speed = 275, -- Percentage, 100 = default Rush speed
     DelayTime = 4, -- Time before starting cycles (seconds)
     HeightOffset = 0,
@@ -92,9 +92,9 @@ local entity = Creator.createEntity({
         WaitTime = 1,
     },
     CamShake = {
-		Enabled = true,
-		Range = 100,
-		Values = {3, 30, 0.1, 1}
+       true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
     },
     Jumpscare = {
         false, -- Enabled/Disabled
