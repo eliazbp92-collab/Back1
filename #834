@@ -74,7 +74,7 @@ local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "Rebound", -- Custom name of your entity
-    Model = "rbxassetid://13197078319", -- Can be GitHub file or rbxassetid
+    Model = "rbxassetid://15114292227", -- Can be GitHub file or rbxassetid
     Speed = 275, -- Percentage, 100 = default Rush speed
     DelayTime = 4, -- Time before starting cycles (seconds)
     HeightOffset = 0,
