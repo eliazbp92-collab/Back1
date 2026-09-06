@@ -1,0 +1,71 @@
+
+	function light(tim,color0,color1)
+		local tweenservice = game:GetService("TweenService")
+		local info = TweenInfo.new(tim,Enum.EasingStyle.Linear)
+		for _ , light in pairs(game.Workspace.CurrentRooms:GetDescendants()) do
+			if light:IsA("Light") or light:IsA("SurfaceLight") or light:IsA("SpotLight") then
+				local target = {Color = color1}
+				local anim = tweenservice:Create(light,info,target)
+				anim:Play()
+			end
+			if light:IsA("MeshPart") and light.Material == Enum.Material.Neon and light.Name ~= "Skybox" then
+				local target1 = {Color = color0}
+				local anim2 = tweenservice:Create(light,info,target1)
+				anim2:Play()
+			end
+		end
+	end
+
+	local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) 
+	game.Debris:AddItem(Reboundcolor,24)
+	Reboundcolor.Name = "Warn"
+	Reboundcolor.TintColor = Color3.fromRGB(65, 138, 255) 
+	Reboundcolor.Saturation = -0.7 
+	Reboundcolor.Contrast = 0.2
+
+	game.TweenService:Create(Reboundcolor,TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
+
+	local TweenService = game:GetService("TweenService")
+	local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+	TW:Play()
+
+	local cue1 = Instance.new("Sound")
+	cue1.Parent = game.Workspace
+	cue1.Name = "Scream"
+	cue1.SoundId = "rbxassetid://9114397505"
+
+	local distort = Instance.new("DistortionSoundEffect")
+	distort.Parent = cue1
+	distort.Level = 1
+	local distort2 = Instance.new("DistortionSoundEffect")
+	distort2.Parent = cue1
+	distort2.Level = 1
+	local pitch = Instance.new("PitchShiftSoundEffect")
+	pitch.Parent = cue1
+	pitch.Octave = 0.5
+	local pitch2 = Instance.new("PitchShiftSoundEffect")
+	pitch2.Parent = cue1
+	pitch2.Octave = 0.5
+	local pitch3 = Instance.new("PitchShiftSoundEffect")
+	pitch3.Parent = cue1
+	pitch3.Octave = 0.5
+	cue1.Volume = 1
+	cue1:Play()
+
+	local cue2 = Instance.new("Sound")
+	cue2.Parent = game.Workspace
+	cue2.Name = "Spawn"
+	cue2.SoundId = "rbxassetid://9114221327"
+	cue2.Volume = 6
+	cue2.TimePosition = 0
+	cue2.PlaybackSpeed = 1
+	cue2:Play()
+
+	local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+	local camara = game.Workspace.CurrentCamera
+	local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+		camara.CFrame = camara.CFrame * shakeCf
+	end)
+	camShake:Start()
+	camShake:ShakeOnce(10,3,0.1,6,2,0.5)
+	task.wait(2.8)
