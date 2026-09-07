@@ -97,7 +97,7 @@ local entity = Creator.createEntity({
         100, -- Shake start distance (from Entity to you)
     },
     Jumpscare = {
-        false, -- Enabled/Disabled
+        true, -- Enabled/Disabled
         {
             Image1 = "rbxassetid://11710141169", -- Image1 url
             Image2 = "rbxassetid://11395251044", -- Image2 url
