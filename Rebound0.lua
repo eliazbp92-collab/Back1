@@ -88,7 +88,7 @@ local entity = Creator.createEntity({
     Cycles = {
         Min = 1,
         Max = 4,
-        WaitTime = 3,
+        WaitTime = 2,
     },
     CamShake = {
         true, -- Enabled/Disabled
@@ -144,7 +144,7 @@ end
 
 entity.Debug.OnEntityFinishedRebound = function(entityTable)
     print("Entity has finished rebound:", entityTable.Model)
-wait(3)
+wait(2)
 local cue2 = Instance.new("Sound")
 cue2.Parent = game.Workspace
 cue2.Name = "Spawn"
