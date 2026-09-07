@@ -87,8 +87,8 @@ local entity = Creator.createEntity({
     },
     Cycles = {
         Min = 1,
-        Max = 1,
-        WaitTime = 1,
+        Max = 4,
+        WaitTime = 3,
     },
     CamShake = {
         true, -- Enabled/Disabled
@@ -120,7 +120,7 @@ local entity = Creator.createEntity({
             },
         },
     },
-    CustomDialog = {"You died to Rush...", "your balls look dry", "Can I put some lotion on them?"}, -- Custom death message
+    CustomDialog = {"You died to Rebound...", "i don't have ideas", ":9"}, -- Custom death message
 })
 
 -----[[ Advanced ]]-----
@@ -140,8 +140,6 @@ end
 
 entity.Debug.OnEntityStartMoving = function(entityTable)
     print("Entity has started moving:", entityTable.Model)
-   wait(4)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound01.lua"))()
 end
 
 entity.Debug.OnEntityFinishedRebound = function(entityTable)
