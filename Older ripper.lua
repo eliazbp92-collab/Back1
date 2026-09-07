@@ -144,18 +144,18 @@ entity.Debug.OnEntityDespawned = function(entityTable)
 			sound51:Play()
 
 			local pitch2 = Instance.new("PitchShiftSoundEffect")
-			pitch2.Octave = 0
+			pitch2.Octave = 1
 			pitch2.Parent = sound51
 
 			local pitch23 = Instance.new("PitchShiftSoundEffect")
-			pitch23.Octave = 0
+			pitch23.Octave = 1
 			pitch23.Parent = sound51
 
 			local eq = Instance.new("EqualizerSoundEffect")
-			eq.LowGain = 0
-			eq.MidGain = 0
+			eq.LowGain = -10
+			eq.MidGain = -20
 			eq.Parent = sound51
-			wait(3.76)
+			wait(3.50)
 			sound5:Destroy()
 			sound51:Destroy()
 end
