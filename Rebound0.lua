@@ -80,7 +80,7 @@ local entity = Creator.createEntity({
     HeightOffset = 0,
     CanKill = false,
     KillRange = 40,
-    BreakLights = true,
+    BreakLights = false,
     BackwardsMovement = true,
     FlickerLights = {
         false, -- Enabled/Disabled
