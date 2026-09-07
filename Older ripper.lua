@@ -68,7 +68,7 @@ local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "Ripper", -- Custom name of your entity
-    Model = "https://github.com/eliazbp92-collab/Back1/blob/main/OlderRipper.rbxm", -- Can be GitHub file or rbxassetid
+    Model = "https://github.com/eliazbp92-collab/Back1/raw/main/OlderRipper.rbxm", -- Can be GitHub file or rbxassetid
     Speed = 120, -- Percentage, 100 = default Rush speed
     DelayTime = 1, -- Time before starting cycles (seconds)
     HeightOffset = 3,
