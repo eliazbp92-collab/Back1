@@ -126,17 +126,50 @@ local entity = Creator.createEntity({
 -----[[ Advanced ]]-----
 entity.Debug.OnEntitySpawned = function(entityTable)
     print("Entity has spawned:", entityTable.Model)
-	local bruh = workspace.Rebound.Rebound
+	light(2,Color3.fromRGB(127, 249, 255),Color3.fromRGB(65, 138, 255))
+	local bruh = workspace.Rebound1.RushNew
 	local TweenService = game:GetService("TweenService")
-	wait(1.5)
-	local cue2 = Instance.new("Sound")
-	cue2.Parent = game.Workspace
-	cue2.Name = "Spawn"
-	cue2.SoundId = "rbxassetid://9114222038"
-	cue2.Volume = 5
-	cue2.TimePosition = 0
-	cue2.PlaybackSpeed = 1
-	cue2:Play()
+	local TweenService = game:GetService("TweenService")
+	local sound = Instance.new("Sound")
+	sound.SoundId = "rbxassetid://6734393210"
+	sound.Volume = 3
+	sound.Parent = workspace
+	sound:Play()
+
+	local ids = Instance.new("DistortionSoundEffect")
+	ids.Level = 0.65
+	ids.Parent = sound
+
+	local revers = Instance.new("ReverbSoundEffect")
+	revers.DecayTime = 1.5
+	revers.Density = 1
+	revers.Diffusion = 1
+	revers.DryLevel = -6
+	revers.Parent = sound
+
+	local sound1 = Instance.new("Sound")
+	sound1.SoundId = "rbxassetid://5246103002"
+	sound1.Volume = 3
+	sound1.Parent = workspace
+	sound1:Play()
+
+	local ids1 = Instance.new("DistortionSoundEffect")
+	ids1.Level = 0.65
+	ids1.Parent = sound1
+
+	local revers1 = Instance.new("ReverbSoundEffect")
+	revers1.DecayTime = 1.5
+	revers1.Density = 1
+	revers1.Diffusion = 1
+	revers1.DryLevel = -6
+	revers1.Parent = sound1
+
+	local pitch = Instance.new("PitchShiftSoundEffect")
+	pitch.Octave = 0.5
+	pitch.Parent = sound1
+
+	wait(4)
+
 	local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
 	move.Parent = bruh
 	move.Name = "ReboundMoving"
@@ -144,7 +177,7 @@ entity.Debug.OnEntitySpawned = function(entityTable)
 	move.Looped = true
 	local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
 	local distort = Instance.new("DistortionSoundEffect")
-	distort.Level = 0.75
+	distort.Level = 0.55
 	distort.Parent = move
 	move.RollOffMaxDistance = 200
 	move.RollOffMinDistance = 100
@@ -158,7 +191,7 @@ entity.Debug.OnEntitySpawned = function(entityTable)
 	eq.MidGain = 10
 	eq.LowGain = 10
 	eq.Parent = move
-	wait(1)
+	wait(0.1)
 	vroom:Play()
 	move:Play()
 end
