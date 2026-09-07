@@ -152,10 +152,10 @@ entity.Debug.OnEntityDespawned = function(entityTable)
 			pitch23.Parent = sound51
 
 			local eq = Instance.new("EqualizerSoundEffect")
-			eq.LowGain = -20
-			eq.MidGain = -10
+			eq.LowGain = 0
+			eq.MidGain = 0
 			eq.Parent = sound51
-			wait(0)
+			wait(3.76)
 			sound5:Destroy()
 			sound51:Destroy()
 end
