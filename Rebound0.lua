@@ -1,73 +1,57 @@
- 
-function light(tim, color0, color1)
-	local tweenservice = game:GetService("TweenService")
-	local info = TweenInfo.new(tim, Enum.EasingStyle.Linear)
-	for _, lightObj in pairs(game.Workspace.CurrentRooms:GetDescendants()) do
-		if lightObj:IsA("Light") or lightObj:IsA("SurfaceLight") or lightObj:IsA("SpotLight") then
-			local target = {Color = color1}
-			local anim = tweenservice:Create(lightObj, info, target)
-			anim:Play()
-		end
-		if lightObj:IsA("MeshPart") and lightObj.Material == Enum.Material.Neon and lightObj.Name ~= "Skybox" then
-			local target1 = {Color = color0}
-			local anim2 = tweenservice:Create(lightObj, info, target1)
-			anim2:Play()
-		end
-	end
-end
- 
--- Hiệu ứng ánh sáng Lighting
-game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(61, 171, 98)
-game.Lighting.MainColorCorrection.Contrast = 0.2
-game.Lighting.MainColorCorrection.Saturation = -0.7
- 
-local tween = game:GetService("TweenService")
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Contrast = 0}):Play()
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {Saturation = 0}):Play()
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5), {TintColor = Color3.fromRGB(255, 255, 255)}):Play()
- 
--- Âm thanh báo hiệu
+local Reboundcolor = Instance.new("ColorCorrectionEffect",game.Lighting) game.Debris:AddItem(Reboundcolor,24)
+Reboundcolor.Name = "Warn"
+Reboundcolor.TintColor = Color3.fromRGB(65, 138, 255) Reboundcolor.Saturation = -0.7 Reboundcolor.Contrast = 0.2
+game.TweenService:Create(Reboundcolor,TweenInfo.new(15),{TintColor = Color3.fromRGB(255, 255, 255),Saturation = 0, Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(5),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
 local cue1 = Instance.new("Sound")
 cue1.Parent = game.Workspace
 cue1.Name = "Scream"
-cue1.SoundId = "rbxassetid://9114397505"
- 
-local distort = Instance.new("DistortionSoundEffect", cue1)
+cue1.SoundId = "rbxassetid://9114397034"
+local distort = Instance.new("DistortionSoundEffect")
+distort.Parent = cue1
 distort.Level = 1
-local distort2 = Instance.new("DistortionSoundEffect", cue1)
+local distort2 = Instance.new("DistortionSoundEffect")
+distort2.Parent = cue1
 distort2.Level = 1
- 
-local pitch = Instance.new("PitchShiftSoundEffect", cue1)
+local pitch = Instance.new("PitchShiftSoundEffect")
+pitch.Parent = cue1
 pitch.Octave = 0.5
-local pitch2 = Instance.new("PitchShiftSoundEffect", cue1)
+local pitch2 = Instance.new("PitchShiftSoundEffect")
+pitch2.Parent = cue1
 pitch2.Octave = 0.5
-local pitch3 = Instance.new("PitchShiftSoundEffect", cue1)
+local pitch3 = Instance.new("PitchShiftSoundEffect")
+pitch3.Parent = cue1
 pitch3.Octave = 0.5
- 
-cue1.Volume = 2
+cue1.Volume = 0.1
 cue1:Play()
- 
-local spawnSound = Instance.new("Sound")
-spawnSound.Parent = game.Workspace
-spawnSound.Name = "Spaw5"
-spawnSound.SoundId = "rbxassetid://9114221327"
-spawnSound.Volume = 10
-spawnSound:Play()
- 
--- Rung camera an toàn
-pcall(function()
-	local CameraShaker = require(game.ReplicatedStorage:WaitForChild("CameraShaker"))
-	local camera = game.Workspace.CurrentCamera
-	local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
-		camera.CFrame = camera.CFrame * shakeCf
-	end)
-	camShake:Start()
-	camShake:ShakeOnce(10, 3, 0.1, 6)
+local cue2 = Instance.new("Sound")
+cue2.Parent = game.Workspace
+cue2.Name = "Spawn"
+cue2.SoundId = "rbxassetid://9114222038"
+cue2.Volume = 5
+cue2.TimePosition = 0
+cue2.PlaybackSpeed = 1
+cue2:Play()
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+	camara.CFrame = camara.CFrame * shakeCf
 end)
- 
--- Delay là 1 con số cụ thể (ví dụ: 2 giây) thay vì một bảng
-local delayTime = Random.new():NextInteger(0.01 , 2)
-task.wait(2.8)
+camShake:Start()
+camShake:ShakeOnce(10,3,0.1,6,2,0.5)
+wait(5.8)
+
+function GetGitSound(GithubSnd,SoundName)
+	local url=GithubSnd
+	if not isfile(SoundName..".mp3") then
+		writefile(SoundName..".mp3", game:HttpGet(url))
+	end
+	local sound=Instance.new("Sound")
+	sound.SoundId=(getcustomasset or getsynasset)(SoundName..".mp3")
+	return sound
+end
 
 local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))() 
 -- Create entity
