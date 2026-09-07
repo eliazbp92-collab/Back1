@@ -125,6 +125,39 @@ end
  
 entity.Debug.OnEntityDespawned = function(entityTable)
     print("Entity has despawned:", entityTable.Model)
+	        local sound5 = Instance.new("Sound")
+			sound5.PlaybackSpeed = 1
+			sound5.Volume = 10
+			sound5.SoundId = "rbxassetid://1837829565"
+			sound5.Parent = workspace
+			sound5:Play()
+
+			local pitch = Instance.new("PitchShiftSoundEffect")
+			pitch.Octave = 0
+			pitch.Parent = sound5
+
+			local sound51 = Instance.new("Sound")
+			sound51.PlaybackSpeed = 1
+			sound51.Volume = 10
+			sound51.SoundId = "rbxassetid://1318185544"
+			sound51.Parent = workspace
+			sound51:Play()
+
+			local pitch2 = Instance.new("PitchShiftSoundEffect")
+			pitch2.Octave = 0
+			pitch2.Parent = sound51
+
+			local pitch23 = Instance.new("PitchShiftSoundEffect")
+			pitch23.Octave = 0
+			pitch23.Parent = sound51
+
+			local eq = Instance.new("EqualizerSoundEffect")
+			eq.LowGain = -20
+			eq.MidGain = -10
+			eq.Parent = sound51
+			wait(0)
+			sound5:Destroy()
+			sound51:Destroy()
 end
  
 entity.Debug.OnEntityStartMoving = function(entityTable)
