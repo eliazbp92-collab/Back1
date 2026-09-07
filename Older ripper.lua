@@ -71,10 +71,10 @@ local entity = Creator.createEntity({
     Model = "https://github.com/eliazbp92-collab/Back1/raw/main/OlderRipper.rbxm", -- Can be GitHub file or rbxassetid
     Speed = 120, -- Percentage, 100 = default Rush speed
     DelayTime = 1, -- Time before starting cycles (seconds)
-    HeightOffset = 3,
+    HeightOffset = 2,
     CanKill = true,
     KillRange = 40,
-    BreakLights = true,
+    BreakLights = false,
     BackwardsMovement = false,
     FlickerLights = {
         false, -- Enabled/Disabled
