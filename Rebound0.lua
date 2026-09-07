@@ -126,27 +126,41 @@ local entity = Creator.createEntity({
 -----[[ Advanced ]]-----
 entity.Debug.OnEntitySpawned = function(entityTable)
     print("Entity has spawned:", entityTable.Model)
-local cue1 = Instance.new("Sound")
-cue1.Parent = game.Workspace
-cue1.Name = "Scream"
-cue1.SoundId = "rbxassetid://9114397505"
-local distort = Instance.new("DistortionSoundEffect")
-distort.Parent = cue1
-distort.Level = 0
-local distort2 = Instance.new("DistortionSoundEffect")
-distort2.Parent = cue1
-distort2.Level = 0
-local pitch = Instance.new("PitchShiftSoundEffect")
-pitch.Parent = cue1
-pitch.Octave = 1
-local pitch2 = Instance.new("PitchShiftSoundEffect")
-pitch2.Parent = cue1
-pitch2.Octave = 1
-local pitch3 = Instance.new("PitchShiftSoundEffect")
-pitch3.Parent = cue1
-pitch3.Octave = 0
-cue1.Volume = 3
-cue1:Play()
+	local bruh = workspace.Rebound.Rebound
+	local TweenService = game:GetService("TweenService")
+	wait(1.5)
+	local cue2 = Instance.new("Sound")
+	cue2.Parent = game.Workspace
+	cue2.Name = "Spawn"
+	cue2.SoundId = "rbxassetid://9114222038"
+	cue2.Volume = 5
+	cue2.TimePosition = 0
+	cue2.PlaybackSpeed = 1
+	cue2:Play()
+	local move = GetGitSound("https://github.com/check78/worldcuuuup/blob/main/DoomBegin.mp3?raw=true","Reboun")
+	move.Parent = bruh
+	move.Name = "ReboundMoving"
+	move.Volume = 0
+	move.Looped = true
+	local vroom = TweenService:Create(move, TweenInfo.new(2),{Volume = 0.2})
+	local distort = Instance.new("DistortionSoundEffect")
+	distort.Level = 0.75
+	distort.Parent = move
+	move.RollOffMaxDistance = 200
+	move.RollOffMinDistance = 100
+	local tree = Instance.new("TremoloSoundEffect")
+	tree.Depth = 1
+	tree.Duty = 1
+	tree.Frequency = 5
+	tree.Parent = move
+	local eq = Instance.new("EqualizerSoundEffect")
+	eq.HighGain = -60
+	eq.MidGain = 10
+	eq.LowGain = 10
+	eq.Parent = move
+	wait(1)
+	vroom:Play()
+	move:Play()
 end
 
 entity.Debug.OnEntityDespawned = function(entityTable)
