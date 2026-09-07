@@ -126,6 +126,69 @@ local entity = Creator.createEntity({
 -----[[ Advanced ]]-----
 entity.Debug.OnEntitySpawned = function(entityTable)
     print("Entity has spawned:", entityTable.Model)
+    light(2,Color3.fromRGB(127, 249, 255),Color3.fromRGB(65, 138, 255))
+	local TweenService = game:GetService("TweenService")
+	local sound = Instance.new("Sound")
+	sound.SoundId = "rbxassetid://6734393210"
+	sound.Volume = 3
+	sound.Parent = workspace
+	sound:Play()
+
+	local ids = Instance.new("DistortionSoundEffect")
+	ids.Level = 0.65
+	ids.Parent = sound
+
+	local revers = Instance.new("ReverbSoundEffect")
+	revers.DecayTime = 1.5
+	revers.Density = 1
+	revers.Diffusion = 1
+	revers.DryLevel = -6
+	revers.Parent = sound
+
+	local sound1 = Instance.new("Sound")
+	sound1.SoundId = "rbxassetid://5246103002"
+	sound1.Volume = 3
+	sound1.Parent = workspace
+	sound1:Play()
+
+	local ids1 = Instance.new("DistortionSoundEffect")
+	ids1.Level = 0.65
+	ids1.Parent = sound1
+
+	local revers1 = Instance.new("ReverbSoundEffect")
+	revers1.DecayTime = 1.5
+	revers1.Density = 1
+	revers1.Diffusion = 1
+	revers1.DryLevel = -6
+	revers1.Parent = sound1
+
+	local pitch = Instance.new("PitchShiftSoundEffect")
+	pitch.Octave = 0.5
+	pitch.Parent = sound1
+
+	wait(6)
+
+	local function GetGitSound(GithubSnd, SoundName)
+		local url = GithubSnd
+		if not isfile(SoundName .. ".mp3") then
+			writefile(SoundName .. ".mp3", game:HttpGet(url))
+		end
+		local sound = Instance.new("Sound")
+		sound.SoundId = (getcustomasset or getsynasset)(SoundName .. ".mp3")
+		return sound
+	end
+
+	local ReallyNear = game.Workspace.Rebound2.Fakeout
+
+	local Github = GetGitSound("https://github.com/eoyoustme/Impossible/blob/main/rebound%20fakeout.mp3?raw=true", "fakeout")
+
+	ReallyNear.SoundId = Github.SoundId
+	ReallyNear.PlaybackSpeed = 1
+	ReallyNear.TimePosition = 0
+	ReallyNear.Volume = 10
+	ReallyNear:Play()
+
+	Github:Destroy()
 end
 
 entity.Debug.OnEntityDespawned = function(entityTable)
