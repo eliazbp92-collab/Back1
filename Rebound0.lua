@@ -144,6 +144,13 @@ end
 
 entity.Debug.OnEntityFinishedRebound = function(entityTable)
     print("Entity has finished rebound:", entityTable.Model)
+wait(3)
+local cue2 = Instance.new("Sound")
+cue2.Parent = game.Workspace
+cue2.Name = "Spawn"
+cue2.SoundId = "rbxassetid://9114221327"
+cue2.Volume = 3
+cue2:Play()
 end
 
 entity.Debug.OnEntityEnteredRoom = function(entityTable, room)
