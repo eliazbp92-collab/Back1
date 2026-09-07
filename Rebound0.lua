@@ -126,6 +126,7 @@ local entity = Creator.createEntity({
 -----[[ Advanced ]]-----
 entity.Debug.OnEntitySpawned = function(entityTable)
     print("Entity has spawned:", entityTable.Model)
+	light(2, Color3.fromRGB(127, 249, 255),Color3.fromRGB(65, 138, 255)
 end
 
 entity.Debug.OnEntityDespawned = function(entityTable)
