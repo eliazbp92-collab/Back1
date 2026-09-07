@@ -142,7 +142,8 @@ local ModuleScripts = {
 				Type = "Guiding",
 				Hints = {"Death", "Hints", "Go", "Here"},
 				Cause = ""
-    },
+			}
+		},
     CustomDialog = {},
 }
 local Connections = {}
