@@ -1,0 +1,384 @@
+--// Services
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
+local SoundService = game:GetService("SoundService")
+
+local player = Players.LocalPlayer
+local camera = workspace.CurrentCamera
+
+--// ====== CONFIGURATION ====== --
+local ASSET_ID = "rbxassetid://108413369217199" -- A-60 Asset ID
+local ENTITY_SPEED = 185
+local SPAWN_DELAY = 2
+local KILL_RADIUS = 100 
+
+-- EXTREME Camera Shake Configuration
+local SHAKE_MAX_RADIUS = 250 -- Expanded shake detection range
+local SHAKE_MAX_INTENSITY = 1.8 -- Massive, violent screen distortion offset
+local isIdling = false -- Internal flag to track when it reaches the final door
+
+-- Audio Assets
+local SPAWN_SOUND_URL = "https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/X-60Spawn.mp3.mpeg"
+local JUMPSCARE_SOUND_URL = "https://github.com/reboundplayz/Doors-Fixed-Modes/raw/refs/heads/main/A-200Jumpscare2.mp3%20(1).mpeg"
+--// =========================== --
+
+--// Safe Room Detection
+local latestRoomNum = ReplicatedStorage.GameData.LatestRoom.Value
+if workspace:FindFirstChild("SeekMovingNewClone") 
+   or latestRoomNum == 50 
+   or latestRoomNum == 100 
+   or (latestRoomNum >= 90 and latestRoomNum <= 100) then
+    return
+end
+
+--// Load Asset Safely
+local assets = game:GetObjects(ASSET_ID)
+if not assets or #assets == 0 then
+    warn("A-60 asset failed to load")
+    return
+end
+
+local root = assets[1]
+local model = root:IsA("Model") and root or nil
+if not model then
+    for _, vmix in ipairs(root:GetDescendants()) do
+        if vmix:IsA("Model") then model = vmix; break end
+    end
+end
+
+if not model then
+    warn("No model container found!")
+    return
+end
+
+model.Name = "A-60"
+model.Parent = workspace
+
+-- Locate RushNew or base block wrapper dynamically
+local hrp = model:WaitForChild("RushNew", 10) or model:FindFirstChildWhichIsA("BasePart")
+if not hrp then 
+    warn("RushNew or Core Part missing!")
+    return 
+end
+
+-- Turn off collision properties across all parts
+for _, part in ipairs(model:GetDescendants()) do
+    if part:IsA("BasePart") then
+        part.CanCollide = false
+    end
+end
+
+--// ========================================== --
+--//    PLAY CUSTOM SPAWN AUDIO ON SCREEN       --
+--// ========================================== --
+pcall(function()
+    if not isfile("a60_spawn.mp3") then
+        writefile("a60_spawn.mp3", game:HttpGet(SPAWN_SOUND_URL))
+    end
+    
+    local screenSpawnSound = Instance.new("Sound")
+    screenSpawnSound.SoundId = getcustomasset("a60_spawn.mp3")
+    screenSpawnSound.Volume = 5
+    screenSpawnSound.Parent = SoundService
+    screenSpawnSound:Play()
+    
+    game:GetService("Debris"):AddItem(screenSpawnSound, 10)
+end)
+
+--// ========================================== --
+--//     FORCE-ACTIVATED FACE GLITCH SCRIPT     --
+--// ========================================== --
+local face_rng = model:FindFirstChildWhichIsA("face_rng", true)
+if bGui then
+    task.spawn(function()
+        local f1 = bGui:WaitForChild("face1", 5)
+        local f2 = bGui:WaitForChild("face2", 5)
+        local f3 = bGui:WaitForChild("face3", 5)
+        local f4 = bGui:WaitForChild("face4", 5)
+        local f5 = bGui:WaitForChild("face5", 5)
+        local f6 = bGui:WaitForChild("face6", 5)
+        
+        if f1 and f2 and f3 and f4 and f5 and f6 then
+            while model.Parent do
+                f6.AnchorPoint = Vector2.new(0,0)
+                f1.Visible = true
+                f2.Visible = false
+                f3.Visible = false
+                f4.Visible = false
+                f5.Visible = false
+                f6.Visible = false
+                
+                task.wait(0.52)
+                f2.Visible = true
+                task.wait(0.35)
+                f2.AnchorPoint = Vector2.new(0.05,0)
+                task.wait(0.35)
+                f1.Visible = false
+                task.wait(0.35)
+                f3.Visible = true
+                f1.Visible = true
+                f2.Visible = false
+                f2.AnchorPoint = Vector2.new(0,0)
+                task.wait(0.5)
+                f1.Visible = false
+                task.wait(0.31)
+                f4.Visible = true
+                task.wait(0.6)
+                f3.AnchorPoint = Vector2.new(0,0.015)
+                f4.AnchorPoint = Vector2.new(0.025,0)
+                f2.AnchorPoint = Vector2.new(0.05,0)
+                task.wait(0.38)
+                f3.Visible = false
+                task.wait(0.2)
+                f3.AnchorPoint = Vector2.new(0,0)
+                f4.AnchorPoint = Vector2.new(0,0)
+                f2.AnchorPoint = Vector2.new(0,0)
+                task.wait(0.23)
+                f4.Visible = false
+                f5.Visible = true
+                f1.Visible = true
+                task.wait(0.1)
+                f5.AnchorPoint = Vector2.new(0, 0.079)
+                f1.AnchorPoint = Vector2.new(0.035,0.015)
+                task.wait(0.42)
+                f5.AnchorPoint = Vector2.new(0,0)
+                f1.AnchorPoint = Vector2.new(0,0)
+                task.wait(0.42)
+                f4.Visible = false
+                f1.Visible = false
+                task.wait(0.23)
+                f6.Visible = true
+                task.wait(0.52)
+                f5.Visible = false
+                f2.Visible = true
+                f6.AnchorPoint = Vector2.new(0.055, 0.031)
+                task.wait(0.56)
+            end
+        end
+    end)
+else
+    warn("A-60 BillboardGui face container not found in asset tree")
+end
+
+--// ========================================== --
+--//         EXTREME CAMERA SHAKE SYSTEM        --
+--// ========================================== --
+local shakeConnection
+shakeConnection = RunService.RenderStepped:Connect(function()
+    if not model.Parent or not hrp or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then
+        if shakeConnection then shakeConnection:Disconnect() end
+        return
+    end
+    
+    local charHRP = player.Character.HumanoidRootPart
+    local distance = (hrp.Position - charHRP.Position).Magnitude
+    local currentIntensity = 0
+    
+    if isIdling then
+        -- Force absolute maximum intensity screen breaking shake during the idle sequence
+        currentIntensity = SHAKE_MAX_INTENSITY
+    elseif distance <= SHAKE_MAX_RADIUS then
+        -- Scaled dynamic extreme shake based on velocity rush proximity
+        local proximityScale = 1 - (distance / SHAKE_MAX_RADIUS)
+        currentIntensity = SHAKE_MAX_INTENSITY * proximityScale
+    end
+    
+    if currentIntensity > 0 then
+        local shakeX = math.random(-100, 100) / 100 * currentIntensity
+        local shakeY = math.random(-100, 100) / 100 * currentIntensity
+        local shakeZ = math.random(-100, 100) / 100 * currentIntensity
+        
+        camera.CFrame = camera.CFrame * CFrame.Angles(math.rad(shakeX), math.rad(shakeY), math.rad(shakeZ))
+    end
+end)
+
+--// ========================================== --
+--//    MASSIVE KILL RANGE & JUMPSCARE HAZARD   --
+--// ========================================== --
+local function triggerJumpscare()
+    if shakeConnection then shakeConnection:Disconnect() end
+    isIdling = false
+    
+    local playerGui = player:WaitForChild("PlayerGui")
+    local gui = Instance.new("ScreenGui", playerGui)
+    gui.IgnoreGuiInset = true
+    gui.DisplayOrder = 999999
+
+    local flash = Instance.new("Frame", gui)
+    flash.Size = UDim2.new(1, 0, 1, 0)
+    flash.BorderSizePixel = 0
+    flash.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+    flash.ZIndex = 10
+
+    local image = Instance.new("ImageLabel", gui)
+    image.AnchorPoint = Vector2.new(0.5, 0.5)
+    image.Position = UDim2.new(0.5, 0, 0.5, 0)
+    image.Size = UDim2.new(0, 350, 0, 350)
+    image.BackgroundTransparency = 1
+    image.Image = "rbxassetid://192267375" 
+    image.ZIndex = 11
+
+    pcall(function()
+        if not isfile("a60_jumpscare.mp3") then
+            writefile("a60_jumpscare.mp3", game:HttpGet(JUMPSCARE_SOUND_URL))
+        end
+        local sound = Instance.new("Sound", gui)
+        sound.SoundId = getcustomasset("a60_jumpscare.mp3")
+        sound.Volume = 8
+        sound:Play()
+    end)
+
+    TweenService:Create(image, TweenInfo.new(1.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out), {Size = UDim2.new(0, 2800, 0, 2800)}):Play()
+
+    task.spawn(function()
+        local start = os.clock()
+        while (os.clock() - start) < 1.4 do
+            -- Red and Black alternating strobe
+            flash.BackgroundColor3 = (math.random(1, 2) == 1) and Color3.fromRGB(200, 0, 0) or Color3.fromRGB(0, 0, 0)
+            image.Rotation = math.random(-12, 12)
+            image.Position = UDim2.new(0.5, math.random(-35, 35), 0.5, math.random(-35, 35))
+            task.wait(0.01)
+        end
+        gui:Destroy()
+    end)
+end
+
+local damageDebounce = false
+
+task.spawn(function()
+    local raycastParams = RaycastParams.new()
+    raycastParams.FilterType = Enum.RaycastFilterType.Exclude
+    
+    while model.Parent and not damageDebounce do
+        task.wait(0.02)
+        local char = player.Character
+        if char and char:FindFirstChild("HumanoidRootPart") and char:FindFirstChild("Humanoid") then
+            local pRoot = char.HumanoidRootPart
+            local distance = (hrp.Position - pRoot.Position).Magnitude
+            
+            if distance <= KILL_RADIUS and char.Humanoid.Health > 0 then
+                raycastParams.FilterDescendantsInstances = {model, char}
+                
+                local origin = hrp.Position
+                local direction = (pRoot.Position - origin)
+                local rayResult = workspace:Raycast(origin, direction, raycastParams)
+                
+                if not rayResult then
+                    damageDebounce = true
+                    
+                    firesignal(ReplicatedStorage.RemotesFolder.DeathHint.OnClientEvent, {
+                        "You encountered A-60...",
+                        "It is incredibly fast and anomalies follow it.",
+                        "Find shelter immediately when things start to warp!"
+                    }, "Red") 
+                    
+                    pcall(function()
+                        ReplicatedStorage.GameStats["Player_" .. player.Name].Total.DeathCause.Value = "A-60"
+                    end)
+                    
+                    char.Humanoid.Health = 0
+                    triggerJumpscare()
+                    break
+                end
+            end
+        end
+    end
+end)
+
+--// ========================================== --
+--//            DOORS PATHFINDING               --
+--// ========================================== --
+task.wait(SPAWN_DELAY)
+
+local roomsFolder = workspace:WaitForChild("CurrentRooms")
+local orderedRooms = {}
+
+for _, room in ipairs(roomsFolder:GetChildren()) do
+    local roomNum = tonumber(room.Name)
+    if roomNum then
+        table.insert(orderedRooms, {Number = roomNum, Instance = room})
+    end
+end
+table.sort(orderedRooms, function(a, b) return a.Number < b.Number end)
+
+if #orderedRooms == 0 then return end
+
+local startingRoom = orderedRooms[1].Instance
+local startPart = startingRoom:FindFirstChild("RoomStart") or (startingRoom:FindFirstChild("Parts") and startingRoom.Parts:FindFirstChild("Floor"))
+if startPart then
+    hrp.CFrame = startPart.CFrame + Vector3.new(0, 3.5, 0)
+end
+
+local targetPlayerRoomInstance = nil
+
+for idx, roomData in ipairs(orderedRooms) do
+    local roomObj = roomData.Instance
+    
+    if roomData.Number == latestRoomNum then
+        targetPlayerRoomInstance = roomObj
+    end
+    
+    if roomData.Number <= latestRoomNum then
+        local targets = {}
+        local rStart = roomObj:FindFirstChild("RoomStart")
+        local rEnd = roomObj:FindFirstChild("RoomEnd") or (roomObj:FindFirstChild("Parts") and roomObj.Parts:FindFirstChild("Door"))
+        
+        if rStart then table.insert(targets, rStart) end
+        if rEnd then table.insert(targets, rEnd) end
+        
+        if #targets == 0 and roomObj:FindFirstChild("Parts") and roomObj.Parts:FindFirstChild("Floor") then
+            table.insert(targets, roomObj.Parts.Floor)
+        end
+
+        for _, point in ipairs(targets) do
+            local targetCFrame = point.CFrame + Vector3.new(0, 3.5, 0)
+            local distance = (hrp.Position - targetCFrame.Position).Magnitude
+            
+            if distance > 1 then
+                local moveTween = TweenService:Create(
+                    hrp,
+                    TweenInfo.new(distance / ENTITY_SPEED, Enum.EasingStyle.Linear),
+                    {CFrame = targetCFrame}
+                )
+                moveTween:Play()
+                moveTween.Completed:Wait()
+            end
+        end
+    end
+end
+
+--// ========================================== --
+--//      IDLE 5 SECONDS WITH EXTREME SHAKE     --
+--// ========================================== --
+if targetPlayerRoomInstance then
+    local finalDespawnPoint = targetPlayerRoomInstance:FindFirstChild("RoomEnd") 
+        or (targetPlayerRoomInstance:FindFirstChild("Parts") and targetPlayerRoomInstance.Parts:FindFirstChild("Door"))
+        or targetPlayerRoomInstance:FindFirstChild("RoomStart")
+    
+    if not finalDespawnPoint and targetPlayerRoomInstance:FindFirstChild("Parts") then
+        finalDespawnPoint = targetPlayerRoomInstance.Parts:FindFirstChild("Floor")
+    end
+    
+    if finalDespawnPoint then
+        local finalCFrame = finalDespawnPoint.CFrame + Vector3.new(0, 3.5, 0)
+        local endMoveTween = TweenService:Create(
+            hrp, 
+            TweenInfo.new((hrp.Position - finalCFrame.Position).Magnitude / ENTITY_SPEED, Enum.EasingStyle.Linear), 
+            {CFrame = finalCFrame}
+        )
+        endMoveTween:Play()
+        endMoveTween.Completed:Wait()
+
+        -- Trigger the flag to force maximum camera shake during the idle freeze
+        isIdling = true
+
+        -- Holds standard idle position for exactly 5 seconds in silence while shaking violently
+        task.wait(5.0)
+    end
+end
+
+isIdling = false
+if shakeConnection then shakeConnection:Disconnect() end
+model:Destroy()
