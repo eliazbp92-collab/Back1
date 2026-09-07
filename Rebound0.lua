@@ -68,6 +68,7 @@ distort.Level = 1
  
 local TweenService = game:GetService("TweenService")
 local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
+light(2, Color3.fromRGB(127, 249, 255),Color3.fromRGB(65, 138, 255))
 
 local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))() 
 -- Create entity
