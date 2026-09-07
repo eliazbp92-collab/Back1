@@ -70,59 +70,118 @@
 	camShake:ShakeOnce(10,3,0.1,6,2,0.5)
 	task.wait(2.8)
 
-local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
+local Creator = loadstring(game:HttpGet("https://pastefy.app/rgFuO0RT/raw"))()
 -- Create entity
-local entity = Creator.createEntity({
-    CustomName = "Rebound", -- Custom name of your entity
-    Model = "rbxassetid://87802222611160", -- Can be GitHub file or rbxassetid
-    Speed = 250, -- Percentage, 100 = default Rush speed
-    DelayTime = 1, -- Time before starting cycles (seconds)
-    HeightOffset = 0,
-    CanKill = true,
-    KillRange = 40,
-    BreakLights = true,
-    BackwardsMovement = false,
-    FlickerLights = {
-        true, -- Enabled/Disabled
-        1, -- Time (seconds)
-    },
-    Cycles = {
-        Min = 1,
-        Max = 2,
-        WaitTime = 1,
-    },
-    CamShake = {
-        true, -- Enabled/Disabled
-        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
-        100, -- Shake start distance (from Entity to you)
-    },
-    Jumpscare = {
-        true, -- Enabled/Disabled
-        {
-            Image1 = "rbxassetid://11862656458", -- Image1 url
-            Image2 = "rbxassetid://11862656458", -- Image2 url
-            Shake = true,
-            Sound1 = {
-                109582246349306, -- SoundId
-                { Volume = 0.5 }, -- Sound properties
-            },
-            Sound2 = {
-                109582246349306, -- SoundId
-                { Volume = 0.5 }, -- Sound properties
-            },
-            Flashing = {
-                true, -- Enabled/Disabled
-                Color3.fromRGB(0, 0, 255), -- Color
-            },
-            Tease = {
-                true, -- Enabled/Disabled
-                Min = 4,
-                Max = 4,
-            },
-        },
-    },
-    CustomDialog = {"You died to Rebound...", "He a tricky one"}, -- Custom death message
-})
+local entity = Spawner:Create({
+	Entity = {
+		Name = "Rush (Templete Entity)",
+		Asset = "https://github.com/RegularVynixu/DOORS-Entity-Spawner-V2/raw/main/Assets/Entities/Rush.rbxm",
+		HeightOffset = -1
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 1
+		},
+		Shatter = true,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	Spawned = {
+		ChangeColorWhenSpawn = false, 
+		Rainbow = false,              
+		Color = Color3.fromRGB(0, 85, 255)
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1}
+	},
+
+	Movement = {
+		Speed = 100,
+		SpeedFast = 470,                  
+		MoveFastNotEnter = false,            
+		Delay = 2,
+		Reversed = false,                  
+		EndWhenEnterLatestRoom = false,   
+		EndDelay = 0,
+
+		ReboundMoving = false,          
+		TweenSecond = 1.5,            
+
+		ReboundMoveStyle = false,      
+		ReboundStyleTimes = 5,        
+		ReboundStyleSound = "rbxassetid://9114221327", 
+		ReboundStyleVolume = 5,
+		ReboundStyleDelay = 2, 
+
+		ChasePlayerWhenSee = true,
+		SpeedWhenChase = 35
+	},
+
+	Jumpscare = {
+		Enabled = true,
+		Image1 = "rbxassetid://11253398403", 
+		Image2 = "rbxassetid://12293509957",
+		Sound1 = "rbxassetid://0", 
+		Sound2 = "rbxassetid://109582246349306", 
+		Tease = {
+			[1] = true,
+			Min = 1,
+			Max = 1
+		},
+		Flashing = {
+			[1] = true,
+			[2] = Color3.fromRGB(255, 255, 255)
+		},
+		Shake = true
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush",
+		Min = 1,
+		Max = 1,
+		Delay = 2
+	},
+	Damage = {
+		Enabled = true,
+		KillOnMove = false,            
+		Range = 40,
+		Amount = 125,
+		IgnoreHiding = false,
+
+		JumpscareRipper = {
+			Enabled = false,
+			TargetPartName = "Ripe",
+			AttachmentName = "ripe",
+			ParticleName = "ParticleEmitter",
+			ParticleTexture = "rbxassetid://12737595583",
+			SoundUrl = "https://github.com/eoyoustme/back/raw/main/Kill_with_static.mp3",
+			SlamSoundId = "rbxassetid://0",
+			EndSoundId = "rbxassetid://4988621968",
+			Images = {
+				"rbxassetid://8482795900",
+				"rbxassetid://236542974",
+				"rbxassetid://184251462",
+				"rbxassetid://236777652"
+			},
+			FlashDuration = 1.6
+		}
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding",
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	},
  
 -----[[ Advanced ]]-----
 entity.Debug.OnEntitySpawned = function(entityTable)
