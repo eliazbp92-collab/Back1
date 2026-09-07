@@ -70,7 +70,7 @@
 	camShake:ShakeOnce(10,3,0.1,6,2,0.5)
 	task.wait(2.8)
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/eoyoustme/Mayhem-Remake/refs/heads/main/OgHungerNewSpawner"))()
+local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "Rebound", -- Custom name of your entity
