@@ -72,23 +72,6 @@ local entity = Creator.createEntity({
 -----[[ Advanced ]]-----
 entity.Debug.OnEntitySpawned = function(entityTable)
     print("Entity has spawned:", entityTable.Model)
-	local hiding = game.Players.LocalPlayer.Character
-		local ishiding = hiding:GetAttributes("Hiding")
-		local function light(tim, color0, color1)
-			local Tweenservice = game:GetService("TweenService")
-			local info = TweenInfo.new(tim, Enum.EasingStyle.Linear)
-			local currentRooms = workspace.CurrentRooms
-			if not currentRooms then return end
-
-			for _, instance in ipairs(currentRooms:GetDescendants()) do
-				if instance:IsA("Light") or instance:IsA("SurfaceLight") or instance:IsA("SpotLight") then
-					Tweenservice:Create(instance, info, {Color = color1}):Play()
-				elseif instance:IsA("MeshPart") and instance.Material == Enum.Material.Neon and instance.Name ~= "Skybox" then
-					Tweenservice:Create(instance, info, {Color = color0}):Play()
-				end
-			end
-		end
-		light(2, Color3.fromRGB(116, 135, 255), Color3.fromRGB(116, 135, 255))
 end
  
 entity.Debug.OnEntityDespawned = function(entityTable)
