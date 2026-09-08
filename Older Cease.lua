@@ -1,21 +1,3 @@
-function light(tim,color0,color1)
-	local tweenservice = game:GetService("TweenService")
-	local info = TweenInfo.new(tim,Enum.EasingStyle.Linear)
-	for _ , light in pairs(game.Workspace.CurrentRooms:GetDescendants()) do
-		if light:IsA("Light") or light:IsA("SurfaceLight") or light:IsA("SpotLight") then
-			local target = {Color = color1}
-			local anim = tweenservice:Create(light,info,target)
-			anim:Play()
-		end
-		if light:IsA("MeshPart") and light.Material == Enum.Material.Neon  and light.Name ~= "Skybox" then
-			local target1 = {Color = color0}
-			local anim2 = tweenservice:Create(light,info,target1)
-			anim2:Play()
-		end
-	end
-end
-wait(2)
-
 local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))() 
 -- Create entity
 local entity = Creator.createEntity({
@@ -58,7 +40,7 @@ local entity = Creator.createEntity({
             },
             Flashing = {
                 true, -- Enabled/Disabled
-                Color3.fromRGB(0, 0, 255), -- Color
+                Color3.fromRGB(116, 135, 255), -- Color
             },
             Tease = {
                 true, -- Enabled/Disabled
