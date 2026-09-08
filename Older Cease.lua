@@ -2,7 +2,7 @@ local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "Cease", -- Custom name of your entity
-    Model = "https://raw.githubusercontent.com/vladikkrutoi2010-debug/Rbxm-models/main/Cease.rbxm", -- Can be GitHub file or rbxassetid
+    Model = "13197667688", -- Can be GitHub file or rbxassetid
     Speed = 65, -- Percentage, 100 = default Rush speed
     DelayTime = 3, -- Time before starting cycles (seconds)
     HeightOffset = 0,
