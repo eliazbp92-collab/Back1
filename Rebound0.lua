@@ -87,8 +87,8 @@ local entity = Creator.createEntity({
     },
     Cycles = {
         Min = 1,
-        Max = 4,
-        WaitTime = 2,
+        Max = 1,
+        WaitTime = 1,
     },
     CamShake = {
         true, -- Enabled/Disabled
@@ -136,6 +136,9 @@ end
 
 entity.Debug.OnEntityDespawned = function(entityTable)
     print("Entity has despawned:", entityTable.Model)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound01.lua"))()
+end)
 end
 
 entity.Debug.OnEntityStartMoving = function(entityTable)
