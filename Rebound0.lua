@@ -49,7 +49,7 @@ local entity = Creator.createEntity({
             },
         },
     },
-    CustomDialog = {"You died to Rebound...", "i don't have ideas", ":9"}, -- Custom death message
+    CustomDialog = {"You died to Rush...", "your balls look dry", "Can I put some lotion on them?"}, -- Custom death message
 })
 
 -----[[ Advanced ]]-----
@@ -67,7 +67,6 @@ entity.Debug.OnEntityDespawned = function(entityTable)
     print("Entity has despawned:", entityTable.Model)
 game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound01.lua"))()
-end)
 end
 
 entity.Debug.OnEntityStartMoving = function(entityTable)
