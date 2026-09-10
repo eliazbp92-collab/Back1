@@ -65,12 +65,12 @@ end
 
 entity.Debug.OnEntityDespawned = function(entityTable)
     print("Entity has despawned:", entityTable.Model)
+	game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound04.lua"))()
 end
 
 entity.Debug.OnEntityStartMoving = function(entityTable)
     print("Entity has started moving:", entityTable.Model)
-   wait(4)
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Rebound04.lua"))()
 end
 
 entity.Debug.OnEntityFinishedRebound = function(entityTable)
