@@ -126,6 +126,30 @@ local entity = Creator.createEntity({
 -----[[ Advanced ]]-----
 entity.Debug.OnEntitySpawned = function(entityTable)
     print("Entity has spawned:", entityTable.Model)
+local cue2 = Instance.new("Sound")
+cue2.Parent = game.Workspace
+cue2.Name = "Spawn"
+cue2.SoundId = "rbxassetid://9114221327"
+cue2.Volume = 3
+cue2:Play()
+	
+local scare = Instance.new("Sound")
+scare.Parent = game.Workspace
+scare.Name = "MyEarsBurn"
+scare.SoundId = "rbxassetid://5567523008"
+scare.PlaybackSpeed = 3
+scare.Volume = 1
+ 
+local shift = Instance.new("PitchShiftSoundEffect")
+shift.Octave = 0.5
+shift.Parent = scare
+ 
+local distort = Instance.new("DistortionSoundEffect")
+distort.Parent = scare
+distort.Level = 1
+ 
+local TweenService = game:GetService("TweenService")
+local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
 end
 
 entity.Debug.OnEntityDespawned = function(entityTable)
