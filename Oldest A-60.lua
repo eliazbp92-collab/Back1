@@ -2,7 +2,7 @@ local Creator = loadstring(game:HttpGet("https://pastebin.com/raw/0fSnvfGt"))()
 -- Create entity
 local entity = Creator.createEntity({
     CustomName = "A-60", -- Custom name of your entity
-    Model = "rbxassetid://11379072534", -- Can be GitHub file or rbxassetid
+    Model = "https://github.com/eliazbp92-collab/Back1/raw/main/OldestA60.rbxm", -- Can be GitHub file or rbxassetid
     Speed = 220, -- Percentage, 100 = default Rush speed
     DelayTime = 4, -- Time before starting cycles (seconds)
     HeightOffset = 0,
