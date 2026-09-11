@@ -6,7 +6,7 @@ local entity = Creator.createEntity({
     Speed = 100, -- Percentage, 100 = default Rush speed
     DelayTime = 1, -- Time before starting cycles (seconds)
     HeightOffset = 0,
-    CanKill = false,
+    CanKill = true,
     KillRange = 40,
     BreakLights = false,
     BackwardsMovement = true,
@@ -85,6 +85,7 @@ end
 
 entity.Debug.OnDeath = function(entityTable)
     warn("Player has died.")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Rebound%20Jumpscare.lua"))()
 end
 ------------------------
 
