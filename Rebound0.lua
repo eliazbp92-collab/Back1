@@ -96,7 +96,7 @@ local entity = Creator.createEntity({
         100, -- Shake start distance (from Entity to you)
     },
     Jumpscare = {
-        true, -- Enabled/Disabled
+        false, -- Enabled/Disabled
         {
             Image1 = "rbxassetid://10483855823", -- Image1 url
             Image2 = "rbxassetid://10483999903", -- Image2 url
@@ -176,6 +176,7 @@ end
 
 entity.Debug.OnDeath = function(entityTable)
     warn("Player has died.")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Timofey2339/Depth-doors-model/refs/heads/main/Jumpscare/Rebound%20Jumpscare.lua"))()
 end
 ------------------------
 
