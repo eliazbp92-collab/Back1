@@ -59,14 +59,12 @@ end
 
 entity.Debug.OnEntityDespawned = function(entityTable)
     print("Entity has despawned:", entityTable.Model)
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/DOORS-Custom-Achievements/refs/heads/main/init.luau"))()
 
----====== Load achievement giver ======---
-local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
- 
----====== Display achievement ======---
 achievementGiver({
-    Title = "Out of many Rebound",
-    Desc = "Might Come back or not",
+    Identifier = "TestAchievement",
+    Title = "Out of many Rebounds,
+    Desc = "Might Came back or not",
     Reason = "Encounter and Survive the rare entity called A-60.",
     Image = "rbxassetid://11395251044"
 })
