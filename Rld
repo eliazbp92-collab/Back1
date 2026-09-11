@@ -1,0 +1,382 @@
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local CoreGui = game:GetService("CoreGui")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "AdminEntities10BSolid"
+ScreenGui.Parent = CoreGui
+ScreenGui.ResetOnSpawn = false
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(25, 27, 30)
+MainFrame.Position = UDim2.new(0.2, 0, 0.15, 0)
+MainFrame.Size = UDim2.new(0, 580, 0, 640)
+MainFrame.Active = true
+MainFrame.Visible = false
+MainFrame.BorderColor3 = Color3.fromRGB(80, 85, 95)
+MainFrame.BorderSizePixel = 2
+
+local MainCorner = Instance.new("UICorner")
+MainCorner.CornerRadius = UDim.new(0, 14)
+MainCorner.Parent = MainFrame
+
+local DragHandle = Instance.new("Frame")
+DragHandle.Name = "DragHandle"
+DragHandle.Parent = MainFrame
+DragHandle.BackgroundColor3 = Color3.fromRGB(35, 38, 43)
+DragHandle.Size = UDim2.new(1, 0, 0, 55)
+DragHandle.Active = true 
+
+local DragCorner = Instance.new("UICorner")
+DragCorner.CornerRadius = UDim.new(0, 14)
+DragCorner.Parent = DragHandle
+
+local Title = Instance.new("TextLabel")
+Title.Name = "Title"
+Title.Parent = DragHandle
+Title.BackgroundTransparency = 1.00
+Title.Position = UDim2.new(0, 20, 0, 0)
+Title.Size = UDim2.new(1, -70, 1, 0)
+Title.Font = Enum.Font.Oswald
+Title.Text = "ADMIN ENTITIES FOR HACKERS"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 22
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+local function ConnectDragging(handle, frameToMove)
+	local dragging = false
+	local dragInput, dragStart, startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		frameToMove.Position = UDim2.new(
+			startPos.X.Scale, 
+			startPos.X.Offset + delta.X, 
+			startPos.Y.Scale, 
+			startPos.Y.Offset + delta.Y
+		)
+	end
+
+	handle.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = frameToMove.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	handle.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+
+ConnectDragging(DragHandle, MainFrame)
+
+local RestoreSquare = Instance.new("TextButton")
+RestoreSquare.Name = "RestoreSquare"
+RestoreSquare.Parent = ScreenGui
+RestoreSquare.BackgroundColor3 = Color3.fromRGB(25, 27, 30)
+RestoreSquare.Position = UDim2.new(0.05, 0, 0.1, 0)
+RestoreSquare.Size = UDim2.new(0, 140, 0, 45) 
+RestoreSquare.Font = Enum.Font.Oswald
+RestoreSquare.Text = "ADMIN ENTITIES" 
+RestoreSquare.TextSize = 16
+RestoreSquare.TextColor3 = Color3.fromRGB(255, 255, 255)
+RestoreSquare.Visible = true
+RestoreSquare.Active = true
+RestoreSquare.BorderColor3 = Color3.fromRGB(80, 85, 95)
+RestoreSquare.BorderSizePixel = 2
+
+local SquareCorner = Instance.new("UICorner")
+SquareCorner.CornerRadius = UDim.new(0, 6) 
+SquareCorner.Parent = RestoreSquare
+
+ConnectDragging(RestoreSquare, RestoreSquare)
+
+local AdminExclusiveEntities = Instance.new("ScrollingFrame")
+AdminExclusiveEntities.Name = "Admin Exclusive Entities"
+AdminExclusiveEntities.Parent = MainFrame
+AdminExclusiveEntities.BackgroundTransparency = 1.00
+AdminExclusiveEntities.Position = UDim2.new(0, 16, 0, 75)
+AdminExclusiveEntities.Size = UDim2.new(1, -32, 1, -115)
+AdminExclusiveEntities.CanvasSize = UDim2.new(0, 0, 0, 0)
+AdminExclusiveEntities.AutomaticCanvasSize = Enum.AutomaticSize.Y
+AdminExclusiveEntities.ScrollBarThickness = 4
+AdminExclusiveEntities.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 255)
+
+local UIListLayout = Instance.new("UIListLayout")
+UIListLayout.Parent = AdminExclusiveEntities
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 12)
+
+local MadeByText = Instance.new("TextLabel")
+MadeByText.Name = "MadeByText"
+MadeByText.Parent = MainFrame
+MadeByText.BackgroundTransparency = 1.00
+MadeByText.Position = UDim2.new(1, -160, 1, -35)
+MadeByText.Size = UDim2.new(0, 140, 0, 20)
+MadeByText.Font = Enum.Font.Oswald
+MadeByText.Text = "Made by : Hecker"
+MadeByText.TextColor3 = Color3.fromRGB(150, 155, 165) 
+MadeByText.TextSize = 14
+MadeByText.TextXAlignment = Enum.TextXAlignment.Right
+
+local function CreateButton(name, callback)
+	local Button = Instance.new("TextButton")
+	Button.Name = name .. "Btn"
+	Button.Parent = AdminExclusiveEntities
+	Button.BackgroundColor3 = Color3.fromRGB(35, 38, 43)
+	Button.Size = UDim2.new(1, 0, 0, 52)
+	Button.Font = Enum.Font.Oswald
+	Button.Text = name:upper()
+	Button.TextColor3 = Color3.fromRGB(240, 240, 240)
+	Button.TextSize = 16
+	Button.AutoButtonColor = false
+
+	local UICorner = Instance.new("UICorner")
+	UICorner.CornerRadius = UDim.new(0, 8)
+	UICorner.Parent = Button
+
+	Button.BorderColor3 = Color3.fromRGB(55, 60, 68)
+	Button.BorderSizePixel = 1
+
+	Button.MouseEnter:Connect(function()
+		TweenService:Create(Button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(45, 50, 56)}):Play()
+	end)
+	Button.MouseLeave:Connect(function()
+		TweenService:Create(Button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(35, 38, 43)}):Play()
+	end)
+	Button.MouseButton1Down:Connect(function()
+		TweenService:Create(Button, TweenInfo.new(0.05), {Size = UDim2.new(0.98, 0, 0, 50)}):Play()
+	end)
+	Button.MouseButton1Up:Connect(function()
+		TweenService:Create(Button, TweenInfo.new(0.05), {Size = UDim2.new(1, 0, 0, 52)}):Play()
+	end)
+
+	Button.MouseButton1Click:Connect(callback)
+	return Button
+end
+
+local CloseBtn = Instance.new("TextButton")
+CloseBtn.Name = "CloseBtn"
+CloseBtn.Parent = DragHandle
+CloseBtn.BackgroundColor3 = Color3.fromRGB(240, 70, 70)
+CloseBtn.Position = UDim2.new(1, -42, 0, 13)
+CloseBtn.Size = UDim2.new(0, 28, 0, 28)
+CloseBtn.Font = Enum.Font.Oswald
+CloseBtn.Text = "X"
+CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseBtn.TextSize = 14
+
+local CloseCorner = Instance.new("UICorner")
+CloseCorner.CornerRadius = UDim.new(0, 6)
+CloseCorner.Parent = CloseBtn
+
+CloseBtn.MouseButton1Click:Connect(function()
+	local fadeOut = TweenService:Create(MainFrame, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Size = UDim2.new(0,0,0,0)})
+	fadeOut:Play()
+	fadeOut.Completed:Connect(function()
+		MainFrame.Visible = false
+		RestoreSquare.Visible = true
+		RestoreSquare.Size = UDim2.new(0, 0, 0, 0)
+		TweenService:Create(RestoreSquare, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(0, 140, 0, 45)}):Play()
+	end)
+end)
+
+RestoreSquare.MouseButton1Click:Connect(function()
+	local squareHide = TweenService:Create(RestoreSquare, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Size = UDim2.new(0,0,0,0)})
+	squareHide:Play()
+	squareHide.Completed:Connect(function()
+		RestoreSquare.Visible = false
+		MainFrame.Visible = true
+		TweenService:Create(MainFrame, TweenInfo.new(0.45, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(0, 580, 0, 640)}):Play()
+	end)
+end)
+
+-- --- ADMIN MORPHS SECTION ---
+local MorphContainer = Instance.new("Frame")
+MorphContainer.Name = "MorphContainer"
+MorphContainer.Parent = AdminExclusiveEntities
+MorphContainer.BackgroundTransparency = 1
+MorphContainer.Size = UDim2.new(1, 0, 0, 0)
+MorphContainer.Visible = false
+
+local UIGrid = Instance.new("UIGridLayout")
+UIGrid.Parent = MorphContainer
+UIGrid.CellSize = UDim2.new(0.31, 0, 0, 80)
+UIGrid.CellPadding = UDim2.new(0.035, 0, 0, 12)
+UIGrid.SortOrder = Enum.SortOrder.LayoutOrder
+
+local morphList = {"CC-60", "CC-25", "CC-45", "A-332", "E-200", "B-60","E-60","A-320","A-10","A-35","A-100","A-60","A-150","A-200","A-221","J-46","ZRX","ZRX_V2","ROCK-25","RJX_V2","RJX","Police-83","ACG-55","OG_A-60","A-246"}
+
+for _, morphName in ipairs(morphList) do
+	local MorphBtn = Instance.new("TextButton")
+	MorphBtn.Name = morphName .. "Btn"
+	MorphBtn.Parent = MorphContainer
+	MorphBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	MorphBtn.Font = Enum.Font.Oswald
+	MorphBtn.Text = morphName
+	MorphBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	MorphBtn.TextSize = 24
+	MorphBtn.AutoButtonColor = true
+
+	local BtnCorner = Instance.new("UICorner")
+	BtnCorner.CornerRadius = UDim.new(0, 12)
+	BtnCorner.Parent = MorphBtn
+
+	MorphBtn.MouseButton1Click:Connect(function()
+		local adminMorphsFolder = ReplicatedStorage:FindFirstChild("AdminMorphs")
+		local charChangeRemote = ReplicatedStorage:FindFirstChild("CharChange")
+
+		if adminMorphsFolder and charChangeRemote then
+			local morphObj = adminMorphsFolder:FindFirstChild(morphName)
+			if morphObj then
+				charChangeRemote:FireServer(morphObj)
+			end
+		end
+	end)
+end
+
+UIGrid:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+	MorphContainer.Size = UDim2.new(1, 0, 0, UIGrid.AbsoluteContentSize.Y + 10)
+end)
+
+local morphExpanded = false
+CreateButton("Admin Morphs", function()
+	morphExpanded = not morphExpanded
+	MorphContainer.Visible = morphExpanded
+end)
+
+local KillableContainer = Instance.new("Frame")
+KillableContainer.Name = "KillableContainer"
+KillableContainer.Parent = AdminExclusiveEntities
+KillableContainer.BackgroundTransparency = 1
+KillableContainer.Size = UDim2.new(1, 0, 0, 0)
+KillableContainer.Visible = false
+
+local KillableGrid = Instance.new("UIGridLayout")
+KillableGrid.Parent = KillableContainer
+KillableGrid.CellSize = UDim2.new(0.31, 0, 0, 80)
+KillableGrid.CellPadding = UDim2.new(0.035, 0, 0, 12)
+KillableGrid.SortOrder = Enum.SortOrder.LayoutOrder
+
+local killableList = {"G-60_DIE", "G-60_KILL"}
+
+for _, killableName in ipairs(killableList) do
+	local KillableBtn = Instance.new("TextButton")
+	KillableBtn.Name = killableName .. "Btn"
+	KillableBtn.Parent = KillableContainer
+	KillableBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	KillableBtn.Font = Enum.Font.Oswald
+	KillableBtn.Text = killableName
+	KillableBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	KillableBtn.TextSize = 20
+	KillableBtn.AutoButtonColor = true
+
+	local BtnCorner = Instance.new("UICorner")
+	BtnCorner.CornerRadius = UDim.new(0, 12)
+	BtnCorner.Parent = KillableBtn
+
+	KillableBtn.MouseButton1Click:Connect(function()
+		local adminMorphsFolder = ReplicatedStorage:FindFirstChild("AdminMorphs")
+		local charChangeRemote = ReplicatedStorage:FindFirstChild("CharChange")
+
+		if adminMorphsFolder and charChangeRemote then
+			local killableFolder = adminMorphsFolder:FindFirstChild("Killable")
+			if killableFolder then
+				local targetEntity = killableFolder:FindFirstChild(killableName)
+				if targetEntity then
+					charChangeRemote:FireServer(targetEntity)
+				end
+			end
+		end
+	end)
+end
+
+KillableGrid:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+	KillableContainer.Size = UDim2.new(1, 0, 0, KillableGrid.AbsoluteContentSize.Y + 10)
+end)
+
+local killableExpanded = false
+CreateButton("KillableEntity", function()
+	killableExpanded = not killableExpanded
+	KillableContainer.Visible = killableExpanded
+end)
+
+local MilestoneMorphsConteinter = Instance.new("Frame")
+MilestoneMorphsConteinter.Name = "MilestoneMorphsContainer"
+MilestoneMorphsConteinter.Parent = AdminExclusiveEntities
+MilestoneMorphsConteinter.BackgroundTransparency = 1
+MilestoneMorphsConteinter.Size = UDim2.new(1, 0, 0, 0)
+MilestoneMorphsConteinter.Visible = false
+MilestoneMorphsConteinter.ClipsDescendants = true
+
+local MilestoneMorphsGrid = Instance.new("UIGridLayout")
+MilestoneMorphsGrid.Parent = MilestoneMorphsConteinter
+MilestoneMorphsGrid.CellSize = UDim2.new(0.31, 0, 0, 80)
+MilestoneMorphsGrid.CellPadding = UDim2.new(0.035, 0, 0, 12)
+MilestoneMorphsGrid.SortOrder = Enum.SortOrder.LayoutOrder
+
+local MilestoneMorphslist = {
+	"AAAAAA-75", "AC-25", "AwesomeLad", "AwesomeRusher", 
+	"BIGBEEGEEONETOOTOO", "BIG-5", "BeeSIXTY", "Blue_A-25", 
+	"C-185", "C-225_Very_Real", "CCCCCCCG-26", "CG-250", "CV300Real","Chicken-185","Inaccurate_185","Omg-122","Omglad","Omgrusher","Pixelman","Pumpkin-105"
+}
+
+for _, MilestoneMorphsName in ipairs(MilestoneMorphslist) do
+	local MilestoneMorphsBtn = Instance.new("TextButton")
+	MilestoneMorphsBtn.Name = MilestoneMorphsName .. "Btn"
+	MilestoneMorphsBtn.Parent = MilestoneMorphsConteinter
+	MilestoneMorphsBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	MilestoneMorphsBtn.Font = Enum.Font.Oswald
+	MilestoneMorphsBtn.Text = MilestoneMorphsName
+	MilestoneMorphsBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	MilestoneMorphsBtn.TextSize = 20
+	MilestoneMorphsBtn.AutoButtonColor = true
+
+	local BtnCorner = Instance.new("UICorner")
+	BtnCorner.CornerRadius = UDim.new(0, 12)
+	BtnCorner.Parent = MilestoneMorphsBtn
+
+	MilestoneMorphsBtn.MouseButton1Click:Connect(function()
+		local adminMorphsFolder = ReplicatedStorage:FindFirstChild("AdminMorphs")
+		local charChangeRemote = ReplicatedStorage:FindFirstChild("CharChange")
+
+		if adminMorphsFolder and charChangeRemote then
+			local MilestoneMorphsFolder = adminMorphsFolder:FindFirstChild("MilestoneMorphs")
+			if MilestoneMorphsFolder then
+				local targetEntity = MilestoneMorphsFolder:FindFirstChild(MilestoneMorphsName)
+				if targetEntity then
+					charChangeRemote:FireServer(targetEntity)
+				end
+			end
+		end
+	end)
+end
+
+MilestoneMorphsGrid:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+	MilestoneMorphsConteinter.Size = UDim2.new(1, 0, 0, MilestoneMorphsGrid.AbsoluteContentSize.Y + 10)
+end)
+
+local MilestoneMorphsExpanded = false
+CreateButton("MilestoneMorphs", function()
+	MilestoneMorphsExpanded = not MilestoneMorphsExpanded
+	MilestoneMorphsConteinter.Visible = MilestoneMorphsExpanded
+end)
