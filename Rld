@@ -328,27 +328,27 @@ Unused.Size = UDim2.new(1, 0, 0, 0)
 Unused.Visible = false
 
 local UnsuedGrid = Instance.new("UIGridLayout")
-UnusedGrid.Parent = KillableContainer
+UnusedGrid.Parent = UnusedContainer
 UnusedGrid.CellSize = UDim2.new(0.31, 0, 0, 80)
 UnusedGrid.CellPadding = UDim2.new(0.035, 0, 0, 12)
 UnusedGrid.SortOrder = Enum.SortOrder.LayoutOrder
 
 local killableList = {"cc25", "G-60_KILL"}
 
-for _, killableName in ipairs(killableList) do
+for _, killableName in ipairs(UnusedList) do
 	local UnusedBtn = Instance.new("TextButton")
 	UnusedBtn.Name = UnusedName .. "Btn"
 	UnusedBtn.Parent = UnusedContainer
 	UnusedBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	UnusedBtn.Font = Enum.Font.Oswald
-	UnusedBtn.Text = killableName
+	UnusedBtn.Text = UnusedName
 	UnusedBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
 	Unusedtn.TextSize = 20
 	UnusedBtn.AutoButtonColor = true
 
 	local BtnCorner = Instance.new("UICorner")
 	BtnCorner.CornerRadius = UDim.new(0, 12)
-	BtnCorner.Parent = KillableBtn
+	BtnCorner.Parent = UnusedBtn
 
 	UnusedBtn.MouseButton1Click:Connect(function()
 		local adminMorphsFolder = ReplicatedStorage:FindFirstChild("AdminMorphs")
