@@ -224,7 +224,7 @@ UIGrid.CellSize = UDim2.new(0.31, 0, 0, 80)
 UIGrid.CellPadding = UDim2.new(0.035, 0, 0, 12)
 UIGrid.SortOrder = Enum.SortOrder.LayoutOrder
 
-local morphList = {"CC-60", "CC-25", "CC-45", "A-332", "E-200", "B-60","E-60","A-320","A-10","A-35","A-100","A-60","A-150","A-200","A-221","J-46","ZRX","ZRX_V2","ROCK-25","RJX_V2","RJX","Police-83","ACG-55","OG_A-60","A-246","O-200","T-10_OLD","AB-25","AB-45","AB-60"}
+local morphList = {"CC-60", "CC-25", "CC-45", "A-332", "E-200", "B-60","E-60","A-320","A-10","A-35","A-100","A-60","A-150","A-200","A-221","J-46","ZRX","ZRX_V2","ROCK-25","RJX_V2","RJX","Police-83","ACG-55","OG_A-60","A-246","O-200","T-10_OLD","AB-25","AB-45","AB-60","TACO-185"}
 
 for _, morphName in ipairs(morphList) do
 	local MorphBtn = Instance.new("TextButton")
