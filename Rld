@@ -310,8 +310,14 @@ for _, killableName in ipairs(killableList) do
 	end)
 end
 
-    KillableGrid:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
-	KillableContainer.Size = UDim2.new(1, 0, 0,) UnusedGrid.AbsoluteContentSize.Y + 10)
+KillableGrid:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+	KillableContainer.Size = UDim2.new(1, 0, 0, KillableGrid.AbsoluteContentSize.Y + 10)
+end)
+
+local killableExpanded = false
+CreateButton("KillableEntity", function()
+	killableExpanded = not killableExpanded
+	KillableContainer.Visible = killableExpanded
 end)
 
 local MilestoneMorphsConteinter = Instance.new("Frame")
