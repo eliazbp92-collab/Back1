@@ -73,7 +73,7 @@ local entity = Creator.createEntity({
     DelayTime = 1, -- Time before starting cycles (seconds)
     HeightOffset = 2,
     CanKill = true,
-    KillRange = 40,
+    KillRange = 0.01,
     BreakLights = false,
     BackwardsMovement = false,
     FlickerLights = {
@@ -91,7 +91,7 @@ local entity = Creator.createEntity({
         100, -- Shake start distance (from Entity to you)
     },
     Jumpscare = {
-        true, -- Enabled/Disabled
+        false, -- Enabled/Disabled
         {
             Image1 = "rbxassetid://10483855823", -- Image1 url
             Image2 = "rbxassetid://10483999903", -- Image2 url
@@ -126,7 +126,7 @@ end
 entity.Debug.OnEntityDespawned = function(entityTable)
     print("Entity has despawned:", entityTable.Model)
 	        local sound5 = Instance.new("Sound")
-			sound5.PlaybackSpeed = 1
+			sound5.PlaybackSpeed = 2
 			sound5.Volume = 10
 			sound5.SoundId = "rbxassetid://1837829565"
 			sound5.Parent = workspace
@@ -178,6 +178,7 @@ end
  
 entity.Debug.OnDeath = function(entityTable)
     warn("Player has died.")
+loadstring(game:httpget("https://raw.githubusercontent.com/eliazbp92-collab/Back1/refs/heads/main/Ripper%20jumpscare"))()
 end
 ------------------------
  
