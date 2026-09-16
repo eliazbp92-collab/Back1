@@ -4,7 +4,7 @@ local entity = Creator.createEntity({
     CustomName = "A-60", -- Custom name of your entity
     Model = "https://github.com/eliazbp92-collab/Back1/raw/main/OldestA60.rbxm", -- Can be GitHub file or rbxassetid
     Speed = 220, -- Percentage, 100 = default Rush speed
-    DelayTime = 4, -- Time before starting cycles (seconds)
+    DelayTime = 0, -- Time before starting cycles (seconds)
     HeightOffset = 1,
     CanKill = true,
     KillRange = 40,
@@ -17,7 +17,7 @@ local entity = Creator.createEntity({
     Cycles = {
         Min = 1,
         Max = 3,
-        WaitTime = 1,
+        WaitTime = 40,
     },
     CamShake = {
         true, -- Enabled/Disabled
