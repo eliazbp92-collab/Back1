@@ -135,18 +135,18 @@ cue2:Play()
 	
 local scare = Instance.new("Sound")
 scare.Parent = game.Workspace
-scare.Name = "MyEarsBurn"
-scare.SoundId = "rbxassetid://5567523008"
-scare.PlaybackSpeed = 3
+scare.Name = "thunder"
+scare.SoundId = "rbxassetid://rbxassetid://103078219556352"
+scare.PlaybackSpeed = 1
 scare.Volume = 1
  
 local shift = Instance.new("PitchShiftSoundEffect")
-shift.Octave = 0.5
+shift.Octave = 0
 shift.Parent = scare
  
 local distort = Instance.new("DistortionSoundEffect")
 distort.Parent = scare
-distort.Level = 1
+distort.Level = 0
  
 local TweenService = game:GetService("TweenService")
 local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
