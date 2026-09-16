@@ -12,7 +12,7 @@ local entity = Creator.createEntity({
     BackwardsMovement = false,
     FlickerLights = {
         true, -- Enabled/Disabled
-        1, -- Time (seconds)
+        40, -- Time (seconds)
     },
     Cycles = {
         Min = 1,
