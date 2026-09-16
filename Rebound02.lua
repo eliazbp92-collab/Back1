@@ -61,6 +61,24 @@ cue2.Name = "Spawn"
 cue2.SoundId = "rbxassetid://9114221327"
 cue2.Volume = 3
 cue2:Play()
+
+local scare = Instance.new("Sound")
+scare.Parent = game.Workspace
+scare.Name = "thunder"
+scare.SoundId = "rbxassetid://rbxassetid://103078219556352"
+scare.PlaybackSpeed = 1
+scare.Volume = 1
+ 
+local shift = Instance.new("PitchShiftSoundEffect")
+shift.Octave = 0
+shift.Parent = scare
+ 
+local distort = Instance.new("DistortionSoundEffect")
+distort.Parent = scare
+distort.Level = 0
+ 
+local TweenService = game:GetService("TweenService")
+local spookee = TweenService:Create(scare, TweenInfo.new(0.3),{Volume = 0})
 end
 
 entity.Debug.OnEntityDespawned = function(entityTable)
